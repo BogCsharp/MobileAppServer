@@ -1,0 +1,568 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Home_PC\\Desktop\\MobileAppServer\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|c:\\users\\home_pc\\desktop\\mobileappserver\\entities\\cartentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|solutionrelative:entities\\cartentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|c:\\users\\home_pc\\desktop\\mobileappserver\\services\\orderrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|solutionrelative:services\\orderrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|c:\\users\\home_pc\\desktop\\mobileappserver\\controllers\\ordercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|solutionrelative:controllers\\ordercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|c:\\users\\home_pc\\desktop\\mobileappserver\\entities\\cartitementity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|solutionrelative:entities\\cartitementity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|c:\\users\\home_pc\\desktop\\mobileappserver\\services\\servicerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|solutionrelative:services\\servicerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|c:\\users\\home_pc\\desktop\\mobileappserver\\abstracts\\iservicerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|solutionrelative:abstracts\\iservicerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|c:\\users\\home_pc\\desktop\\mobileappserver\\models\\order\\orderdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|solutionrelative:models\\order\\orderdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|c:\\users\\home_pc\\desktop\\mobileappserver\\models\\service\\createservicedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|solutionrelative:models\\service\\createservicedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|c:\\users\\home_pc\\desktop\\mobileappserver\\abstracts\\iorderrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|solutionrelative:abstracts\\iorderrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|c:\\users\\home_pc\\desktop\\mobileappserver\\controllers\\servicescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|solutionrelative:controllers\\servicescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|c:\\users\\home_pc\\desktop\\mobileappserver\\models\\order\\createorderdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|solutionrelative:models\\order\\createorderdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|c:\\users\\home_pc\\desktop\\mobileappserver\\mappers\\ordermapper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|solutionrelative:mappers\\ordermapper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|c:\\users\\home_pc\\desktop\\mobileappserver\\entities\\orderentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|solutionrelative:entities\\orderentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|c:\\users\\home_pc\\desktop\\mobileappserver\\mappers\\servicemapper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|solutionrelative:mappers\\servicemapper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|c:\\users\\home_pc\\desktop\\mobileappserver\\models\\order\\orderservicedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|solutionrelative:models\\order\\orderservicedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|c:\\users\\home_pc\\desktop\\mobileappserver\\entities\\orderservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|solutionrelative:entities\\orderservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|c:\\users\\home_pc\\desktop\\mobileappserver\\entities\\carentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|solutionrelative:entities\\carentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Home_PC\\Desktop\\MobileAppServer\\Migrations\\20251009164314_AddEmployeetwo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Migrations\\20251009164314_AddEmployeetwo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|c:\\users\\home_pc\\desktop\\mobileappserver\\data\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|solutionrelative:data\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|c:\\users\\home_pc\\desktop\\mobileappserver\\entities\\categoryentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|solutionrelative:entities\\categoryentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|c:\\users\\home_pc\\desktop\\mobileappserver\\entities\\employeeentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|solutionrelative:entities\\employeeentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|c:\\users\\home_pc\\desktop\\mobileappserver\\migrations\\20251009164143_addemployee.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|solutionrelative:migrations\\20251009164143_addemployee.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|c:\\users\\home_pc\\desktop\\mobileappserver\\models\\service\\servicedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|solutionrelative:models\\service\\servicedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|c:\\users\\home_pc\\desktop\\mobileappserver\\entities\\serviceentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|solutionrelative:entities\\serviceentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|c:\\users\\home_pc\\desktop\\mobileappserver\\extensions\\serviceextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|solutionrelative:extensions\\serviceextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|c:\\users\\home_pc\\desktop\\mobileappserver\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Home_PC\\Desktop\\MobileAppServer\\Migrations\\20251009154327_RemoveSecondCategoryIdtwo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Migrations\\20251009154327_RemoveSecondCategoryIdtwo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|c:\\users\\home_pc\\desktop\\mobileappserver\\entities\\baseentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|solutionrelative:entities\\baseentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Home_PC\\Desktop\\MobileAppServer\\Migrations\\20251009153901_RemoveSecondCAtegoryId.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Migrations\\20251009153901_RemoveSecondCAtegoryId.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|c:\\users\\home_pc\\desktop\\mobileappserver\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Home_PC\\Desktop\\MobileAppServer\\Migrations\\20251009152308_MyFirstMigration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Migrations\\20251009152308_MyFirstMigration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|c:\\users\\home_pc\\desktop\\mobileappserver\\entities\\userentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|solutionrelative:entities\\userentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 16,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "OrderController.cs",
+              "DocumentMoniker": "C:\\Users\\Home_PC\\Desktop\\MobileAppServer\\Controllers\\OrderController.cs",
+              "RelativeDocumentMoniker": "Controllers\\OrderController.cs",
+              "ToolTip": "C:\\Users\\Home_PC\\Desktop\\MobileAppServer\\Controllers\\OrderController.cs",
+              "RelativeToolTip": "Controllers\\OrderController.cs",
+              "ViewState": "AgIAACkAAAAAAAAAAAAwwIsAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-09T17:47:51.106Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "OrderServiceDTO.cs",
+              "DocumentMoniker": "C:\\Users\\Home_PC\\Desktop\\MobileAppServer\\Models\\Order\\OrderServiceDTO.cs",
+              "RelativeDocumentMoniker": "Models\\Order\\OrderServiceDTO.cs",
+              "ToolTip": "C:\\Users\\Home_PC\\Desktop\\MobileAppServer\\Models\\Order\\OrderServiceDTO.cs",
+              "RelativeToolTip": "Models\\Order\\OrderServiceDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-09T17:03:00.825Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "OrderRepository.cs",
+              "DocumentMoniker": "C:\\Users\\Home_PC\\Desktop\\MobileAppServer\\Services\\OrderRepository.cs",
+              "RelativeDocumentMoniker": "Services\\OrderRepository.cs",
+              "ToolTip": "C:\\Users\\Home_PC\\Desktop\\MobileAppServer\\Services\\OrderRepository.cs",
+              "RelativeToolTip": "Services\\OrderRepository.cs",
+              "ViewState": "AgIAAGIAAAAAAAAAAAAuwCEAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-09T16:46:03.69Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "IOrderRepository.cs",
+              "DocumentMoniker": "C:\\Users\\Home_PC\\Desktop\\MobileAppServer\\Abstracts\\IOrderRepository.cs",
+              "RelativeDocumentMoniker": "Abstracts\\IOrderRepository.cs",
+              "ToolTip": "C:\\Users\\Home_PC\\Desktop\\MobileAppServer\\Abstracts\\IOrderRepository.cs",
+              "RelativeToolTip": "Abstracts\\IOrderRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-09T16:44:57.208Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "20251009164314_AddEmployeetwo.cs",
+              "DocumentMoniker": "C:\\Users\\Home_PC\\Desktop\\MobileAppServer\\Migrations\\20251009164314_AddEmployeetwo.cs",
+              "RelativeDocumentMoniker": "Migrations\\20251009164314_AddEmployeetwo.cs",
+              "ToolTip": "C:\\Users\\Home_PC\\Desktop\\MobileAppServer\\Migrations\\20251009164314_AddEmployeetwo.cs",
+              "RelativeToolTip": "Migrations\\20251009164314_AddEmployeetwo.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-09T16:43:14.538Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "20251009164143_AddEmployee.cs",
+              "DocumentMoniker": "C:\\Users\\Home_PC\\Desktop\\MobileAppServer\\Migrations\\20251009164143_AddEmployee.cs",
+              "RelativeDocumentMoniker": "Migrations\\20251009164143_AddEmployee.cs",
+              "ToolTip": "C:\\Users\\Home_PC\\Desktop\\MobileAppServer\\Migrations\\20251009164143_AddEmployee.cs",
+              "RelativeToolTip": "Migrations\\20251009164143_AddEmployee.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-09T16:41:44.472Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "EmployeeEntity.cs",
+              "DocumentMoniker": "C:\\Users\\Home_PC\\Desktop\\MobileAppServer\\Entities\\EmployeeEntity.cs",
+              "RelativeDocumentMoniker": "Entities\\EmployeeEntity.cs",
+              "ToolTip": "C:\\Users\\Home_PC\\Desktop\\MobileAppServer\\Entities\\EmployeeEntity.cs",
+              "RelativeToolTip": "Entities\\EmployeeEntity.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-09T16:38:03.752Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "ServiceDTO.cs",
+              "DocumentMoniker": "C:\\Users\\Home_PC\\Desktop\\MobileAppServer\\Models\\Service\\ServiceDTO.cs",
+              "RelativeDocumentMoniker": "Models\\Service\\ServiceDTO.cs",
+              "ToolTip": "C:\\Users\\Home_PC\\Desktop\\MobileAppServer\\Models\\Service\\ServiceDTO.cs",
+              "RelativeToolTip": "Models\\Service\\ServiceDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-09T16:11:52.985Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "ServiceMapper.cs",
+              "DocumentMoniker": "C:\\Users\\Home_PC\\Desktop\\MobileAppServer\\Mappers\\ServiceMapper.cs",
+              "RelativeDocumentMoniker": "Mappers\\ServiceMapper.cs",
+              "ToolTip": "C:\\Users\\Home_PC\\Desktop\\MobileAppServer\\Mappers\\ServiceMapper.cs",
+              "RelativeToolTip": "Mappers\\ServiceMapper.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-09T15:59:20.764Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "CreateServiceDTO.cs",
+              "DocumentMoniker": "C:\\Users\\Home_PC\\Desktop\\MobileAppServer\\Models\\Service\\CreateServiceDTO.cs",
+              "RelativeDocumentMoniker": "Models\\Service\\CreateServiceDTO.cs",
+              "ToolTip": "C:\\Users\\Home_PC\\Desktop\\MobileAppServer\\Models\\Service\\CreateServiceDTO.cs",
+              "RelativeToolTip": "Models\\Service\\CreateServiceDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-09T15:58:06.482Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "20251009154327_RemoveSecondCategoryIdtwo.cs",
+              "DocumentMoniker": "C:\\Users\\Home_PC\\Desktop\\MobileAppServer\\Migrations\\20251009154327_RemoveSecondCategoryIdtwo.cs",
+              "RelativeDocumentMoniker": "Migrations\\20251009154327_RemoveSecondCategoryIdtwo.cs",
+              "ToolTip": "C:\\Users\\Home_PC\\Desktop\\MobileAppServer\\Migrations\\20251009154327_RemoveSecondCategoryIdtwo.cs",
+              "RelativeToolTip": "Migrations\\20251009154327_RemoveSecondCategoryIdtwo.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-09T15:43:27.62Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
+              "Title": "20251009153901_RemoveSecondCAtegoryId.cs",
+              "DocumentMoniker": "C:\\Users\\Home_PC\\Desktop\\MobileAppServer\\Migrations\\20251009153901_RemoveSecondCAtegoryId.cs",
+              "RelativeDocumentMoniker": "Migrations\\20251009153901_RemoveSecondCAtegoryId.cs",
+              "ToolTip": "C:\\Users\\Home_PC\\Desktop\\MobileAppServer\\Migrations\\20251009153901_RemoveSecondCAtegoryId.cs",
+              "RelativeToolTip": "Migrations\\20251009153901_RemoveSecondCAtegoryId.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-09T15:39:01.629Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 30,
+              "Title": "20251009152308_MyFirstMigration.cs",
+              "DocumentMoniker": "C:\\Users\\Home_PC\\Desktop\\MobileAppServer\\Migrations\\20251009152308_MyFirstMigration.cs",
+              "RelativeDocumentMoniker": "Migrations\\20251009152308_MyFirstMigration.cs",
+              "ToolTip": "C:\\Users\\Home_PC\\Desktop\\MobileAppServer\\Migrations\\20251009152308_MyFirstMigration.cs",
+              "RelativeToolTip": "Migrations\\20251009152308_MyFirstMigration.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-09T15:23:08.753Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "ServicesController.cs",
+              "DocumentMoniker": "C:\\Users\\Home_PC\\Desktop\\MobileAppServer\\Controllers\\ServicesController.cs",
+              "RelativeDocumentMoniker": "Controllers\\ServicesController.cs",
+              "ToolTip": "C:\\Users\\Home_PC\\Desktop\\MobileAppServer\\Controllers\\ServicesController.cs",
+              "RelativeToolTip": "Controllers\\ServicesController.cs",
+              "ViewState": "AgIAABUAAAAAAAAAAAAowCQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-09T15:09:46.415Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "CartItemEntity.cs",
+              "DocumentMoniker": "C:\\Users\\Home_PC\\Desktop\\MobileAppServer\\Entities\\CartItemEntity.cs",
+              "RelativeDocumentMoniker": "Entities\\CartItemEntity.cs",
+              "ToolTip": "C:\\Users\\Home_PC\\Desktop\\MobileAppServer\\Entities\\CartItemEntity.cs",
+              "RelativeToolTip": "Entities\\CartItemEntity.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-09T14:31:02.928Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "CartEntity.cs",
+              "DocumentMoniker": "C:\\Users\\Home_PC\\Desktop\\MobileAppServer\\Entities\\CartEntity.cs",
+              "RelativeDocumentMoniker": "Entities\\CartEntity.cs",
+              "ToolTip": "C:\\Users\\Home_PC\\Desktop\\MobileAppServer\\Entities\\CartEntity.cs",
+              "RelativeToolTip": "Entities\\CartEntity.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAA1AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-09T14:30:00.009Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "OrderMapper.cs",
+              "DocumentMoniker": "C:\\Users\\Home_PC\\Desktop\\MobileAppServer\\Mappers\\OrderMapper.cs",
+              "RelativeDocumentMoniker": "Mappers\\OrderMapper.cs",
+              "ToolTip": "C:\\Users\\Home_PC\\Desktop\\MobileAppServer\\Mappers\\OrderMapper.cs",
+              "RelativeToolTip": "Mappers\\OrderMapper.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACgAAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-09T14:28:22.282Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "CreateOrderDTO.cs",
+              "DocumentMoniker": "C:\\Users\\Home_PC\\Desktop\\MobileAppServer\\Models\\Order\\CreateOrderDTO.cs",
+              "RelativeDocumentMoniker": "Models\\Order\\CreateOrderDTO.cs",
+              "ToolTip": "C:\\Users\\Home_PC\\Desktop\\MobileAppServer\\Models\\Order\\CreateOrderDTO.cs",
+              "RelativeToolTip": "Models\\Order\\CreateOrderDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAIwBEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-09T14:06:23.741Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "OrderDTO.cs",
+              "DocumentMoniker": "C:\\Users\\Home_PC\\Desktop\\MobileAppServer\\Models\\Order\\OrderDTO.cs",
+              "RelativeDocumentMoniker": "Models\\Order\\OrderDTO.cs",
+              "ToolTip": "C:\\Users\\Home_PC\\Desktop\\MobileAppServer\\Models\\Order\\OrderDTO.cs",
+              "RelativeToolTip": "Models\\Order\\OrderDTO.cs",
+              "ViewState": "AgIAAAQAAAAAAAAAAAAAABkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-09T14:05:23.223Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ServiceRepository.cs",
+              "DocumentMoniker": "C:\\Users\\Home_PC\\Desktop\\MobileAppServer\\Services\\ServiceRepository.cs",
+              "RelativeDocumentMoniker": "Services\\ServiceRepository.cs",
+              "ToolTip": "C:\\Users\\Home_PC\\Desktop\\MobileAppServer\\Services\\ServiceRepository.cs",
+              "RelativeToolTip": "Services\\ServiceRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACgAAAAlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-09T14:00:06.541Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "OrderService.cs",
+              "DocumentMoniker": "C:\\Users\\Home_PC\\Desktop\\MobileAppServer\\Entities\\OrderService.cs",
+              "RelativeDocumentMoniker": "Entities\\OrderService.cs",
+              "ToolTip": "C:\\Users\\Home_PC\\Desktop\\MobileAppServer\\Entities\\OrderService.cs",
+              "RelativeToolTip": "Entities\\OrderService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-09T13:45:29.053Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "OrderEntity.cs",
+              "DocumentMoniker": "C:\\Users\\Home_PC\\Desktop\\MobileAppServer\\Entities\\OrderEntity.cs",
+              "RelativeDocumentMoniker": "Entities\\OrderEntity.cs",
+              "ToolTip": "C:\\Users\\Home_PC\\Desktop\\MobileAppServer\\Entities\\OrderEntity.cs",
+              "RelativeToolTip": "Entities\\OrderEntity.cs",
+              "ViewState": "AgIAAAQAAAAAAAAAAAA1wBIAAAAtAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-09T13:41:23.537Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "CarEntity.cs",
+              "DocumentMoniker": "C:\\Users\\Home_PC\\Desktop\\MobileAppServer\\Entities\\CarEntity.cs",
+              "RelativeDocumentMoniker": "Entities\\CarEntity.cs",
+              "ToolTip": "C:\\Users\\Home_PC\\Desktop\\MobileAppServer\\Entities\\CarEntity.cs",
+              "RelativeToolTip": "Entities\\CarEntity.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAA1AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-09T13:40:02.107Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "ServiceEntity.cs",
+              "DocumentMoniker": "C:\\Users\\Home_PC\\Desktop\\MobileAppServer\\Entities\\ServiceEntity.cs",
+              "RelativeDocumentMoniker": "Entities\\ServiceEntity.cs",
+              "ToolTip": "C:\\Users\\Home_PC\\Desktop\\MobileAppServer\\Entities\\ServiceEntity.cs",
+              "RelativeToolTip": "Entities\\ServiceEntity.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-09T13:34:55.351Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "IServiceRepository.cs",
+              "DocumentMoniker": "C:\\Users\\Home_PC\\Desktop\\MobileAppServer\\Abstracts\\IServiceRepository.cs",
+              "RelativeDocumentMoniker": "Abstracts\\IServiceRepository.cs",
+              "ToolTip": "C:\\Users\\Home_PC\\Desktop\\MobileAppServer\\Abstracts\\IServiceRepository.cs",
+              "RelativeToolTip": "Abstracts\\IServiceRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-09T13:30:47.556Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 29,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\Home_PC\\Desktop\\MobileAppServer\\appsettings.json",
+              "RelativeDocumentMoniker": "appsettings.json",
+              "ToolTip": "C:\\Users\\Home_PC\\Desktop\\MobileAppServer\\appsettings.json",
+              "RelativeToolTip": "appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAA9AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-10-09T13:22:39.502Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "CategoryEntity.cs",
+              "DocumentMoniker": "C:\\Users\\Home_PC\\Desktop\\MobileAppServer\\Entities\\CategoryEntity.cs",
+              "RelativeDocumentMoniker": "Entities\\CategoryEntity.cs",
+              "ToolTip": "C:\\Users\\Home_PC\\Desktop\\MobileAppServer\\Entities\\CategoryEntity.cs",
+              "RelativeToolTip": "Entities\\CategoryEntity.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-09T13:15:31.567Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "BaseEntity.cs",
+              "DocumentMoniker": "C:\\Users\\Home_PC\\Desktop\\MobileAppServer\\Entities\\BaseEntity.cs",
+              "RelativeDocumentMoniker": "Entities\\BaseEntity.cs",
+              "ToolTip": "C:\\Users\\Home_PC\\Desktop\\MobileAppServer\\Entities\\BaseEntity.cs",
+              "RelativeToolTip": "Entities\\BaseEntity.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAA9AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-09T13:09:35.856Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 31,
+              "Title": "UserEntity.cs",
+              "DocumentMoniker": "C:\\Users\\Home_PC\\Desktop\\MobileAppServer\\Entities\\UserEntity.cs",
+              "RelativeDocumentMoniker": "Entities\\UserEntity.cs",
+              "ToolTip": "C:\\Users\\Home_PC\\Desktop\\MobileAppServer\\Entities\\UserEntity.cs",
+              "RelativeToolTip": "Entities\\UserEntity.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-09T13:09:11.599Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "AppDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\Home_PC\\Desktop\\MobileAppServer\\Data\\AppDbContext.cs",
+              "RelativeDocumentMoniker": "Data\\AppDbContext.cs",
+              "ToolTip": "C:\\Users\\Home_PC\\Desktop\\MobileAppServer\\Data\\AppDbContext.cs",
+              "RelativeToolTip": "Data\\AppDbContext.cs",
+              "ViewState": "AgIAAAUAAAAAAAAAAAAxwBMAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-09T13:03:54.279Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "ServiceExtensions.cs",
+              "DocumentMoniker": "C:\\Users\\Home_PC\\Desktop\\MobileAppServer\\Extensions\\ServiceExtensions.cs",
+              "RelativeDocumentMoniker": "Extensions\\ServiceExtensions.cs",
+              "ToolTip": "C:\\Users\\Home_PC\\Desktop\\MobileAppServer\\Extensions\\ServiceExtensions.cs",
+              "RelativeToolTip": "Extensions\\ServiceExtensions.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-09T13:02:09.03Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\Home_PC\\Desktop\\MobileAppServer\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\Users\\Home_PC\\Desktop\\MobileAppServer\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-09T12:57:56.073Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

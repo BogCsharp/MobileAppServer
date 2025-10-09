@@ -1,0 +1,14 @@
+﻿namespace MobileAppServer.Entities
+{
+    public class ServiceEntity:BaseEntity
+    {
+        public string Name { get; set; } = string.Empty;
+        public string Description { get; set; } = string.Empty;
+        public decimal Price { get; set; }
+        public int Duration { get; set; }
+
+
+        public long CategoryId { get; set; }
+        public CategoryEntity Category { get; set; } = null!;
+    }
+}
