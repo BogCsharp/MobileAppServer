@@ -16,6 +16,7 @@ namespace MobileAppServer.Extensions
         {
             builder.Services.AddScoped<IServiceRepository,ServiceRepository>();
             builder.Services.AddScoped<IOrderRepository, OrderRepository>();
+            builder.Services.AddScoped<ICartRepository, CartRepository>();
             return builder;
         }
     }

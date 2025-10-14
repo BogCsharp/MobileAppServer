@@ -21,7 +21,9 @@ namespace MobileAppServer.Services
             return service;
         }
 
-        public async Task<bool> DeleteAsync(int id)
+        
+
+        public async Task<bool> DeleteAsync(long id)
         {
             var entity=await _dbcontext.Set<ServiceEntity>().FirstOrDefaultAsync(x=>x.Id==id);
             if (entity == null)
@@ -55,6 +57,7 @@ namespace MobileAppServer.Services
             return entity;
         }
 
+      
 
         public async Task<ServiceEntity> UpdateAsync(ServiceEntity service)
         {
@@ -71,5 +74,7 @@ namespace MobileAppServer.Services
             await _dbcontext.SaveChangesAsync();
             return entity;
         }
+
+       
     }
 }

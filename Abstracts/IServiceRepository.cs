@@ -8,8 +8,6 @@ namespace MobileAppServer.Abstracts
         Task<List<ServiceEntity>> GetAllAsync();
         Task<ServiceEntity> CreateAsync(ServiceEntity service);
         Task<ServiceEntity> UpdateAsync(ServiceEntity service);
-        Task<bool> DeleteAsync(int id);
-
-        
+        Task<bool> DeleteAsync(long id);
     }
 }

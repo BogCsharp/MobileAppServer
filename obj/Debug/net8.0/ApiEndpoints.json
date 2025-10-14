@@ -16,6 +16,178 @@
     ]
   },
   {
+    "ContainingType": "MobileAppServer.Controllers.CartController",
+    "Method": "GetCart",
+    "RelativePath": "api/cart/{userId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Int64",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "MobileAppServer.Models.Cart.CartDTO",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "MobileAppServer.Controllers.CartController",
+    "Method": "Clear",
+    "RelativePath": "api/cart/{userId}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Int64",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MobileAppServer.Controllers.CartController",
+    "Method": "GetCount",
+    "RelativePath": "api/cart/{userId}/count",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Int64",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Int32",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "MobileAppServer.Controllers.CartController",
+    "Method": "AddItem",
+    "RelativePath": "api/cart/{userId}/items",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Int64",
+        "IsRequired": true
+      },
+      {
+        "Name": "dto",
+        "Type": "MobileAppServer.Models.Cart.AddToCartDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "MobileAppServer.Models.Cart.CartItemDTO",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "MobileAppServer.Controllers.CartController",
+    "Method": "UpdateItem",
+    "RelativePath": "api/cart/{userId}/items/{cartItemId}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Int64",
+        "IsRequired": true
+      },
+      {
+        "Name": "cartItemId",
+        "Type": "System.Int64",
+        "IsRequired": true
+      },
+      {
+        "Name": "dto",
+        "Type": "MobileAppServer.Models.Cart.UpdateCartItemDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MobileAppServer.Controllers.CartController",
+    "Method": "RemoveItem",
+    "RelativePath": "api/cart/{userId}/items/{cartItemId}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Int64",
+        "IsRequired": true
+      },
+      {
+        "Name": "cartItemId",
+        "Type": "System.Int64",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MobileAppServer.Controllers.CartController",
+    "Method": "GetTotal",
+    "RelativePath": "api/cart/{userId}/total",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Int64",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Decimal",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
     "ContainingType": "MobileAppServer.Controllers.OrderController",
     "Method": "GetAll",
     "RelativePath": "api/orders",
@@ -192,7 +364,7 @@
     ]
   },
   {
-    "ContainingType": "ServicesController",
+    "ContainingType": "MobileAppServer.Controllers.ServicesController",
     "Method": "GetAll",
     "RelativePath": "api/services",
     "HttpMethod": "GET",
@@ -212,7 +384,7 @@
     ]
   },
   {
-    "ContainingType": "ServicesController",
+    "ContainingType": "MobileAppServer.Controllers.ServicesController",
     "Method": "Create",
     "RelativePath": "api/services",
     "HttpMethod": "POST",
@@ -238,7 +410,7 @@
     ]
   },
   {
-    "ContainingType": "ServicesController",
+    "ContainingType": "MobileAppServer.Controllers.ServicesController",
     "Method": "Get",
     "RelativePath": "api/services/{id}",
     "HttpMethod": "GET",
@@ -247,7 +419,7 @@
     "Parameters": [
       {
         "Name": "id",
-        "Type": "System.Int32",
+        "Type": "System.Int64",
         "IsRequired": true
       }
     ],
@@ -264,7 +436,7 @@
     ]
   },
   {
-    "ContainingType": "ServicesController",
+    "ContainingType": "MobileAppServer.Controllers.ServicesController",
     "Method": "Update",
     "RelativePath": "api/services/{id}",
     "HttpMethod": "PUT",
@@ -273,7 +445,7 @@
     "Parameters": [
       {
         "Name": "id",
-        "Type": "System.Int32",
+        "Type": "System.Int64",
         "IsRequired": true
       },
       {
@@ -295,7 +467,7 @@
     ]
   },
   {
-    "ContainingType": "ServicesController",
+    "ContainingType": "MobileAppServer.Controllers.ServicesController",
     "Method": "Delete",
     "RelativePath": "api/services/{id}",
     "HttpMethod": "DELETE",
@@ -304,7 +476,7 @@
     "Parameters": [
       {
         "Name": "id",
-        "Type": "System.Int32",
+        "Type": "System.Int64",
         "IsRequired": true
       }
     ],
