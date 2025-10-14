@@ -10,7 +10,7 @@ namespace MobileAppServer.Models.Service
         public long? EmployeeId { get; set; }
 
         public string Notes { get; set; } = string.Empty;
-
+      
         public decimal? DiscountAmount { get; set; } 
 
     }

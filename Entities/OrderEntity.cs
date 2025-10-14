@@ -11,9 +11,9 @@
         public string Notes { get; set; } = string.Empty;
 
         
-        public long? UserId { get; set; }
+        public long UserId { get; set; }
         public UserEntity User { get; set; } = null!;
-        public long? CarId { get; set; }
+        public long CarId { get; set; }
         public CarEntity Car { get; set; } = null!;
         
         public long? EmployeeId { get; set; }

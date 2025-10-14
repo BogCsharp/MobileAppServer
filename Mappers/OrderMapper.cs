@@ -38,7 +38,7 @@ namespace MobileAppServer.Mappers
                 Status = OrderStatus.Pending,
                 OrderNumber = GenerateOrderNumber(), 
                 TotalAmount = 0, 
-                FinalAmount = 0 
+                FinalAmount = 0
             };
         }
 

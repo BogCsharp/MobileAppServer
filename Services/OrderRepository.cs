@@ -123,7 +123,9 @@ namespace MobileAppServer.Services
                     Status = OrderStatus.Pending,
                     OrderNumber = GenerateOrderNumber(),
                     TotalAmount = 0,
-                    FinalAmount = 0
+                    FinalAmount = 0,
+                    CreatedAt = DateTime.UtcNow
+                    
                 };
 
                 _dbContext.Set<OrderEntity>().Add(order);
@@ -132,12 +134,15 @@ namespace MobileAppServer.Services
                 decimal totalAmount = 0;
                 foreach (var cartItem in cart.CartItems)
                 {
+
                     var orderService = new OrderService
                     {
                         OrderId = order.Id,
                         ServiceId = cartItem.ServiceId,
                         Price = cartItem.Price,
-                        Quantity = cartItem.Quantity
+                        Quantity = cartItem.Quantity,
+                        CreatedAt = DateTime.UtcNow
+
                     };
 
                     _dbContext.Set<OrderService>().Add(orderService);
