@@ -6,6 +6,7 @@
         public string Model { get; set; } = string.Empty;
         public string Year { get; set; } = string.Empty;
         public string Color { get; set; } = string.Empty;
+        public string CarNumber {  get; set; } = string.Empty;
 
         public long UserId { get; set; }
         public UserEntity User { get; set; } = null!;

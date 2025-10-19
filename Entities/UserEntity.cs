@@ -7,8 +7,6 @@
 
         public string Phone { get; set; } = string.Empty;
         public string Email { get; set; } = string.Empty;
-        public string CarModel { get; set; } = string.Empty;
-        public string CarNumber { get; set; } = string.Empty;
         public int DiscountPercent { get; set; }
         public decimal TotalSpent { get; set; }
         public string? Password { get; set; }

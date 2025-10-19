@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MobileAppServer.Data;
 
@@ -10,9 +11,11 @@ using MobileAppServer.Data;
 namespace MobileAppServer.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20251019163249_UserEntityDeleteCar")]
+    partial class UserEntityDeleteCar
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -55,7 +58,7 @@ namespace MobileAppServer.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Cars", (string)null);
+                    b.ToTable("Cars");
                 });
 
             modelBuilder.Entity("MobileAppServer.Entities.CartEntity", b =>
@@ -74,7 +77,7 @@ namespace MobileAppServer.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Carts", (string)null);
+                    b.ToTable("Carts");
                 });
 
             modelBuilder.Entity("MobileAppServer.Entities.CartItemEntity", b =>
@@ -106,7 +109,7 @@ namespace MobileAppServer.Migrations
 
                     b.HasIndex("CartId");
 
-                    b.ToTable("CartItems", (string)null);
+                    b.ToTable("CartItems");
                 });
 
             modelBuilder.Entity("MobileAppServer.Entities.CategoryEntity", b =>
@@ -128,7 +131,7 @@ namespace MobileAppServer.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Categories", (string)null);
+                    b.ToTable("Categories");
                 });
 
             modelBuilder.Entity("MobileAppServer.Entities.EmployeeEntity", b =>
@@ -162,7 +165,7 @@ namespace MobileAppServer.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Employee", (string)null);
+                    b.ToTable("Employee");
                 });
 
             modelBuilder.Entity("MobileAppServer.Entities.OrderEntity", b =>
@@ -214,7 +217,7 @@ namespace MobileAppServer.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Orders", (string)null);
+                    b.ToTable("Orders");
                 });
 
             modelBuilder.Entity("MobileAppServer.Entities.ServiceEntity", b =>
@@ -247,7 +250,7 @@ namespace MobileAppServer.Migrations
 
                     b.HasIndex("CategoryId");
 
-                    b.ToTable("Services", (string)null);
+                    b.ToTable("Services");
                 });
 
             modelBuilder.Entity("MobileAppServer.Entities.UserEntity", b =>
@@ -292,7 +295,7 @@ namespace MobileAppServer.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Users", (string)null);
+                    b.ToTable("Users");
                 });
 
             modelBuilder.Entity("MobileAppServer.Entities.CarEntity", b =>
