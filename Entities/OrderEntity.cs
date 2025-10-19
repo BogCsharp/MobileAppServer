@@ -18,8 +18,6 @@
         
         public long? EmployeeId { get; set; }
         public EmployeeEntity Employee { get; set; } = null!;
-
-        public List<OrderService> OrderServices { get; set; } = new();
         
     }
     public enum OrderStatus

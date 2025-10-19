@@ -1,5 +1,4 @@
 ﻿using MobileAppServer.Entities;
-using MobileAppServer.Models.Order;
 using MobileAppServer.Models.Service;
 
 namespace MobileAppServer.Mappers
@@ -22,7 +21,6 @@ namespace MobileAppServer.Mappers
                 UserId = entity.UserId,
                 CarId = entity.CarId,
                 EmployeeId = entity.EmployeeId,
-                OrderServices = entity.OrderServices?.Select(os => os.ToDto()).ToList() ?? new List<OrderServiceDTO>()
             };
         }
 
@@ -42,28 +40,6 @@ namespace MobileAppServer.Mappers
             };
         }
 
-        public static OrderServiceDTO ToDto(this OrderService entity)
-        {
-            return new OrderServiceDTO
-            {
-                Id = entity.Id,
-                ServiceId = entity.ServiceId,
-                ServiceName = entity.Service?.Name ?? string.Empty,
-                Price = entity.Price,
-                Quantity = entity.Quantity
-            };
-        }
-
-        public static OrderService ToEntity(this OrderServiceDTO dto, long orderId)
-        {
-            return new OrderService
-            {
-                OrderId = orderId,
-                ServiceId = dto.ServiceId,
-                Price = dto.Price,
-                Quantity = dto.Quantity
-            };
-        }
 
         private static string GenerateOrderNumber()
         {

@@ -8,10 +8,12 @@ namespace MobileAppServer.Services
     public class OrderRepository : IOrderRepository
     {
         private readonly AppDbContext _dbContext;
+        private readonly ICartRepository _cart;
 
-        public OrderRepository(AppDbContext dbContext)
+        public OrderRepository(AppDbContext dbContext,ICartRepository cart)
         {
             _dbContext = dbContext;
+            _cart = cart;
         }
 
         public async Task<OrderEntity> GetByIdAsync(long id)
@@ -21,8 +23,8 @@ namespace MobileAppServer.Services
                 .Include(o => o.User)
                 .Include(o => o.Car)
                 .Include(o => o.Employee)
-                .Include(o => o.OrderServices)
-                    .ThenInclude(os => os.Service)
+                //.Include(o => o.OrderServices)
+                    //.ThenInclude(os => os.Service)
                 .FirstOrDefaultAsync(x => x.Id == id);
 
             if (entity == null)
@@ -40,8 +42,8 @@ namespace MobileAppServer.Services
                 .Include(o => o.User)
                 .Include(o => o.Car)
                 .Include(o => o.Employee)
-                .Include(o => o.OrderServices)
-                    .ThenInclude(os => os.Service)
+                //.Include(o => o.OrderServices)
+                //    .ThenInclude(os => os.Service)
                 .OrderByDescending(o => o.CreatedAt)
                 .ToListAsync();
         }
@@ -53,8 +55,8 @@ namespace MobileAppServer.Services
                 .Include(o => o.User)
                 .Include(o => o.Car)
                 .Include(o => o.Employee)
-                .Include(o => o.OrderServices)
-                    .ThenInclude(os => os.Service)
+                //.Include(o => o.OrderServices)
+                //    .ThenInclude(os => os.Service)
                 .Where(o => o.UserId == userId)
                 .OrderByDescending(o => o.CreatedAt)
                 .ToListAsync();
@@ -105,6 +107,7 @@ namespace MobileAppServer.Services
             using var transaction = await _dbContext.Database.BeginTransactionAsync();
             try
             {
+                var cartTotal = await _cart.GetCartTotalAsync(userId);
                 var cart = await _dbContext.Set<CartEntity>()
                     .Include(c => c.CartItems).FirstOrDefaultAsync(c => c.UserId == userId);
 
@@ -122,35 +125,14 @@ namespace MobileAppServer.Services
                     DiscountAmount = discountAmount ?? 0,
                     Status = OrderStatus.Pending,
                     OrderNumber = GenerateOrderNumber(),
-                    TotalAmount = 0,
-                    FinalAmount = 0,
+                    TotalAmount = cartTotal,
+                    FinalAmount = cartTotal- (discountAmount ?? 0),
                     CreatedAt = DateTime.UtcNow
                     
                 };
 
                 _dbContext.Set<OrderEntity>().Add(order);
                 await _dbContext.SaveChangesAsync();
-
-                decimal totalAmount = 0;
-                foreach (var cartItem in cart.CartItems)
-                {
-
-                    var orderService = new OrderService
-                    {
-                        OrderId = order.Id,
-                        ServiceId = cartItem.ServiceId,
-                        Price = cartItem.Price,
-                        Quantity = cartItem.Quantity,
-                        CreatedAt = DateTime.UtcNow
-
-                    };
-
-                    _dbContext.Set<OrderService>().Add(orderService);
-                    totalAmount += cartItem.Price * cartItem.Quantity;
-                }
-
-                order.TotalAmount = totalAmount;
-                order.FinalAmount = totalAmount - order.DiscountAmount;
 
                 _dbContext.Set<CartItemEntity>().RemoveRange(cart.CartItems);
 

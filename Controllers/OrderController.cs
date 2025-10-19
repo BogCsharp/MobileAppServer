@@ -2,7 +2,6 @@
 using MobileAppServer.Abstracts;
 using MobileAppServer.Entities;
 using MobileAppServer.Mappers;
-using MobileAppServer.Models.Order;
 using MobileAppServer.Models.Service;
 
 namespace MobileAppServer.Controllers
@@ -76,13 +75,22 @@ namespace MobileAppServer.Controllers
             try
             {
                 var existingOrder = await _orderRepo.GetByIdAsync(id);
-                
+
+                if (existingOrder == null)
+                {
+                    return NotFound($"Order with ID {id} not found");
+                }
+
                 existingOrder.Status = dto.Status;
                 existingOrder.Notes = dto.Notes;
-                existingOrder.DiscountAmount = dto.DiscountAmount;
-                existingOrder.FinalAmount = dto.TotalAmount - dto.DiscountAmount;
-                
-                if (dto.Status == OrderStatus.Completed)
+
+                if (dto.DiscountAmount>0)
+                {
+                    existingOrder.DiscountAmount = dto.DiscountAmount;
+                    existingOrder.FinalAmount = existingOrder.TotalAmount - dto.DiscountAmount;
+                }
+
+                if (dto.Status == OrderStatus.Completed && existingOrder.CompletedAt == null)
                 {
                     existingOrder.CompletedAt = DateTime.Now;
                 }
