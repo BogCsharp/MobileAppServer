@@ -101,3 +101,14 @@ C:\Users\Home_PC\Desktop\MobileAppServer\obj\Debug\net8.0\refint\MobileAppServer
 C:\Users\Home_PC\Desktop\MobileAppServer\obj\Debug\net8.0\MobileAppServer.pdb
 C:\Users\Home_PC\Desktop\MobileAppServer\obj\Debug\net8.0\MobileAppServer.genruntimeconfig.cache
 C:\Users\Home_PC\Desktop\MobileAppServer\obj\Debug\net8.0\ref\MobileAppServer.dll
+C:\Users\Home_PC\Desktop\MobileAppServer\bin\Debug\net8.0\BCrypt.Net-Next.dll
+C:\Users\Home_PC\Desktop\MobileAppServer\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\Home_PC\Desktop\MobileAppServer\bin\Debug\net8.0\Microsoft.IdentityModel.Abstractions.dll
+C:\Users\Home_PC\Desktop\MobileAppServer\bin\Debug\net8.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\Home_PC\Desktop\MobileAppServer\bin\Debug\net8.0\Microsoft.IdentityModel.Logging.dll
+C:\Users\Home_PC\Desktop\MobileAppServer\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.dll
+C:\Users\Home_PC\Desktop\MobileAppServer\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\Home_PC\Desktop\MobileAppServer\bin\Debug\net8.0\Microsoft.IdentityModel.Tokens.dll
+C:\Users\Home_PC\Desktop\MobileAppServer\bin\Debug\net8.0\Pipelines.Sockets.Unofficial.dll
+C:\Users\Home_PC\Desktop\MobileAppServer\bin\Debug\net8.0\StackExchange.Redis.dll
+C:\Users\Home_PC\Desktop\MobileAppServer\bin\Debug\net8.0\System.IdentityModel.Tokens.Jwt.dll

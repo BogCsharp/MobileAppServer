@@ -1,4 +1,5 @@
 
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.HttpLogging;
 using MobileAppServer.Extensions;
@@ -6,7 +7,6 @@ using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddHttpLogging(_ => { });
 builder.Services.AddControllers()
@@ -14,11 +14,16 @@ builder.Services.AddControllers()
     {
         options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
     });
+builder.Services.AddAuthorization();
+
 
 
 builder
     .AddData()
-    .AddServices();
+    .AddServices()
+    .AddJwtAuthentication()
+    .AddRedis();
+
 
 
 var app = builder.Build();
@@ -28,6 +33,8 @@ app.UseStaticFiles();
 app.UseHttpsRedirection();
 app.UseRouting();
 
+app.UseAuthentication();
+app.UseAuthorization();
 
 app.MapControllers();
 

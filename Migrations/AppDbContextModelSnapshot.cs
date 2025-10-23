@@ -55,7 +55,7 @@ namespace MobileAppServer.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Cars", (string)null);
+                    b.ToTable("Cars");
                 });
 
             modelBuilder.Entity("MobileAppServer.Entities.CartEntity", b =>
@@ -74,7 +74,7 @@ namespace MobileAppServer.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Carts", (string)null);
+                    b.ToTable("Carts");
                 });
 
             modelBuilder.Entity("MobileAppServer.Entities.CartItemEntity", b =>
@@ -106,7 +106,7 @@ namespace MobileAppServer.Migrations
 
                     b.HasIndex("CartId");
 
-                    b.ToTable("CartItems", (string)null);
+                    b.ToTable("CartItems");
                 });
 
             modelBuilder.Entity("MobileAppServer.Entities.CategoryEntity", b =>
@@ -128,7 +128,7 @@ namespace MobileAppServer.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Categories", (string)null);
+                    b.ToTable("Categories");
                 });
 
             modelBuilder.Entity("MobileAppServer.Entities.EmployeeEntity", b =>
@@ -162,7 +162,7 @@ namespace MobileAppServer.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Employee", (string)null);
+                    b.ToTable("Employee");
                 });
 
             modelBuilder.Entity("MobileAppServer.Entities.OrderEntity", b =>
@@ -214,7 +214,7 @@ namespace MobileAppServer.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Orders", (string)null);
+                    b.ToTable("Orders");
                 });
 
             modelBuilder.Entity("MobileAppServer.Entities.ServiceEntity", b =>
@@ -247,7 +247,7 @@ namespace MobileAppServer.Migrations
 
                     b.HasIndex("CategoryId");
 
-                    b.ToTable("Services", (string)null);
+                    b.ToTable("Services");
                 });
 
             modelBuilder.Entity("MobileAppServer.Entities.UserEntity", b =>
@@ -283,6 +283,9 @@ namespace MobileAppServer.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
+                    b.Property<int>("RoleId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Surname")
                         .IsRequired()
                         .HasColumnType("longtext");
@@ -292,7 +295,24 @@ namespace MobileAppServer.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Users", (string)null);
+                    b.HasIndex("RoleId");
+
+                    b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("MobileAppServer.Entities.UserRole", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<string>("RoleName")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("UserRole");
                 });
 
             modelBuilder.Entity("MobileAppServer.Entities.CarEntity", b =>
@@ -362,6 +382,17 @@ namespace MobileAppServer.Migrations
                     b.Navigation("Category");
                 });
 
+            modelBuilder.Entity("MobileAppServer.Entities.UserEntity", b =>
+                {
+                    b.HasOne("MobileAppServer.Entities.UserRole", "Role")
+                        .WithMany("Users")
+                        .HasForeignKey("RoleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Role");
+                });
+
             modelBuilder.Entity("MobileAppServer.Entities.CarEntity", b =>
                 {
                     b.Navigation("Orders");
@@ -387,6 +418,11 @@ namespace MobileAppServer.Migrations
                     b.Navigation("Cars");
 
                     b.Navigation("Orders");
+                });
+
+            modelBuilder.Entity("MobileAppServer.Entities.UserRole", b =>
+                {
+                    b.Navigation("Users");
                 });
 #pragma warning restore 612, 618
         }
