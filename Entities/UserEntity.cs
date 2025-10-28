@@ -13,7 +13,15 @@ namespace MobileAppServer.Entities
         public decimal TotalSpent { get; set; }
         
         public string? Password { get; set; }
-        public int? Age { get; set; }
+        public int? Age
+        {
+            get
+            {
+                var today = DateTime.Today;
+                var age = today.Year - Birthday.Year;
+                if (Birthday.Date > today.AddYears(-age)) age--;
+                return age;
+            } }
         public DateTime Birthday { get; set; }
 
         public int RoleId { get; set; }

@@ -13,18 +13,23 @@ namespace MobileAppServer.Mappers
                 Name = user.Name,
                 Surname = user.Surname,
                 Email = user.Email,
-                Phone = user.Phone
+                Phone = user.Phone,
+                RoleId = user.RoleId,
+                Birthday= user.Birthday,
+                Age=user.Age,
+                RoleName = user.Role?.RoleName ?? string.Empty
+
             };
         }
-        public static AuthResponseDTO ToAuthResponse(this UserEntity user, string token, string refreshToken)
+        public static AuthResponseDTO ToAuthResponse(this UserEntity user, string token, string refreshToken,TimeSpan expiry,string message)
         {
             return new AuthResponseDTO
             {
-                Message = "Success",
+                Message = message,
                 AccessToken=token,
                 RefreshToken=refreshToken,
-                TokenExpiry=DateTime.UtcNow.AddMinutes(60),
-                User=user.ToDto()
+                TokenExpiry= DateTime.UtcNow.Add(expiry),
+                User= user.ToDto()
 
             };
         }

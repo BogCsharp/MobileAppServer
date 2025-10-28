@@ -24,6 +24,7 @@ namespace MobileAppServer.Extensions
             builder.Services.AddScoped<ICartRepository, CartRepository>();
             builder.Services.AddScoped<IJwtRepository, JwtRepository>();
             builder.Services.AddSingleton<IPasswordRepository, PasswordRepository>();
+            builder.Services.AddScoped<IAuthRepository, AuthRepository>();
             return builder;
         }
         public static WebApplicationBuilder AddJwtAuthentication(this WebApplicationBuilder builder)

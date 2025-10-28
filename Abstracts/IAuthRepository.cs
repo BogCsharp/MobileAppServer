@@ -8,6 +8,6 @@ namespace MobileAppServer.Abstracts
         Task<AuthResponseDTO>LoginAsync(LoginDTO loginDTO);
         Task LogoutAsync(string accessToken);
         Task<AuthResponseDTO>RefreshTokenAsync(RefreshTokenDTO refreshTokenDTO);
-        Task<bool>ValidateSessionAsync(long userId);
+        Task<bool>ValidateSessionAsync(string accessToken);
     }
 }

@@ -15,12 +15,10 @@ namespace MobileAppServer.Services
         private readonly IJwtRepository _jwtService;
         private readonly IConnectionMultiplexer _redis;
         private readonly IPasswordRepository _passwordRepository;
-        private readonly IAuthRepository _authRepository;
         private readonly IDatabase _db;
 
-        public AuthRepository(AppDbContext context, IJwtRepository jwtService, IPasswordRepository passwordRepository,IAuthRepository authRepository,IConnectionMultiplexer connectionMultiplexer)
+        public AuthRepository(AppDbContext context, IJwtRepository jwtService, IPasswordRepository passwordRepository,IConnectionMultiplexer connectionMultiplexer)
         {
-            _authRepository= authRepository;
             _context = context;
             _redis= connectionMultiplexer;
             _jwtService = jwtService;
@@ -30,7 +28,7 @@ namespace MobileAppServer.Services
 
         public async Task<AuthResponseDTO> LoginAsync(LoginDTO loginDTO)
         {
-            var user = await _context.Users.FirstOrDefaultAsync(u => u.Email == loginDTO.Email);
+            var user = await _context.Users.Include(u=>u.Role).FirstOrDefaultAsync(u => u.Email == loginDTO.Email);
             if (user == null || !BCrypt.Net.BCrypt.EnhancedVerify(loginDTO.Password, user.Password))
             {
                 throw new UnauthorizedAccessException("Неверный логин или пароль!");
@@ -39,21 +37,9 @@ namespace MobileAppServer.Services
             var refreshToken = _passwordRepository.GenerateRefreshToken();
             var expiry = TimeSpan.FromHours(1); 
             await _jwtService.StoreTokensAsync(user.Id, accessToken, refreshToken, expiry);
-            return new AuthResponseDTO
-            {
-                Message = "Вход выполнен успешно!",
-                AccessToken = accessToken,
-                RefreshToken = refreshToken,
-                User = new UserDTO
-                {
-                    Id = user.Id,
-                    Email = user.Email,
-                    Phone = user.Phone,
-                    Name = user.Name,
-                    Surname = user.Surname,
-                    RoleId=user.RoleId
-                }
-            };
+            return user.ToAuthResponse(accessToken, refreshToken, expiry,"Успешный вход");
+
+            
         }
 
         public async Task LogoutAsync(string accessToken)
@@ -76,7 +62,7 @@ namespace MobileAppServer.Services
             }
 
             var userId = long.Parse(userIdString);
-            var user = await _context.Users.FindAsync(userId);
+            var user = await _context.Users.Include(u => u.Role).FirstOrDefaultAsync(u => u.Id == userId);
             if (user == null)
             {
                 return new AuthResponseDTO { Message = "Пользователь не найден" };
@@ -90,21 +76,8 @@ namespace MobileAppServer.Services
 
             await _jwtService.StoreTokensAsync(userId, newAccessToken, newRefreshToken, expiry);
 
-            return new AuthResponseDTO
-            {
-                Message = "Токен успешно обновлен",
-                AccessToken = newAccessToken,
-                RefreshToken = newRefreshToken,
-                User = new UserDTO
-                {
-                    Id = user.Id,
-                    Email = user.Email,
-                    Phone = user.Phone,
-                    Name = user.Name,
-                    Surname = user.Surname,
-                    RoleId = user.RoleId
-                }
-            };
+            return user.ToAuthResponse(newAccessToken, newRefreshToken, expiry, "Токен успешно обновлен");
+
         }
 
         public async Task<AuthResponseDTO> RegisterAsync(RegisterDTO registerDTO)
@@ -124,30 +97,29 @@ namespace MobileAppServer.Services
                 Name = registerDTO.Name,
                 Surname = registerDTO.Surname,
                 Password = _passwordRepository.CreatePasswordHash(registerDTO.Password),
+                Birthday = registerDTO.Birthday,
                 //Роль User
-                RoleId=1,
+                RoleId =1,
                 CreatedAt = DateTime.UtcNow
             };
             _context.Users.Add(user);
+            await _context.SaveChangesAsync();
             var accessToken = _jwtService.GenerateToken(user);
             var refreshToken=_passwordRepository.GenerateRefreshToken();
             var expiry = TimeSpan.FromHours(1);
             await _jwtService.StoreTokensAsync(user.Id, accessToken, refreshToken, expiry);
-            return new AuthResponseDTO
-            {
-                Message = "Регистрация успешна!",
-                AccessToken = accessToken,
-                RefreshToken = refreshToken,
-                User = user.ToDto()
-            };
+            return user.ToAuthResponse(accessToken, refreshToken, expiry, "Регистрация успешна!");
+
         }
 
-        public async Task<bool> ValidateSessionAsync(long userId)
+        public async Task<bool> ValidateSessionAsync(string accessToken)
         {
-            var userTokensKey = $"user_tokens:{userId}";
-            var tokens =await _db.SetMembersAsync(userTokensKey);
-            return tokens!=null&&tokens.Length>0;
-            
+            if (string.IsNullOrEmpty(accessToken))
+                return false;
+
+            var accessTokenKey = $"access_token:{accessToken}";
+            return await _db.KeyExistsAsync(accessTokenKey);
+
         }
     }
 }

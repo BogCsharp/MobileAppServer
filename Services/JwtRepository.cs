@@ -106,20 +106,19 @@ namespace MobileAppServer.Services
 
         public async Task RevokeTokenAsync(string token)
         {
-            var transaction = _db.CreateTransaction();
 
             var accessTokenKey = $"access_token:{token}";
+
             var userId = await _db.StringGetAsync(accessTokenKey);
 
             if (!userId.IsNull)
             {
                 var userTokensKey = $"user_tokens:{userId}";
-                await transaction.SetRemoveAsync(userTokensKey, token);
+                await _db.SetRemoveAsync(userTokensKey, token);
             }
 
-            transaction.KeyDeleteAsync(accessTokenKey);
+            await _db.KeyDeleteAsync(accessTokenKey);
 
-            await transaction.ExecuteAsync();
         }
         public async Task<bool> RevokeAllUserTokensAsync(long userId)
         {
