@@ -10,7 +10,8 @@
         public DateTime? CompletedAt { get; set; }
         public string Notes { get; set; } = string.Empty;
 
-        
+     
+
         public long UserId { get; set; }
         public UserEntity User { get; set; } = null!;
         public long CarId { get; set; }

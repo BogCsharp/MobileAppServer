@@ -11,7 +11,7 @@ namespace MobileAppServer.Models.Service
 
         public string Notes { get; set; } = string.Empty;
       
-        public decimal? DiscountAmount { get; set; } 
-
+        public decimal? DiscountAmount { get; set; }
+   
     }
 }

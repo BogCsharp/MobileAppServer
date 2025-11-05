@@ -22,6 +22,7 @@ namespace MobileAppServer.Extensions
             builder.Services.AddScoped<IServiceRepository, ServiceRepository>();
             builder.Services.AddScoped<IOrderRepository, OrderRepository>();
             builder.Services.AddScoped<ICartRepository, CartRepository>();
+            builder.Services.AddScoped<IBookingRepository, BookingRepository>();
             builder.Services.AddScoped<IJwtRepository, JwtRepository>();
             builder.Services.AddSingleton<IPasswordRepository, PasswordRepository>();
             builder.Services.AddScoped<IAuthRepository, AuthRepository>();
