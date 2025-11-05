@@ -8,11 +8,13 @@ namespace MobileAppServer.Services
 {
     public class BookingRepository : IBookingRepository
     {
-        private readonly AppDbContext _context;
+		private readonly AppDbContext _context;
+		private readonly IOrderRepository _orderRepository;
 
-		public BookingRepository(AppDbContext context)
+		public BookingRepository(AppDbContext context, IOrderRepository orderRepository)
         {
-            _context = context;
+			_context = context;
+			_orderRepository = orderRepository;
 		}
 
 		public async Task<List<TimeSlotDTO>> GetAvailableSlotsAsync(AvailableSlotsDTO availableSlotsDTO)
@@ -45,39 +47,26 @@ namespace MobileAppServer.Services
 				throw new InvalidOperationException("Выбранный слот уже занят");
 			}
 
+			var composedNotes = BuildBookingNote(dayStart, startTime, totalDurationMinutes, notes);
+			var order = await _orderRepository.CreateFromCartAsync(userId, carId, employeeId, composedNotes, null);
+
 			var booking = new BookingEntity
 			{
 				UserId = userId,
 				CarId = carId,
 				EmployeeId = employeeId,
-				BookingDate = bookingDate.Date,
+				BookingDate = dayStart,
 				StartTime = startTime,
 				EndTime = endTime,
 				TotalDurationMinutes = totalDurationMinutes,
-				Notes = notes ?? string.Empty
+				Notes = notes ?? string.Empty,
+				OrderId = order.Id
 			};
-
 			_context.Set<BookingEntity>().Add(booking);
 			await _context.SaveChangesAsync();
 			return booking;
 		}
 
-		public async Task<BookingEntity> AttachOrderAsync(long bookingId, long orderId)
-		{
-			var booking = await _context.Set<BookingEntity>().FirstOrDefaultAsync(b => b.Id == bookingId);
-			if (booking == null)
-			{
-				throw new KeyNotFoundException($"Booking with id {bookingId} not found");
-			}
-			var orderExists = await _context.Set<OrderEntity>().AnyAsync(o => o.Id == orderId);
-			if (!orderExists)
-			{
-				throw new KeyNotFoundException($"Order with id {orderId} not found");
-			}
-			booking.OrderId = orderId;
-			await _context.SaveChangesAsync();
-			return booking;
-		}
 
 		public async Task<List<BookingEntity>> GetByUserIdAsync(long userId)
 		{
@@ -128,6 +117,12 @@ namespace MobileAppServer.Services
 			_context.Set<BookingEntity>().Remove(entity);
 			await _context.SaveChangesAsync();
 			return true;
+		}
+
+		private static string BuildBookingNote(DateTime bookingDate, TimeSpan startTime, int totalDurationMinutes, string? baseNotes)
+		{
+			var bookingNote = $"Бронь (Дата: {bookingDate:yyyy-MM-dd}, Начало: {startTime:hh\\:mm}, Длительность: {totalDurationMinutes} мин)";
+			return string.IsNullOrWhiteSpace(baseNotes) ? bookingNote : $"{baseNotes} | {bookingNote}";
 		}
 
 		private static List<TimeSlotDTO> CalculateAvailableSlots(DateTime date, int totalDuration, List<BookingEntity> existingBookings)

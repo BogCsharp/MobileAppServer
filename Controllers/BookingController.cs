@@ -56,13 +56,6 @@ namespace MobileAppServer.Controllers
 			return Ok(list.Select(b => b.ToDto()).ToList());
 		}
 
-		[HttpPost("{id:long}/attach-order/{orderId:long}")]
-		public async Task<ActionResult<BookingDTO>> AttachOrder(long id, long orderId)
-		{
-			var updated = await _bookingRepo.AttachOrderAsync(id, orderId);
-			return Ok(updated.ToDto());
-		}
-
 		[HttpPut("{id:long}")]
 		public async Task<ActionResult<BookingDTO>> Update(long id, BookingDTO dto)
 		{
