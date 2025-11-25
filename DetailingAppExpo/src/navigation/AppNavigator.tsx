@@ -15,6 +15,7 @@ import { CartScreen } from '../screens/CartScreen';
 import { OrdersScreen } from '../screens/OrdersScreen';
 import { ProfileScreen } from '../screens/ProfileScreen';
 import { ServiceDetailsScreen } from '../screens/ServiceDetailsScreen';
+import { CheckoutScreen } from '../screens/CheckoutScreen';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -82,25 +83,26 @@ export function AppNavigator() {
   return (
     <NavigationContainer>
       <Stack.Navigator screenOptions={{ headerShown: false }}>
-        {!isAuthenticated ? (
-          <>
-            <Stack.Screen name="Login" component={LoginScreen} />
-            <Stack.Screen name="Register" component={RegisterScreen} />
-          </>
-        ) : (
-          <>
-            <Stack.Screen name="MainTabs" component={MainTabs} />
-            <Stack.Screen
-              name="ServiceDetails"
-              component={ServiceDetailsScreen}
-              options={{
-                headerShown: true,
-                title: 'Детали услуги',
-                headerBackTitle: 'Назад',
-              }}
-            />
-          </>
-        )}
+        <Stack.Screen name="MainTabs" component={MainTabs} />
+        <Stack.Screen name="Login" component={LoginScreen} />
+        <Stack.Screen name="Register" component={RegisterScreen} />
+        <Stack.Screen
+          name="Checkout"
+          component={CheckoutScreen}
+          options={{
+            headerShown: true,
+            title: 'Оформление заказа',
+          }}
+        />
+        <Stack.Screen
+          name="ServiceDetails"
+          component={ServiceDetailsScreen}
+          options={{
+            headerShown: true,
+            title: 'Детали услуги',
+            headerBackTitle: 'Назад',
+          }}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );

@@ -17,7 +17,7 @@ interface OrdersScreenProps {
 }
 
 export const OrdersScreen: React.FC<OrdersScreenProps> = ({ navigation }) => {
-  const { user } = useAuth();
+  const { user, isAuthenticated } = useAuth();
   const [orders, setOrders] = useState<Order[]>([]);
   const [loading, setLoading] = useState(true);
   const [refreshing, setRefreshing] = useState(false);
@@ -25,6 +25,8 @@ export const OrdersScreen: React.FC<OrdersScreenProps> = ({ navigation }) => {
   useEffect(() => {
     if (user) {
       loadOrders();
+    } else {
+      setLoading(false);
     }
   }, [user]);
 
@@ -117,6 +119,25 @@ export const OrdersScreen: React.FC<OrdersScreenProps> = ({ navigation }) => {
     return (
       <View style={styles.centerContainer}>
         <ActivityIndicator size="large" color="#007AFF" />
+      </View>
+    );
+  }
+
+  if (!isAuthenticated) {
+    return (
+      <View style={styles.container}>
+        <View style={styles.header}>
+          <Text style={styles.headerTitle}>Мои заказы</Text>
+        </View>
+        <View style={styles.emptyContainer}>
+          <Text style={styles.emptyText}>Для просмотра заказов необходимо войти в систему</Text>
+          <TouchableOpacity
+            style={styles.browseButton}
+            onPress={() => navigation.navigate('Login')}
+          >
+            <Text style={styles.browseButtonText}>Войти</Text>
+          </TouchableOpacity>
+        </View>
       </View>
     );
   }

@@ -84,11 +84,20 @@ class ApiService {
   // Helper для маппинга User с сервера
   private mapUser(serverUser: any): any {
     if (!serverUser) return null;
+    // Обрабатываем разные варианты структуры ответа
+    const userId = serverUser.Id ?? serverUser.id;
+    const userEmail = serverUser.Email ?? serverUser.email;
+    
+    if (!userId || !userEmail) {
+      console.warn('Неполные данные пользователя:', serverUser);
+      return null;
+    }
+    
     return {
-      id: serverUser.Id || serverUser.id,
-      email: serverUser.Email || serverUser.email,
-      firstName: serverUser.Name || serverUser.name || serverUser.firstName,
-      lastName: serverUser.Surname || serverUser.surname || serverUser.lastName,
+      id: userId,
+      email: userEmail,
+      firstName: serverUser.Name ?? serverUser.name ?? serverUser.firstName ?? '',
+      lastName: serverUser.Surname ?? serverUser.surname ?? serverUser.lastName ?? '',
     };
   }
 
@@ -100,10 +109,21 @@ class ApiService {
     );
     // Маппинг полей с сервера (PascalCase) в формат клиента (camelCase)
     const serverData = response.data;
+    const token =
+      serverData.AccessToken ||
+      serverData.accessToken ||
+      serverData.Token ||
+      serverData.token;
+    const refreshToken =
+      serverData.RefreshToken ||
+      serverData.refreshToken ||
+      serverData.Refresh ||
+      serverData.refresh;
+
     return {
       message: serverData.Message || serverData.message,
-      token: serverData.AccessToken || serverData.token,
-      refreshToken: serverData.RefreshToken || serverData.refreshToken,
+      token,
+      refreshToken,
       user: this.mapUser(serverData.User || serverData.user),
     };
   }
@@ -116,8 +136,8 @@ class ApiService {
       Email: data.email,
       Password: data.password,
       ConfirmPassword: data.confirmPassword,
-      Phone: '', // Опционально, можно добавить в форму регистрации
-      Birthday: new Date(), // Опционально, можно добавить в форму регистрации
+      Phone: data.phone || '',
+      Birthday: data.birthday ? new Date(data.birthday).toISOString() : new Date().toISOString(),
     };
     
     const response = await this.api.post<any>(
@@ -126,10 +146,21 @@ class ApiService {
     );
     // Маппинг полей с сервера (PascalCase) в формат клиента (camelCase)
     const responseData = response.data;
+    const token =
+      responseData.AccessToken ||
+      responseData.accessToken ||
+      responseData.Token ||
+      responseData.token;
+    const refreshToken =
+      responseData.RefreshToken ||
+      responseData.refreshToken ||
+      responseData.Refresh ||
+      responseData.refresh;
+
     return {
-      message: responseData.Message || responseData.message,
-      token: responseData.AccessToken || responseData.token,
-      refreshToken: responseData.RefreshToken || responseData.refreshToken,
+      message: responseData.Message || responseData.message || 'Регистрация успешна',
+      token,
+      refreshToken,
       user: this.mapUser(responseData.User || responseData.user),
     };
   }
@@ -220,12 +251,24 @@ class ApiService {
 
   // Bookings methods
   async getAvailableSlots(date: string, serviceIds: number[]): Promise<TimeSlot[]> {
+    const isoDate = new Date(date).toISOString();
     const response = await this.api.get<TimeSlot[]>(
       API_ENDPOINTS.BOOKINGS.GET_AVAILABLE_SLOTS,
       {
         params: {
-          date,
-          serviceIds: serviceIds.join(','),
+          date: isoDate,
+          serviceIds,
+        },
+        paramsSerializer: (params: Record<string, any>) => {
+          const searchParams = new URLSearchParams();
+          if (params.date) {
+            searchParams.append('date', params.date as string);
+          }
+          const ids: any[] = params.serviceIds || [];
+          ids.forEach((id) => {
+            searchParams.append('serviceIds', String(id));
+          });
+          return searchParams.toString();
         },
       }
     );

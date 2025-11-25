@@ -13,7 +13,7 @@ interface ProfileScreenProps {
 }
 
 export const ProfileScreen: React.FC<ProfileScreenProps> = ({ navigation }) => {
-  const { user, logout } = useAuth();
+  const { user, logout, isAuthenticated } = useAuth();
 
   const handleLogout = () => {
     Alert.alert(
@@ -31,6 +31,33 @@ export const ProfileScreen: React.FC<ProfileScreenProps> = ({ navigation }) => {
       ]
     );
   };
+
+  if (!isAuthenticated) {
+    return (
+      <View style={styles.container}>
+        <View style={styles.header}>
+          <Text style={styles.headerTitle}>Профиль</Text>
+        </View>
+        <View style={styles.content}>
+          <View style={styles.emptyContainer}>
+            <Text style={styles.emptyText}>Для просмотра профиля необходимо войти в систему</Text>
+            <TouchableOpacity
+              style={styles.loginButton}
+              onPress={() => navigation.navigate('Login')}
+            >
+              <Text style={styles.loginButtonText}>Войти</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={styles.registerButton}
+              onPress={() => navigation.navigate('Register')}
+            >
+              <Text style={styles.registerButtonText}>Зарегистрироваться</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+      </View>
+    );
+  }
 
   return (
     <View style={styles.container}>
@@ -160,6 +187,45 @@ const styles = StyleSheet.create({
   },
   logoutButtonText: {
     color: '#fff',
+    fontSize: 16,
+    fontWeight: '600',
+  },
+  emptyContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: 40,
+  },
+  emptyText: {
+    fontSize: 16,
+    color: '#999',
+    marginBottom: 24,
+    textAlign: 'center',
+  },
+  loginButton: {
+    backgroundColor: '#007AFF',
+    borderRadius: 8,
+    paddingHorizontal: 24,
+    paddingVertical: 12,
+    marginBottom: 12,
+    minWidth: 200,
+    alignItems: 'center',
+  },
+  loginButtonText: {
+    color: '#fff',
+    fontSize: 16,
+    fontWeight: '600',
+  },
+  registerButton: {
+    backgroundColor: '#f0f0f0',
+    borderRadius: 8,
+    paddingHorizontal: 24,
+    paddingVertical: 12,
+    minWidth: 200,
+    alignItems: 'center',
+  },
+  registerButtonText: {
+    color: '#007AFF',
     fontSize: 16,
     fontWeight: '600',
   },

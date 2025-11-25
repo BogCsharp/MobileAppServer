@@ -24,6 +24,8 @@ export const RegisterScreen: React.FC<RegisterScreenProps> = ({ navigation }) =>
   const [confirmPassword, setConfirmPassword] = useState('');
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
+  const [phone, setPhone] = useState('');
+  const [birthday, setBirthday] = useState('');
   const [loading, setLoading] = useState(false);
   const { register } = useAuth();
 
@@ -45,7 +47,42 @@ export const RegisterScreen: React.FC<RegisterScreenProps> = ({ navigation }) =>
 
     setLoading(true);
     try {
-      await register({ email, password, confirmPassword, firstName, lastName });
+      let birthdayDate: Date | undefined = undefined;
+      if (birthday) {
+        // Парсим дату в формате ГГГГ-ММ-ДД
+        const dateParts = birthday.split('-');
+        if (dateParts.length === 3) {
+          const year = parseInt(dateParts[0], 10);
+          const month = parseInt(dateParts[1], 10) - 1; // месяцы в JS начинаются с 0
+          const day = parseInt(dateParts[2], 10);
+          birthdayDate = new Date(year, month, day);
+          if (isNaN(birthdayDate.getTime())) {
+            Alert.alert('Ошибка', 'Неверный формат даты. Используйте формат ГГГГ-ММ-ДД');
+            setLoading(false);
+            return;
+          }
+        } else {
+          Alert.alert('Ошибка', 'Неверный формат даты. Используйте формат ГГГГ-ММ-ДД');
+          setLoading(false);
+          return;
+        }
+      }
+      
+      await register({ 
+        email, 
+        password, 
+        confirmPassword, 
+        firstName, 
+        lastName,
+        phone: phone || undefined,
+        birthday: birthdayDate
+      });
+      Alert.alert('Успех', 'Регистрация прошла успешно! Теперь войдите в систему.', [
+        {
+          text: 'OK',
+          onPress: () => navigation.navigate('Login'),
+        },
+      ]);
     } catch (error: any) {
       Alert.alert('Ошибка регистрации', error.message || 'Не удалось зарегистрироваться');
     } finally {
@@ -93,6 +130,28 @@ export const RegisterScreen: React.FC<RegisterScreenProps> = ({ navigation }) =>
               placeholder="Введите фамилию"
               value={lastName}
               onChangeText={setLastName}
+            />
+          </View>
+
+          <View style={styles.inputContainer}>
+            <Text style={styles.label}>Номер телефона</Text>
+            <TextInput
+              style={styles.input}
+              placeholder="+7 (999) 999-99-99"
+              value={phone}
+              onChangeText={setPhone}
+              keyboardType="phone-pad"
+            />
+          </View>
+
+          <View style={styles.inputContainer}>
+            <Text style={styles.label}>Дата рождения</Text>
+            <TextInput
+              style={styles.input}
+              placeholder="ГГГГ-ММ-ДД (например: 1990-01-15)"
+              value={birthday}
+              onChangeText={setBirthday}
+              keyboardType="default"
             />
           </View>
 

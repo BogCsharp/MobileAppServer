@@ -17,15 +17,16 @@ interface CartScreenProps {
 }
 
 export const CartScreen: React.FC<CartScreenProps> = ({ navigation }) => {
-  const { user } = useAuth();
+  const { user, isAuthenticated } = useAuth();
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
   const [total, setTotal] = useState(0);
   const [loading, setLoading] = useState(true);
-  const [processing, setProcessing] = useState(false);
 
   useEffect(() => {
     if (user) {
       loadCart();
+    } else {
+      setLoading(false);
     }
   }, [user]);
 
@@ -79,49 +80,36 @@ export const CartScreen: React.FC<CartScreenProps> = ({ navigation }) => {
     );
   };
 
-  const handleCheckout = async () => {
-    if (!user || cartItems.length === 0) return;
+  const handleCheckout = () => {
+    if (!user) {
+      navigation.navigate('Login');
+      return;
+    }
 
-    Alert.alert(
-      'Оформить заказ',
-      `Итого: ${total.toFixed(0)} ₽\n\nПродолжить?`,
-      [
-        { text: 'Отмена', style: 'cancel' },
-        {
-          text: 'Оформить',
-          onPress: async () => {
-            setProcessing(true);
-            try {
-              await apiService.createOrderFromCart({
-                userId: user.id,
-                carId: 1, // TODO: добавить выбор машины
-              });
-              Alert.alert('Успех', 'Заказ успешно оформлен!', [
-                {
-                  text: 'OK',
-                  onPress: () => {
-                    navigation.navigate('Orders');
-                    loadCart();
-                  },
-                },
-              ]);
-            } catch (error: any) {
-              Alert.alert('Ошибка', error.message || 'Не удалось оформить заказ');
-            } finally {
-              setProcessing(false);
-            }
-          },
-        },
-      ]
-    );
+    if (cartItems.length === 0) {
+      Alert.alert('Корзина пуста', 'Добавьте услуги перед оформлением заказа');
+      return;
+    }
+
+    navigation.navigate('Checkout');
   };
 
-  const renderItem = ({ item }: { item: CartItem }) => (
-    <View style={styles.itemCard}>
-      <View style={styles.itemInfo}>
-        <Text style={styles.itemName}>{item.service.name}</Text>
-        <Text style={styles.itemPrice}>{item.price.toFixed(0)} ₽</Text>
-      </View>
+  const renderItem = ({ item }: { item: CartItem }) => {
+    const serviceName =
+      item.service?.name ||
+      (item as any)?.serviceName ||
+      `Услуга #${item.serviceId}`;
+    const servicePrice =
+      item.price ??
+      item.service?.price ??
+      0;
+
+    return (
+      <View style={styles.itemCard}>
+        <View style={styles.itemInfo}>
+          <Text style={styles.itemName}>{serviceName}</Text>
+          <Text style={styles.itemPrice}>{servicePrice.toFixed(0)} ₽</Text>
+        </View>
       <View style={styles.itemActions}>
         <View style={styles.quantityContainer}>
           <TouchableOpacity
@@ -146,12 +134,29 @@ export const CartScreen: React.FC<CartScreenProps> = ({ navigation }) => {
         </TouchableOpacity>
       </View>
     </View>
-  );
+    );
+  };
 
   if (loading) {
     return (
       <View style={styles.centerContainer}>
         <ActivityIndicator size="large" color="#007AFF" />
+      </View>
+    );
+  }
+
+  if (!isAuthenticated) {
+    return (
+      <View style={styles.container}>
+        <View style={styles.emptyContainer}>
+          <Text style={styles.emptyText}>Для просмотра корзины необходимо войти в систему</Text>
+          <TouchableOpacity
+            style={styles.browseButton}
+            onPress={() => navigation.navigate('Login')}
+          >
+            <Text style={styles.browseButtonText}>Войти</Text>
+          </TouchableOpacity>
+        </View>
       </View>
     );
   }
@@ -182,15 +187,14 @@ export const CartScreen: React.FC<CartScreenProps> = ({ navigation }) => {
               <Text style={styles.totalAmount}>{total.toFixed(0)} ₽</Text>
             </View>
             <TouchableOpacity
-              style={[styles.checkoutButton, processing && styles.buttonDisabled]}
+              style={[
+                styles.checkoutButton,
+                cartItems.length === 0 && styles.buttonDisabled,
+              ]}
               onPress={handleCheckout}
-              disabled={processing}
+              disabled={cartItems.length === 0}
             >
-              {processing ? (
-                <ActivityIndicator color="#fff" />
-              ) : (
-                <Text style={styles.checkoutButtonText}>Оформить заказ</Text>
-              )}
+              <Text style={styles.checkoutButtonText}>Оформить заказ</Text>
             </TouchableOpacity>
           </View>
         </>

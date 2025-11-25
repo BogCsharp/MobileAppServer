@@ -25,6 +25,8 @@ export interface RegisterDTO {
   confirmPassword: string;
   firstName?: string;
   lastName?: string;
+  phone?: string;
+  birthday?: Date;
 }
 
 export interface Service {
@@ -108,5 +110,6 @@ export interface CreateBookingDTO {
   startTime: string;
   totalDurationMinutes: number;
   notes?: string;
+  orderId?: number;
 }
 

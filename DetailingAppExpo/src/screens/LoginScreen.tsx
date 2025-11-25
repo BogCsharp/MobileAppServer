@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   View,
   Text,
@@ -22,7 +22,17 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({ navigation }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
-  const { login } = useAuth();
+  const { login, isAuthenticated } = useAuth();
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      // Сбрасываем стек навигации и переходим на главный экран
+      navigation.reset({
+        index: 0,
+        routes: [{ name: 'MainTabs' }],
+      });
+    }
+  }, [isAuthenticated, navigation]);
 
   const handleLogin = async () => {
     if (!email || !password) {
@@ -33,8 +43,15 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({ navigation }) => {
     setLoading(true);
     try {
       await login({ email, password });
+      // Навигация произойдет автоматически через useEffect при изменении isAuthenticated
+      // Не показываем Alert при успешном входе
     } catch (error: any) {
-      Alert.alert('Ошибка входа', error.message || 'Неверный email или пароль');
+      // Показываем Alert только при ошибке
+      const errorMessage = error.message || 'Неверный email или пароль';
+      // Не показываем Alert, если сообщение содержит "успешный" (это не ошибка)
+      if (!errorMessage.toLowerCase().includes('успешн')) {
+        Alert.alert('Ошибка входа', errorMessage);
+      }
     } finally {
       setLoading(false);
     }

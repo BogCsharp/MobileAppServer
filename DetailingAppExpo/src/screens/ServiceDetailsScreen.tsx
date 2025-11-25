@@ -21,14 +21,42 @@ export const ServiceDetailsScreen: React.FC<ServiceDetailsScreenProps> = ({
   route,
   navigation,
 }) => {
-  const { service } = route.params;
+  const service: Service | undefined = route?.params?.service;
   const { user } = useAuth();
   const [loading, setLoading] = useState(false);
 
+  if (!service) {
+    return (
+      <View style={styles.container}>
+        <View style={[styles.content, { alignItems: 'center' }]}>
+          <Text style={styles.title}>Услуга не найдена</Text>
+          <TouchableOpacity
+            style={styles.addButton}
+            onPress={() => navigation.goBack()}
+          >
+            <Text style={styles.addButtonText}>Вернуться</Text>
+          </TouchableOpacity>
+        </View>
+      </View>
+    );
+  }
+
   const handleAddToCart = async () => {
     if (!user) {
-      Alert.alert('Ошибка', 'Необходимо войти в систему');
-      navigation.navigate('Login');
+      Alert.alert(
+        'Требуется вход',
+        'Чтобы добавить услугу в корзину, необходимо войти в систему',
+        [
+          {
+            text: 'Отмена',
+            style: 'cancel',
+          },
+          {
+            text: 'Войти',
+            onPress: () => navigation.navigate('Login'),
+          },
+        ]
+      );
       return;
     }
 
@@ -38,7 +66,10 @@ export const ServiceDetailsScreen: React.FC<ServiceDetailsScreenProps> = ({
       Alert.alert('Успех', 'Услуга добавлена в корзину', [
         {
           text: 'OK',
-          onPress: () => navigation.navigate('Cart'),
+          onPress: () =>
+            navigation.navigate('MainTabs', {
+              screen: 'Cart',
+            }),
         },
         {
           text: 'Продолжить покупки',
