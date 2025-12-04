@@ -19,10 +19,17 @@ namespace MobileAppServer.Services
 
 		public async Task<List<TimeSlotDTO>> GetAvailableSlotsAsync(AvailableSlotsDTO availableSlotsDTO)
 		{
+			// Загружаем уникальные услуги и строим словарь длительностей
+			var uniqueServiceIds = availableSlotsDTO.ServiceIds.Distinct().ToList();
 			var services = await _context.Services
-				.Where(s => availableSlotsDTO.ServiceIds.Contains(s.Id))
-				.ToListAsync();
-			var totalDuration = services.Sum(s => s.Duration);
+				.Where(s => uniqueServiceIds.Contains(s.Id))
+				.ToDictionaryAsync(s => s.Id, s => s.Duration);
+
+			// Суммарная длительность с учётом количества одинаковых услуг
+			var totalDuration = availableSlotsDTO.ServiceIds
+				.Where(id => services.ContainsKey(id))
+				.Sum(id => services[id]);
+
 			var date = availableSlotsDTO.Date.Date;
 			var dayStart = date;
 			var dayEnd = date.AddDays(1);

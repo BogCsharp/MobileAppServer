@@ -23,8 +23,8 @@ namespace MobileAppServer.Services
                 .Include(o => o.User)
                 .Include(o => o.Car)
                 .Include(o => o.Employee)
-                //.Include(o => o.OrderServices)
-                    //.ThenInclude(os => os.Service)
+                .Include(o => o.OrderItems)
+                    .ThenInclude(oi => oi.Service)
                 .FirstOrDefaultAsync(x => x.Id == id);
 
             if (entity == null)
@@ -42,8 +42,8 @@ namespace MobileAppServer.Services
                 .Include(o => o.User)
                 .Include(o => o.Car)
                 .Include(o => o.Employee)
-                //.Include(o => o.OrderServices)
-                //    .ThenInclude(os => os.Service)
+                .Include(o => o.OrderItems)
+                    .ThenInclude(oi => oi.Service)
                 .OrderByDescending(o => o.CreatedAt)
                 .ToListAsync();
         }
@@ -55,8 +55,8 @@ namespace MobileAppServer.Services
                 .Include(o => o.User)
                 .Include(o => o.Car)
                 .Include(o => o.Employee)
-                //.Include(o => o.OrderServices)
-                //    .ThenInclude(os => os.Service)
+                .Include(o => o.OrderItems)
+                    .ThenInclude(oi => oi.Service)
                 .Where(o => o.UserId == userId)
                 .OrderByDescending(o => o.CreatedAt)
                 .ToListAsync();
@@ -133,6 +133,18 @@ namespace MobileAppServer.Services
 
                 _dbContext.Set<OrderEntity>().Add(order);
                 await _dbContext.SaveChangesAsync();
+
+                // создаём позиции заказа из корзины
+                var orderItems = cart.CartItems.Select(ci => new OrderItemEntity
+                {
+                    OrderId = order.Id,
+                    ServiceId = ci.ServiceId,
+                    Name = ci.Name,
+                    Price = ci.Price,
+                    Quantity = ci.Quantity
+                }).ToList();
+
+                _dbContext.Set<OrderItemEntity>().AddRange(orderItems);
 
                 _dbContext.Set<CartItemEntity>().RemoveRange(cart.CartItems);
 

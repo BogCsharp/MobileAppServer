@@ -1,4 +1,5 @@
 ﻿using MobileAppServer.Entities;
+using MobileAppServer.Models.Order;
 
 namespace MobileAppServer.Models.Service
 {
@@ -14,11 +15,11 @@ namespace MobileAppServer.Models.Service
 
         public DateTime? CompletedAt { get; set; }
         public string Notes { get; set; } = string.Empty;
-    
 
         public long? UserId { get; set; }
         public long? CarId { get; set; }
         public long? EmployeeId { get; set; }
 
+        public List<OrderItemDTO> OrderItems { get; set; } = new();
     }
 }

@@ -3,24 +3,132 @@
   "WorkspaceRootPath": "C:\\Users\\Home_PC\\Desktop\\MobileAppServer\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|c:\\users\\home_pc\\desktop\\mobileappserver\\services\\cartrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|solutionrelative:services\\cartrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|c:\\users\\home_pc\\desktop\\mobileappserver\\migrations\\20251204131426_addorderitems.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|solutionrelative:migrations\\20251204131426_addorderitems.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|c:\\users\\home_pc\\desktop\\mobileappserver\\services\\bookingrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|solutionrelative:services\\bookingrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|c:\\users\\home_pc\\desktop\\mobileappserver\\mappers\\ordermapper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|solutionrelative:mappers\\ordermapper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|c:\\users\\home_pc\\desktop\\mobileappserver\\models\\order\\orderdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|solutionrelative:models\\order\\orderdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|c:\\users\\home_pc\\desktop\\mobileappserver\\models\\order\\orderitemdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|solutionrelative:models\\order\\orderitemdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|c:\\users\\home_pc\\desktop\\mobileappserver\\entities\\orderitementity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|solutionrelative:entities\\orderitementity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|c:\\users\\home_pc\\desktop\\mobileappserver\\entities\\orderentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|solutionrelative:entities\\orderentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|c:\\users\\home_pc\\desktop\\mobileappserver\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|c:\\users\\home_pc\\desktop\\mobileappserver\\mappers\\cartmapper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|solutionrelative:mappers\\cartmapper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|c:\\users\\home_pc\\desktop\\mobileappserver\\models\\booking\\timeslotdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|solutionrelative:models\\booking\\timeslotdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|c:\\users\\home_pc\\desktop\\mobileappserver\\models\\booking\\createbookingdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|solutionrelative:models\\booking\\createbookingdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|c:\\users\\home_pc\\desktop\\mobileappserver\\models\\booking\\bookingrequestdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|solutionrelative:models\\booking\\bookingrequestdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|c:\\users\\home_pc\\desktop\\mobileappserver\\models\\booking\\availableslotsdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|solutionrelative:models\\booking\\availableslotsdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|c:\\users\\home_pc\\desktop\\mobileappserver\\controllers\\cartcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|solutionrelative:controllers\\cartcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|c:\\users\\home_pc\\desktop\\mobileappserver\\controllers\\bookingcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|solutionrelative:controllers\\bookingcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|c:\\users\\home_pc\\desktop\\mobileappserver\\services\\orderrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|solutionrelative:services\\orderrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|c:\\users\\home_pc\\desktop\\mobileappserver\\services\\cartrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|solutionrelative:services\\cartrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|c:\\users\\home_pc\\desktop\\mobileappserver\\controllers\\cartcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|solutionrelative:controllers\\cartcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|c:\\users\\home_pc\\desktop\\mobileappserver\\services\\authrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|solutionrelative:services\\authrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|c:\\users\\home_pc\\desktop\\mobileappserver\\services\\bookingrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|solutionrelative:services\\bookingrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|c:\\users\\home_pc\\desktop\\mobileappserver\\extensions\\serviceextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|solutionrelative:extensions\\serviceextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|c:\\users\\home_pc\\desktop\\mobileappserver\\models\\service\\servicedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|solutionrelative:models\\service\\servicedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|c:\\users\\home_pc\\desktop\\mobileappserver\\abstracts\\iauthrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|solutionrelative:abstracts\\iauthrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|c:\\users\\home_pc\\desktop\\mobileappserver\\mappers\\identitymapper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|solutionrelative:mappers\\identitymapper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|c:\\users\\home_pc\\desktop\\mobileappserver\\models\\identity\\authresponsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|solutionrelative:models\\identity\\authresponsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|c:\\users\\home_pc\\desktop\\mobileappserver\\models\\identity\\logindto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|solutionrelative:models\\identity\\logindto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|c:\\users\\home_pc\\desktop\\mobileappserver\\mappers\\bookingmapper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|solutionrelative:mappers\\bookingmapper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|c:\\users\\home_pc\\desktop\\mobileappserver\\models\\cart\\addtocartdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|solutionrelative:models\\cart\\addtocartdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|c:\\users\\home_pc\\desktop\\mobileappserver\\models\\order\\updateorderdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|solutionrelative:models\\order\\updateorderdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|c:\\users\\home_pc\\desktop\\mobileappserver\\models\\order\\createorderdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|solutionrelative:models\\order\\createorderdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|c:\\users\\home_pc\\desktop\\mobileappserver\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|c:\\users\\home_pc\\desktop\\mobileappserver\\data\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|solutionrelative:data\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|c:\\users\\home_pc\\desktop\\mobileappserver\\entities\\baseentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|solutionrelative:entities\\baseentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|c:\\users\\home_pc\\desktop\\mobileappserver\\entities\\carentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|solutionrelative:entities\\carentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|c:\\users\\home_pc\\desktop\\mobileappserver\\services\\orderrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|solutionrelative:services\\orderrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|c:\\users\\home_pc\\desktop\\mobileappserver\\abstracts\\ibookingrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -39,26 +147,6 @@
       "RelativeMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|solutionrelative:controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|c:\\users\\home_pc\\desktop\\mobileappserver\\models\\order\\createorderdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|solutionrelative:models\\order\\createorderdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|c:\\users\\home_pc\\desktop\\mobileappserver\\entities\\orderentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|solutionrelative:entities\\orderentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|c:\\users\\home_pc\\desktop\\mobileappserver\\models\\order\\orderdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|solutionrelative:models\\order\\orderdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|c:\\users\\home_pc\\desktop\\mobileappserver\\mappers\\bookingmapper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|solutionrelative:mappers\\bookingmapper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|c:\\users\\home_pc\\desktop\\mobileappserver\\models\\service\\servicedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|solutionrelative:models\\service\\servicedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|c:\\users\\home_pc\\desktop\\mobileappserver\\models\\cart\\cartitemdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|solutionrelative:models\\cart\\cartitemdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -67,24 +155,8 @@
       "RelativeMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|solutionrelative:models\\cart\\cartdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|c:\\users\\home_pc\\desktop\\mobileappserver\\models\\booking\\availableslotsdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|solutionrelative:models\\booking\\availableslotsdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|c:\\users\\home_pc\\desktop\\mobileappserver\\entities\\serviceentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|solutionrelative:entities\\serviceentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|c:\\users\\home_pc\\desktop\\mobileappserver\\mappers\\ordermapper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|solutionrelative:mappers\\ordermapper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|c:\\users\\home_pc\\desktop\\mobileappserver\\models\\booking\\timeslotdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|solutionrelative:models\\booking\\timeslotdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|c:\\users\\home_pc\\desktop\\mobileappserver\\models\\booking\\bookingrequestdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|solutionrelative:models\\booking\\bookingrequestdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|c:\\users\\home_pc\\desktop\\mobileappserver\\entities\\cartitementity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -93,18 +165,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|c:\\users\\home_pc\\desktop\\mobileappserver\\entities\\cartentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|solutionrelative:entities\\cartentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|c:\\users\\home_pc\\desktop\\mobileappserver\\entities\\carentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|solutionrelative:entities\\carentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|c:\\users\\home_pc\\desktop\\mobileappserver\\services\\authrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|solutionrelative:services\\authrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|c:\\users\\home_pc\\desktop\\mobileappserver\\abstracts\\iauthrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|solutionrelative:abstracts\\iauthrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|c:\\users\\home_pc\\desktop\\mobileappserver\\services\\jwtrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -119,16 +179,8 @@
       "RelativeMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|solutionrelative:abstracts\\ijwtrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|c:\\users\\home_pc\\desktop\\mobileappserver\\mappers\\identitymapper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|solutionrelative:mappers\\identitymapper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|c:\\users\\home_pc\\desktop\\mobileappserver\\models\\identity\\userdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|solutionrelative:models\\identity\\userdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|c:\\users\\home_pc\\desktop\\mobileappserver\\mappers\\cartmapper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|solutionrelative:mappers\\cartmapper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|c:\\users\\home_pc\\desktop\\mobileappserver\\models\\identity\\registerdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -139,24 +191,12 @@
       "RelativeMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|solutionrelative:entities\\userentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|c:\\users\\home_pc\\desktop\\mobileappserver\\data\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|solutionrelative:data\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|c:\\users\\home_pc\\desktop\\mobileappserver\\extensions\\serviceextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|solutionrelative:extensions\\serviceextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|c:\\users\\home_pc\\desktop\\mobileappserver\\abstracts\\iorderrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|solutionrelative:abstracts\\iorderrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|c:\\users\\home_pc\\desktop\\mobileappserver\\entities\\userrole.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|solutionrelative:entities\\userrole.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|c:\\users\\home_pc\\desktop\\mobileappserver\\models\\identity\\authresponsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|solutionrelative:models\\identity\\authresponsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|c:\\users\\home_pc\\desktop\\mobileappserver\\abstracts\\ipasswordrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -171,14 +211,6 @@
       "RelativeMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|solutionrelative:models\\service\\createservicedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|c:\\users\\home_pc\\desktop\\mobileappserver\\models\\order\\updateorderdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|solutionrelative:models\\order\\updateorderdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|c:\\users\\home_pc\\desktop\\mobileappserver\\models\\identity\\logindto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|solutionrelative:models\\identity\\logindto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|c:\\users\\home_pc\\desktop\\mobileappserver\\models\\identity\\refreshtokendto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|solutionrelative:models\\identity\\refreshtokendto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -191,18 +223,6 @@
       "RelativeMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|solutionrelative:services\\passwordrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|c:\\users\\home_pc\\desktop\\mobileappserver\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|c:\\users\\home_pc\\desktop\\mobileappserver\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|c:\\users\\home_pc\\desktop\\mobileappserver\\entities\\baseentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|solutionrelative:entities\\baseentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|c:\\users\\home_pc\\desktop\\mobileappserver\\controllers\\servicescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|solutionrelative:controllers\\servicescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -213,10 +233,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|c:\\users\\home_pc\\desktop\\mobileappserver\\models\\cart\\updatecartitemdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|solutionrelative:models\\cart\\updatecartitemdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|c:\\users\\home_pc\\desktop\\mobileappserver\\models\\cart\\addtocartdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|solutionrelative:models\\cart\\addtocartdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{978751DB-EAC1-4AE4-B4C3-F56BCB7498A5}|MobileAppServer.csproj|c:\\users\\home_pc\\desktop\\mobileappserver\\abstracts\\icartrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -282,7 +298,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 33,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Bookmark",
@@ -294,20 +310,70 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
+              "Title": "20251204131426_AddOrderItems.cs",
+              "DocumentMoniker": "C:\\Users\\Home_PC\\Desktop\\MobileAppServer\\Migrations\\20251204131426_AddOrderItems.cs",
+              "RelativeDocumentMoniker": "Migrations\\20251204131426_AddOrderItems.cs",
+              "ToolTip": "C:\\Users\\Home_PC\\Desktop\\MobileAppServer\\Migrations\\20251204131426_AddOrderItems.cs",
+              "RelativeToolTip": "Migrations\\20251204131426_AddOrderItems.cs",
+              "ViewState": "AgIAADQAAAAAAAAAAAAgwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-04T13:14:26.909Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "OrderItemDTO.cs",
+              "DocumentMoniker": "C:\\Users\\Home_PC\\Desktop\\MobileAppServer\\Models\\Order\\OrderItemDTO.cs",
+              "RelativeDocumentMoniker": "Models\\Order\\OrderItemDTO.cs",
+              "ToolTip": "C:\\Users\\Home_PC\\Desktop\\MobileAppServer\\Models\\Order\\OrderItemDTO.cs",
+              "RelativeToolTip": "Models\\Order\\OrderItemDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-04T13:13:55.922Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "OrderItemEntity.cs",
+              "DocumentMoniker": "C:\\Users\\Home_PC\\Desktop\\MobileAppServer\\Entities\\OrderItemEntity.cs",
+              "RelativeDocumentMoniker": "Entities\\OrderItemEntity.cs",
+              "ToolTip": "C:\\Users\\Home_PC\\Desktop\\MobileAppServer\\Entities\\OrderItemEntity.cs",
+              "RelativeToolTip": "Entities\\OrderItemEntity.cs",
+              "ViewState": "AgIAAAQAAAAAAAAAAAA1wAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-04T13:13:27.711Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "CreateBookingDTO.cs",
+              "DocumentMoniker": "C:\\Users\\Home_PC\\Desktop\\MobileAppServer\\Models\\Booking\\CreateBookingDTO.cs",
+              "RelativeDocumentMoniker": "Models\\Booking\\CreateBookingDTO.cs",
+              "ToolTip": "C:\\Users\\Home_PC\\Desktop\\MobileAppServer\\Models\\Booking\\CreateBookingDTO.cs",
+              "RelativeToolTip": "Models\\Booking\\CreateBookingDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-28T12:40:03.832Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
               "Title": "BookingController.cs",
               "DocumentMoniker": "C:\\Users\\Home_PC\\Desktop\\MobileAppServer\\Controllers\\BookingController.cs",
               "RelativeDocumentMoniker": "Controllers\\BookingController.cs",
               "ToolTip": "C:\\Users\\Home_PC\\Desktop\\MobileAppServer\\Controllers\\BookingController.cs",
               "RelativeToolTip": "Controllers\\BookingController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAADgAAAADAAAAAAAAAA==",
+              "ViewState": "AgIAADQAAAAAAAAAAAAIwDgAAAADAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-05T08:37:25.512Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-05T08:37:25.512Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 67,
+              "DocumentIndex": 71,
               "Title": "20251105083415_InitBooking.cs",
               "DocumentMoniker": "C:\\Users\\Home_PC\\Desktop\\MobileAppServer\\Migrations\\20251105083415_InitBooking.cs",
               "RelativeDocumentMoniker": "Migrations\\20251105083415_InitBooking.cs",
@@ -319,7 +385,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 34,
               "Title": "BookingEntity.cs",
               "DocumentMoniker": "C:\\Users\\Home_PC\\Desktop\\MobileAppServer\\Entities\\BookingEntity.cs",
               "RelativeDocumentMoniker": "Entities\\BookingEntity.cs",
@@ -331,7 +397,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 23,
               "Title": "BookingMapper.cs",
               "DocumentMoniker": "C:\\Users\\Home_PC\\Desktop\\MobileAppServer\\Mappers\\BookingMapper.cs",
               "RelativeDocumentMoniker": "Mappers\\BookingMapper.cs",
@@ -343,7 +409,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 16,
               "Title": "BookingRepository.cs",
               "DocumentMoniker": "C:\\Users\\Home_PC\\Desktop\\MobileAppServer\\Services\\BookingRepository.cs",
               "RelativeDocumentMoniker": "Services\\BookingRepository.cs",
@@ -351,12 +417,11 @@
               "RelativeToolTip": "Services\\BookingRepository.cs",
               "ViewState": "AgIAAHMAAAAAAAAAAAAuwAoAAAApAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-05T07:52:57.087Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-05T07:52:57.087Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 32,
               "Title": "IBookingRepository.cs",
               "DocumentMoniker": "C:\\Users\\Home_PC\\Desktop\\MobileAppServer\\Abstracts\\IBookingRepository.cs",
               "RelativeDocumentMoniker": "Abstracts\\IBookingRepository.cs",
@@ -368,7 +433,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 8,
               "Title": "TimeSlotDTO.cs",
               "DocumentMoniker": "C:\\Users\\Home_PC\\Desktop\\MobileAppServer\\Models\\Booking\\TimeSlotDTO.cs",
               "RelativeDocumentMoniker": "Models\\Booking\\TimeSlotDTO.cs",
@@ -380,7 +445,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 11,
               "Title": "AvailableSlotsDTO.cs",
               "DocumentMoniker": "C:\\Users\\Home_PC\\Desktop\\MobileAppServer\\Models\\Booking\\AvailableSlotsDTO.cs",
               "RelativeDocumentMoniker": "Models\\Booking\\AvailableSlotsDTO.cs",
@@ -392,7 +457,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 10,
               "Title": "BookingRequestDTO.cs",
               "DocumentMoniker": "C:\\Users\\Home_PC\\Desktop\\MobileAppServer\\Models\\Booking\\BookingRequestDTO.cs",
               "RelativeDocumentMoniker": "Models\\Booking\\BookingRequestDTO.cs",
@@ -404,7 +469,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 35,
               "Title": "AuthController.cs",
               "DocumentMoniker": "C:\\Users\\Home_PC\\Desktop\\MobileAppServer\\Controllers\\AuthController.cs",
               "RelativeDocumentMoniker": "Controllers\\AuthController.cs",
@@ -416,7 +481,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 26,
+              "DocumentIndex": 41,
               "Title": "JwtRepository.cs",
               "DocumentMoniker": "C:\\Users\\Home_PC\\Desktop\\MobileAppServer\\Services\\JwtRepository.cs",
               "RelativeDocumentMoniker": "Services\\JwtRepository.cs",
@@ -428,7 +493,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 37,
+              "DocumentIndex": 48,
               "Title": "UserRole.cs",
               "DocumentMoniker": "C:\\Users\\Home_PC\\Desktop\\MobileAppServer\\Entities\\UserRole.cs",
               "RelativeDocumentMoniker": "Entities\\UserRole.cs",
@@ -440,31 +505,31 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 29,
+              "DocumentIndex": 20,
               "Title": "IdentityMapper.cs",
               "DocumentMoniker": "C:\\Users\\Home_PC\\Desktop\\MobileAppServer\\Mappers\\IdentityMapper.cs",
               "RelativeDocumentMoniker": "Mappers\\IdentityMapper.cs",
               "ToolTip": "C:\\Users\\Home_PC\\Desktop\\MobileAppServer\\Mappers\\IdentityMapper.cs",
               "RelativeToolTip": "Mappers\\IdentityMapper.cs",
-              "ViewState": "AgIAAAUAAAAAAAAAAAAxwBwAAAAiAAAAAAAAAA==",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAqwBwAAAAiAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-10-23T09:35:11.163Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 24,
+              "DocumentIndex": 15,
               "Title": "AuthRepository.cs",
               "DocumentMoniker": "C:\\Users\\Home_PC\\Desktop\\MobileAppServer\\Services\\AuthRepository.cs",
               "RelativeDocumentMoniker": "Services\\AuthRepository.cs",
               "ToolTip": "C:\\Users\\Home_PC\\Desktop\\MobileAppServer\\Services\\AuthRepository.cs",
               "RelativeToolTip": "Services\\AuthRepository.cs",
-              "ViewState": "AgIAABUAAAAAAAAAAAAgwHgAAAA8AAAAAAAAAA==",
+              "ViewState": "AgIAABgAAAAAAAAAAAAgwHgAAAA8AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-10-23T09:30:57.361Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 25,
+              "DocumentIndex": 19,
               "Title": "IAuthRepository.cs",
               "DocumentMoniker": "C:\\Users\\Home_PC\\Desktop\\MobileAppServer\\Abstracts\\IAuthRepository.cs",
               "RelativeDocumentMoniker": "Abstracts\\IAuthRepository.cs",
@@ -476,7 +541,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 27,
+              "DocumentIndex": 42,
               "Title": "JwtSettings.cs",
               "DocumentMoniker": "C:\\Users\\Home_PC\\Desktop\\MobileAppServer\\Models\\JwtSettings.cs",
               "RelativeDocumentMoniker": "Models\\JwtSettings.cs",
@@ -488,7 +553,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 28,
+              "DocumentIndex": 43,
               "Title": "IJwtRepository.cs",
               "DocumentMoniker": "C:\\Users\\Home_PC\\Desktop\\MobileAppServer\\Abstracts\\IJwtRepository.cs",
               "RelativeDocumentMoniker": "Abstracts\\IJwtRepository.cs",
@@ -500,7 +565,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 46,
+              "DocumentIndex": 54,
               "Title": "PasswordRepository.cs",
               "DocumentMoniker": "C:\\Users\\Home_PC\\Desktop\\MobileAppServer\\Services\\PasswordRepository.cs",
               "RelativeDocumentMoniker": "Services\\PasswordRepository.cs",
@@ -512,7 +577,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 39,
+              "DocumentIndex": 49,
               "Title": "IPasswordRepository.cs",
               "DocumentMoniker": "C:\\Users\\Home_PC\\Desktop\\MobileAppServer\\Abstracts\\IPasswordRepository.cs",
               "RelativeDocumentMoniker": "Abstracts\\IPasswordRepository.cs",
@@ -524,7 +589,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 44,
+              "DocumentIndex": 52,
               "Title": "RefreshTokenDTO.cs",
               "DocumentMoniker": "C:\\Users\\Home_PC\\Desktop\\MobileAppServer\\Models\\Identity\\RefreshTokenDTO.cs",
               "RelativeDocumentMoniker": "Models\\Identity\\RefreshTokenDTO.cs",
@@ -536,7 +601,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 30,
+              "DocumentIndex": 44,
               "Title": "UserDTO.cs",
               "DocumentMoniker": "C:\\Users\\Home_PC\\Desktop\\MobileAppServer\\Models\\Identity\\UserDTO.cs",
               "RelativeDocumentMoniker": "Models\\Identity\\UserDTO.cs",
@@ -548,7 +613,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 38,
+              "DocumentIndex": 21,
               "Title": "AuthResponseDTO.cs",
               "DocumentMoniker": "C:\\Users\\Home_PC\\Desktop\\MobileAppServer\\Models\\Identity\\AuthResponseDTO.cs",
               "RelativeDocumentMoniker": "Models\\Identity\\AuthResponseDTO.cs",
@@ -560,7 +625,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 43,
+              "DocumentIndex": 22,
               "Title": "LoginDTO.cs",
               "DocumentMoniker": "C:\\Users\\Home_PC\\Desktop\\MobileAppServer\\Models\\Identity\\LoginDTO.cs",
               "RelativeDocumentMoniker": "Models\\Identity\\LoginDTO.cs",
@@ -572,7 +637,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 32,
+              "DocumentIndex": 45,
               "Title": "RegisterDTO.cs",
               "DocumentMoniker": "C:\\Users\\Home_PC\\Desktop\\MobileAppServer\\Models\\Identity\\RegisterDTO.cs",
               "RelativeDocumentMoniker": "Models\\Identity\\RegisterDTO.cs",
@@ -584,7 +649,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 42,
+              "DocumentIndex": 25,
               "Title": "UpdateOrderDTO.cs",
               "DocumentMoniker": "C:\\Users\\Home_PC\\Desktop\\MobileAppServer\\Models\\Order\\UpdateOrderDTO.cs",
               "RelativeDocumentMoniker": "Models\\Order\\UpdateOrderDTO.cs",
@@ -596,7 +661,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 31,
+              "DocumentIndex": 7,
               "Title": "CartMapper.cs",
               "DocumentMoniker": "C:\\Users\\Home_PC\\Desktop\\MobileAppServer\\Mappers\\CartMapper.cs",
               "RelativeDocumentMoniker": "Mappers\\CartMapper.cs",
@@ -608,19 +673,19 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 12,
               "Title": "CartController.cs",
               "DocumentMoniker": "C:\\Users\\Home_PC\\Desktop\\MobileAppServer\\Controllers\\CartController.cs",
               "RelativeDocumentMoniker": "Controllers\\CartController.cs",
               "ToolTip": "C:\\Users\\Home_PC\\Desktop\\MobileAppServer\\Controllers\\CartController.cs",
               "RelativeToolTip": "Controllers\\CartController.cs",
-              "ViewState": "AgIAADUAAAAAAAAAAAAIwE4AAAAJAAAAAAAAAA==",
+              "ViewState": "AgIAABAAAAAAAAAAAAAgwE4AAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-10-14T14:36:36.455Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 36,
               "Title": "CartItemDTO.cs",
               "DocumentMoniker": "C:\\Users\\Home_PC\\Desktop\\MobileAppServer\\Models\\Cart\\CartItemDTO.cs",
               "RelativeDocumentMoniker": "Models\\Cart\\CartItemDTO.cs",
@@ -632,7 +697,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 37,
               "Title": "CartDTO.cs",
               "DocumentMoniker": "C:\\Users\\Home_PC\\Desktop\\MobileAppServer\\Models\\Cart\\CartDTO.cs",
               "RelativeDocumentMoniker": "Models\\Cart\\CartDTO.cs",
@@ -644,7 +709,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 52,
+              "DocumentIndex": 57,
               "Title": "UpdateCartItemDTO.cs",
               "DocumentMoniker": "C:\\Users\\Home_PC\\Desktop\\MobileAppServer\\Models\\Cart\\UpdateCartItemDTO.cs",
               "RelativeDocumentMoniker": "Models\\Cart\\UpdateCartItemDTO.cs",
@@ -656,7 +721,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 53,
+              "DocumentIndex": 24,
               "Title": "AddToCartDTO.cs",
               "DocumentMoniker": "C:\\Users\\Home_PC\\Desktop\\MobileAppServer\\Models\\Cart\\AddToCartDTO.cs",
               "RelativeDocumentMoniker": "Models\\Cart\\AddToCartDTO.cs",
@@ -668,20 +733,19 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 14,
               "Title": "CartRepository.cs",
               "DocumentMoniker": "C:\\Users\\Home_PC\\Desktop\\MobileAppServer\\Services\\CartRepository.cs",
               "RelativeDocumentMoniker": "Services\\CartRepository.cs",
               "ToolTip": "C:\\Users\\Home_PC\\Desktop\\MobileAppServer\\Services\\CartRepository.cs",
               "RelativeToolTip": "Services\\CartRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAGQAAAA2AAAAAAAAAA==",
+              "ViewState": "AgIAABUAAAAAAAAAAAAowGQAAAA2AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-14T14:03:14.346Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-14T14:03:14.346Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 54,
+              "DocumentIndex": 58,
               "Title": "ICartRepository.cs",
               "DocumentMoniker": "C:\\Users\\Home_PC\\Desktop\\MobileAppServer\\Abstracts\\ICartRepository.cs",
               "RelativeDocumentMoniker": "Abstracts\\ICartRepository.cs",
@@ -693,7 +757,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 66,
+              "DocumentIndex": 70,
               "Title": "20251014131905_OrderEntityChanges.cs",
               "DocumentMoniker": "C:\\Users\\Home_PC\\Desktop\\MobileAppServer\\Migrations\\20251014131905_OrderEntityChanges.cs",
               "RelativeDocumentMoniker": "Migrations\\20251014131905_OrderEntityChanges.cs",
@@ -705,7 +769,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 55,
+              "DocumentIndex": 59,
               "Title": "20251014131625_LongUserIDForCarstwo.cs",
               "DocumentMoniker": "C:\\Users\\Home_PC\\Desktop\\MobileAppServer\\Migrations\\20251014131625_LongUserIDForCarstwo.cs",
               "RelativeDocumentMoniker": "Migrations\\20251014131625_LongUserIDForCarstwo.cs",
@@ -717,7 +781,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 57,
+              "DocumentIndex": 61,
               "Title": "20251014131232_LongUserIDForCarstwo.cs",
               "DocumentMoniker": "C:\\Users\\Home_PC\\Desktop\\MobileAppServer\\Migrations\\20251014131232_LongUserIDForCarstwo.cs",
               "RelativeDocumentMoniker": "Migrations\\20251014131232_LongUserIDForCarstwo.cs",
@@ -728,7 +792,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 58,
+              "DocumentIndex": 62,
               "Title": "20251014131009_LongUserIDForCars.cs",
               "DocumentMoniker": "C:\\Users\\Home_PC\\Desktop\\MobileAppServer\\Migrations\\20251014131009_LongUserIDForCars.cs",
               "RelativeDocumentMoniker": "Migrations\\20251014131009_LongUserIDForCars.cs",
@@ -739,7 +803,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 61,
+              "DocumentIndex": 65,
               "Title": "20251014125640_UserCart.cs",
               "DocumentMoniker": "C:\\Users\\Home_PC\\Desktop\\MobileAppServer\\Migrations\\20251014125640_UserCart.cs",
               "RelativeDocumentMoniker": "Migrations\\20251014125640_UserCart.cs",
@@ -750,7 +814,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 33,
               "Title": "OrderController.cs",
               "DocumentMoniker": "C:\\Users\\Home_PC\\Desktop\\MobileAppServer\\Controllers\\OrderController.cs",
               "RelativeDocumentMoniker": "Controllers\\OrderController.cs",
@@ -762,7 +826,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 31,
               "Title": "OrderRepository.cs",
               "DocumentMoniker": "C:\\Users\\Home_PC\\Desktop\\MobileAppServer\\Services\\OrderRepository.cs",
               "RelativeDocumentMoniker": "Services\\OrderRepository.cs",
@@ -774,7 +838,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 36,
+              "DocumentIndex": 47,
               "Title": "IOrderRepository.cs",
               "DocumentMoniker": "C:\\Users\\Home_PC\\Desktop\\MobileAppServer\\Abstracts\\IOrderRepository.cs",
               "RelativeDocumentMoniker": "Abstracts\\IOrderRepository.cs",
@@ -786,7 +850,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 56,
+              "DocumentIndex": 60,
               "Title": "20251009164314_AddEmployeetwo.cs",
               "DocumentMoniker": "C:\\Users\\Home_PC\\Desktop\\MobileAppServer\\Migrations\\20251009164314_AddEmployeetwo.cs",
               "RelativeDocumentMoniker": "Migrations\\20251009164314_AddEmployeetwo.cs",
@@ -798,7 +862,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 62,
+              "DocumentIndex": 66,
               "Title": "20251009164143_AddEmployee.cs",
               "DocumentMoniker": "C:\\Users\\Home_PC\\Desktop\\MobileAppServer\\Migrations\\20251009164143_AddEmployee.cs",
               "RelativeDocumentMoniker": "Migrations\\20251009164143_AddEmployee.cs",
@@ -810,7 +874,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 59,
+              "DocumentIndex": 63,
               "Title": "EmployeeEntity.cs",
               "DocumentMoniker": "C:\\Users\\Home_PC\\Desktop\\MobileAppServer\\Entities\\EmployeeEntity.cs",
               "RelativeDocumentMoniker": "Entities\\EmployeeEntity.cs",
@@ -822,7 +886,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 18,
               "Title": "ServiceDTO.cs",
               "DocumentMoniker": "C:\\Users\\Home_PC\\Desktop\\MobileAppServer\\Models\\Service\\ServiceDTO.cs",
               "RelativeDocumentMoniker": "Models\\Service\\ServiceDTO.cs",
@@ -834,7 +898,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 51,
+              "DocumentIndex": 56,
               "Title": "ServiceMapper.cs",
               "DocumentMoniker": "C:\\Users\\Home_PC\\Desktop\\MobileAppServer\\Mappers\\ServiceMapper.cs",
               "RelativeDocumentMoniker": "Mappers\\ServiceMapper.cs",
@@ -846,7 +910,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 41,
+              "DocumentIndex": 51,
               "Title": "CreateServiceDTO.cs",
               "DocumentMoniker": "C:\\Users\\Home_PC\\Desktop\\MobileAppServer\\Models\\Service\\CreateServiceDTO.cs",
               "RelativeDocumentMoniker": "Models\\Service\\CreateServiceDTO.cs",
@@ -858,7 +922,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 63,
+              "DocumentIndex": 67,
               "Title": "20251009154327_RemoveSecondCategoryIdtwo.cs",
               "DocumentMoniker": "C:\\Users\\Home_PC\\Desktop\\MobileAppServer\\Migrations\\20251009154327_RemoveSecondCategoryIdtwo.cs",
               "RelativeDocumentMoniker": "Migrations\\20251009154327_RemoveSecondCategoryIdtwo.cs",
@@ -870,7 +934,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 64,
+              "DocumentIndex": 68,
               "Title": "20251009153901_RemoveSecondCAtegoryId.cs",
               "DocumentMoniker": "C:\\Users\\Home_PC\\Desktop\\MobileAppServer\\Migrations\\20251009153901_RemoveSecondCAtegoryId.cs",
               "RelativeDocumentMoniker": "Migrations\\20251009153901_RemoveSecondCAtegoryId.cs",
@@ -882,7 +946,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 65,
+              "DocumentIndex": 69,
               "Title": "20251009152308_MyFirstMigration.cs",
               "DocumentMoniker": "C:\\Users\\Home_PC\\Desktop\\MobileAppServer\\Migrations\\20251009152308_MyFirstMigration.cs",
               "RelativeDocumentMoniker": "Migrations\\20251009152308_MyFirstMigration.cs",
@@ -894,7 +958,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 50,
+              "DocumentIndex": 55,
               "Title": "ServicesController.cs",
               "DocumentMoniker": "C:\\Users\\Home_PC\\Desktop\\MobileAppServer\\Controllers\\ServicesController.cs",
               "RelativeDocumentMoniker": "Controllers\\ServicesController.cs",
@@ -906,7 +970,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 39,
               "Title": "CartItemEntity.cs",
               "DocumentMoniker": "C:\\Users\\Home_PC\\Desktop\\MobileAppServer\\Entities\\CartItemEntity.cs",
               "RelativeDocumentMoniker": "Entities\\CartItemEntity.cs",
@@ -918,7 +982,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 40,
               "Title": "CartEntity.cs",
               "DocumentMoniker": "C:\\Users\\Home_PC\\Desktop\\MobileAppServer\\Entities\\CartEntity.cs",
               "RelativeDocumentMoniker": "Entities\\CartEntity.cs",
@@ -930,19 +994,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 1,
               "Title": "OrderMapper.cs",
               "DocumentMoniker": "C:\\Users\\Home_PC\\Desktop\\MobileAppServer\\Mappers\\OrderMapper.cs",
               "RelativeDocumentMoniker": "Mappers\\OrderMapper.cs",
               "ToolTip": "C:\\Users\\Home_PC\\Desktop\\MobileAppServer\\Mappers\\OrderMapper.cs",
               "RelativeToolTip": "Mappers\\OrderMapper.cs",
-              "ViewState": "AgIAAB4AAAAAAAAAAAAowCkAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAADMAAAAAAAAAAAAowCkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-09T14:28:22.282Z"
+              "WhenOpened": "2025-10-09T14:28:22.282Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 26,
               "Title": "CreateOrderDTO.cs",
               "DocumentMoniker": "C:\\Users\\Home_PC\\Desktop\\MobileAppServer\\Models\\Order\\CreateOrderDTO.cs",
               "RelativeDocumentMoniker": "Models\\Order\\CreateOrderDTO.cs",
@@ -954,19 +1019,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 2,
               "Title": "OrderDTO.cs",
               "DocumentMoniker": "C:\\Users\\Home_PC\\Desktop\\MobileAppServer\\Models\\Order\\OrderDTO.cs",
               "RelativeDocumentMoniker": "Models\\Order\\OrderDTO.cs",
               "ToolTip": "C:\\Users\\Home_PC\\Desktop\\MobileAppServer\\Models\\Order\\OrderDTO.cs",
               "RelativeToolTip": "Models\\Order\\OrderDTO.cs",
-              "ViewState": "AgIAAAUAAAAAAAAAAAAQwBAAAAAEAAAAAAAAAA==",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAuwBEAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-09T14:05:23.223Z"
+              "WhenOpened": "2025-10-09T14:05:23.223Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 45,
+              "DocumentIndex": 53,
               "Title": "ServiceRepository.cs",
               "DocumentMoniker": "C:\\Users\\Home_PC\\Desktop\\MobileAppServer\\Services\\ServiceRepository.cs",
               "RelativeDocumentMoniker": "Services\\ServiceRepository.cs",
@@ -978,19 +1044,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 5,
               "Title": "OrderEntity.cs",
               "DocumentMoniker": "C:\\Users\\Home_PC\\Desktop\\MobileAppServer\\Entities\\OrderEntity.cs",
               "RelativeDocumentMoniker": "Entities\\OrderEntity.cs",
               "ToolTip": "C:\\Users\\Home_PC\\Desktop\\MobileAppServer\\Entities\\OrderEntity.cs",
               "RelativeToolTip": "Entities\\OrderEntity.cs",
-              "ViewState": "AgIAAAQAAAAAAAAAAAA1wBEAAAAzAAAAAAAAAA==",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAqwBEAAAAzAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-09T13:41:23.537Z"
+              "WhenOpened": "2025-10-09T13:41:23.537Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
+              "DocumentIndex": 30,
               "Title": "CarEntity.cs",
               "DocumentMoniker": "C:\\Users\\Home_PC\\Desktop\\MobileAppServer\\Entities\\CarEntity.cs",
               "RelativeDocumentMoniker": "Entities\\CarEntity.cs",
@@ -1002,7 +1069,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 38,
               "Title": "ServiceEntity.cs",
               "DocumentMoniker": "C:\\Users\\Home_PC\\Desktop\\MobileAppServer\\Entities\\ServiceEntity.cs",
               "RelativeDocumentMoniker": "Entities\\ServiceEntity.cs",
@@ -1014,7 +1081,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 40,
+              "DocumentIndex": 50,
               "Title": "IServiceRepository.cs",
               "DocumentMoniker": "C:\\Users\\Home_PC\\Desktop\\MobileAppServer\\Abstracts\\IServiceRepository.cs",
               "RelativeDocumentMoniker": "Abstracts\\IServiceRepository.cs",
@@ -1026,7 +1093,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 48,
+              "DocumentIndex": 27,
               "Title": "appsettings.json",
               "DocumentMoniker": "C:\\Users\\Home_PC\\Desktop\\MobileAppServer\\appsettings.json",
               "RelativeDocumentMoniker": "appsettings.json",
@@ -1038,7 +1105,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 60,
+              "DocumentIndex": 64,
               "Title": "CategoryEntity.cs",
               "DocumentMoniker": "C:\\Users\\Home_PC\\Desktop\\MobileAppServer\\Entities\\CategoryEntity.cs",
               "RelativeDocumentMoniker": "Entities\\CategoryEntity.cs",
@@ -1050,63 +1117,64 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 49,
+              "DocumentIndex": 29,
               "Title": "BaseEntity.cs",
               "DocumentMoniker": "C:\\Users\\Home_PC\\Desktop\\MobileAppServer\\Entities\\BaseEntity.cs",
               "RelativeDocumentMoniker": "Entities\\BaseEntity.cs",
               "ToolTip": "C:\\Users\\Home_PC\\Desktop\\MobileAppServer\\Entities\\BaseEntity.cs",
               "RelativeToolTip": "Entities\\BaseEntity.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAA9AAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-10-09T13:09:35.856Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 33,
+              "DocumentIndex": 46,
               "Title": "UserEntity.cs",
               "DocumentMoniker": "C:\\Users\\Home_PC\\Desktop\\MobileAppServer\\Entities\\UserEntity.cs",
               "RelativeDocumentMoniker": "Entities\\UserEntity.cs",
               "ToolTip": "C:\\Users\\Home_PC\\Desktop\\MobileAppServer\\Entities\\UserEntity.cs",
               "RelativeToolTip": "Entities\\UserEntity.cs",
-              "ViewState": "AgIAAAwAAAAAAAAAAAAAABcAAAAPAAAAAAAAAA==",
+              "ViewState": "AgIAAAkAAAAAAAAAAIBWwBcAAAAPAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-10-09T13:09:11.599Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 34,
+              "DocumentIndex": 28,
               "Title": "AppDbContext.cs",
               "DocumentMoniker": "C:\\Users\\Home_PC\\Desktop\\MobileAppServer\\Data\\AppDbContext.cs",
               "RelativeDocumentMoniker": "Data\\AppDbContext.cs",
               "ToolTip": "C:\\Users\\Home_PC\\Desktop\\MobileAppServer\\Data\\AppDbContext.cs",
               "RelativeToolTip": "Data\\AppDbContext.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAYwBMAAAABAAAAAAAAAA==",
+              "ViewState": "AgIAAAEAAAAAAAAAAAAAwBMAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-10-09T13:03:54.279Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 35,
+              "DocumentIndex": 17,
               "Title": "ServiceExtensions.cs",
               "DocumentMoniker": "C:\\Users\\Home_PC\\Desktop\\MobileAppServer\\Extensions\\ServiceExtensions.cs",
               "RelativeDocumentMoniker": "Extensions\\ServiceExtensions.cs",
               "ToolTip": "C:\\Users\\Home_PC\\Desktop\\MobileAppServer\\Extensions\\ServiceExtensions.cs",
               "RelativeToolTip": "Extensions\\ServiceExtensions.cs",
-              "ViewState": "AgIAAA0AAAAAAAAAAAA1wBkAAABVAAAAAAAAAA==",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAAA0AAABXAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-10-09T13:02:09.03Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 47,
+              "DocumentIndex": 6,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\Home_PC\\Desktop\\MobileAppServer\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
               "ToolTip": "C:\\Users\\Home_PC\\Desktop\\MobileAppServer\\Program.cs",
               "RelativeToolTip": "Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACMAAAAYAAAAAAAAAA==",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAACMAAAAYAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-09T12:57:56.073Z"
+              "WhenOpened": "2025-10-09T12:57:56.073Z",
+              "EditorCaption": ""
             }
           ]
         }

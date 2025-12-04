@@ -14,6 +14,7 @@ namespace MobileAppServer.Data
         public DbSet<CartEntity> Carts { get; set; }
         public DbSet<CartItemEntity> CartItems { get; set; }
         public DbSet<OrderEntity> Orders { get; set; }
+        public DbSet<OrderItemEntity> OrderItems { get; set; }
         public DbSet<EmployeeEntity> Employee { get; set; }
         public DbSet<UserRole> UserRole { get; set; }
 		public DbSet<BookingEntity> Bookings { get; set; }

@@ -1,4 +1,5 @@
 ﻿using MobileAppServer.Entities;
+using MobileAppServer.Models.Order;
 using MobileAppServer.Models.Service;
 
 namespace MobileAppServer.Mappers
@@ -7,7 +8,7 @@ namespace MobileAppServer.Mappers
     {
         public static OrderDTO ToDto(this OrderEntity entity)
         {
-            return new OrderDTO
+            var dto = new OrderDTO
             {
                 Id = entity.Id,
                 OrderNumber = entity.OrderNumber,
@@ -21,7 +22,34 @@ namespace MobileAppServer.Mappers
                 UserId = entity.UserId,
                 CarId = entity.CarId,
                 EmployeeId = entity.EmployeeId,
+                OrderItems = new List<OrderItemDTO>()
             };
+
+            if (entity.OrderItems != null && entity.OrderItems.Any())
+            {
+                foreach (var item in entity.OrderItems)
+                {
+                    dto.OrderItems.Add(new OrderItemDTO
+                    {
+                        Id = item.Id,
+                        ServiceId = item.ServiceId,
+                        Quantity = item.Quantity,
+                        Price = item.Price,
+                        Service = new ServiceDTO
+                        {
+                            Id = item.ServiceId,
+                            Name = item.Name,
+                            Description = item.Service?.Description ?? string.Empty,
+                            Price = item.Price,
+                            Duration = item.Service?.Duration ?? 0,
+                            CategoryId = item.Service?.CategoryId ?? 0,
+                            CategoryName = item.Service?.Category?.Name ?? string.Empty
+                        }
+                    });
+                }
+            }
+
+            return dto;
         }
 
         public static OrderEntity ToEntity(this CreateOrderDTO dto)

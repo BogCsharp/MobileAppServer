@@ -34,24 +34,7 @@ const formatDateLabel = (date: Date) => {
   });
 };
 
-const addMinutesToTime = (time: string, minutes: number) => {
-  const [hour, minute] = time.split(':').map(Number);
-  const totalMinutes = hour * 60 + minute + minutes;
-  const normalized = ((totalMinutes % (24 * 60)) + 24 * 60) % (24 * 60);
-  const endHour = Math.floor(normalized / 60);
-  const endMinute = normalized % 60;
-  return `${endHour.toString().padStart(2, '0')}:${endMinute
-    .toString()
-    .padStart(2, '0')}`;
-};
-
-const getSlotLabel = (slot: TimeSlot, durationOverride?: number) => {
-  const endTime =
-    durationOverride && durationOverride > 0
-      ? addMinutesToTime(slot.startTime, durationOverride)
-      : slot.endTime;
-  return `${slot.startTime} - ${endTime}`;
-};
+const getSlotLabel = (slot: TimeSlot) => `${slot.startTime} - ${slot.endTime}`;
 
 export const CheckoutScreen: React.FC<CheckoutScreenProps> = ({ navigation }) => {
   const { user, isAuthenticated } = useAuth();
@@ -90,16 +73,13 @@ export const CheckoutScreen: React.FC<CheckoutScreenProps> = ({ navigation }) =>
     return ids;
   }, [cartItems]);
 
-  const totalDurationMinutes = useMemo(() => {
-    return cartItems.reduce((sum, item) => {
-      const durationPerService =
-        item.service?.duration ||
-        (item as any)?.serviceDuration ||
-        (item as any)?.duration ||
-        0;
-      return sum + durationPerService * Math.max(item.quantity || 1, 1);
-    }, 0);
-  }, [cartItems]);
+  const getDurationFromSlot = (slot: TimeSlot) => {
+    const [startHour, startMinute] = slot.startTime.split(':').map(Number);
+    const [endHour, endMinute] = slot.endTime.split(':').map(Number);
+    const start = startHour * 60 + startMinute;
+    const end = endHour * 60 + endMinute;
+    return Math.max(end - start, 0);
+  };
 
   useEffect(() => {
     if (!user) return;
@@ -160,13 +140,13 @@ export const CheckoutScreen: React.FC<CheckoutScreenProps> = ({ navigation }) =>
       return;
     }
 
-    if (totalDurationMinutes <= 0) {
-      Alert.alert('Ошибка', 'Не удалось определить длительность услуг');
-      return;
-    }
-
     setSubmitting(true);
     try {
+      const totalDurationMinutes = getDurationFromSlot(selectedSlot);
+      if (totalDurationMinutes <= 0) {
+        throw new Error('Не удалось определить длительность услуг');
+      }
+
       await apiService.createBooking({
         userId: user.id,
         carId: 1,
@@ -329,7 +309,7 @@ export const CheckoutScreen: React.FC<CheckoutScreenProps> = ({ navigation }) =>
                       isSelected && styles.slotButtonTextActive,
                     ]}
                   >
-                    {getSlotLabel(slot, totalDurationMinutes)}
+                    {getSlotLabel(slot)}
                   </Text>
                 </TouchableOpacity>
               );

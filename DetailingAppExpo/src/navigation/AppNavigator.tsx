@@ -16,6 +16,7 @@ import { OrdersScreen } from '../screens/OrdersScreen';
 import { ProfileScreen } from '../screens/ProfileScreen';
 import { ServiceDetailsScreen } from '../screens/ServiceDetailsScreen';
 import { CheckoutScreen } from '../screens/CheckoutScreen';
+import { OrderDetailsScreen } from '../screens/OrderDetailsScreen';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -92,6 +93,14 @@ export function AppNavigator() {
           options={{
             headerShown: true,
             title: 'Оформление заказа',
+          }}
+        />
+        <Stack.Screen
+          name="OrderDetails"
+          component={OrderDetailsScreen}
+          options={{
+            headerShown: true,
+            title: 'Детали заказа',
           }}
         />
         <Stack.Screen

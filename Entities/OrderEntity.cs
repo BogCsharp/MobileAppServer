@@ -19,7 +19,8 @@
         
         public long? EmployeeId { get; set; }
         public EmployeeEntity Employee { get; set; } = null!;
-        
+
+        public ICollection<OrderItemEntity> OrderItems { get; set; } = new List<OrderItemEntity>();
     }
     public enum OrderStatus
     {
