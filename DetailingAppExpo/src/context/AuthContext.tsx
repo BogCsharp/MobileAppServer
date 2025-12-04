@@ -28,7 +28,6 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
       const token = await AsyncStorage.getItem('accessToken');
 
       if (storedUser && token) {
-        // Проверяем валидность сессии
         const session = await apiService.validateSession();
         if (session.hasActiveSession) {
           setUser(JSON.parse(storedUser));
@@ -36,8 +35,10 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
           await AsyncStorage.multiRemove(['accessToken', 'refreshToken', 'user']);
         }
       }
-    } catch (error) {
-      console.error('Auth check error:', error);
+    } catch (error: any) {
+      if (error?.response?.status !== 401) {
+        console.error('Auth check error:', error);
+      }
       await AsyncStorage.multiRemove(['accessToken', 'refreshToken', 'user']);
     } finally {
       setIsLoading(false);
@@ -48,7 +49,6 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     try {
       const response = await apiService.login(credentials);
       
-      // Проверяем наличие токена и пользователя
       if (!response.token) {
         throw new Error('Ошибка входа: отсутствует токен доступа');
       }
@@ -57,17 +57,14 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
         throw new Error('Ошибка входа: отсутствуют данные пользователя');
       }
       
-      // Сохраняем данные
       await AsyncStorage.setItem('accessToken', response.token);
       if (response.refreshToken) {
         await AsyncStorage.setItem('refreshToken', response.refreshToken);
       }
       await AsyncStorage.setItem('user', JSON.stringify(response.user));
       
-      // Устанавливаем пользователя - это обновит isAuthenticated
       setUser(response.user);
     } catch (error: any) {
-      // Обработка ошибок от сервера
       let errorMessage = 'Ошибка входа';
       
       if (error.response?.data) {
@@ -86,27 +83,20 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
   const register = async (data: RegisterDTO) => {
     try {
       const response = await apiService.register(data);
-      // Проверяем, есть ли ошибка в сообщении
       if (response.message && (response.message.includes('уже есть') || response.message.includes('не совпадают') || response.message.includes('Ошибка'))) {
         throw new Error(response.message);
       }
-      // Если регистрация успешна (даже без токена), просто возвращаем успех
-      // Навигация будет обработана в компоненте
       return;
     } catch (error: any) {
-      // Обработка ошибок от сервера
       let errorMessage = 'Ошибка регистрации';
       
       if (error.response?.data) {
-        // Сервер вернул ошибку с данными
         const serverData = error.response.data;
         errorMessage = serverData.Message || serverData.message || errorMessage;
       } else if (error.response?.status === 400) {
-        // BadRequest от сервера
         const serverData = error.response.data;
         errorMessage = serverData.Message || serverData.message || errorMessage;
       } else if (error.message) {
-        // Ошибка из нашего кода
         errorMessage = error.message;
       }
       

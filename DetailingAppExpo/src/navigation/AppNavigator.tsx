@@ -4,6 +4,8 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { useAuth } from '../context/AuthContext';
 import { ActivityIndicator, View, StyleSheet } from 'react-native';
+// @ts-ignore: vector icons are provided by Expo runtime
+import { Ionicons } from '@expo/vector-icons';
 
 // Auth screens
 import { LoginScreen } from '../screens/LoginScreen';
@@ -24,22 +26,37 @@ const Tab = createBottomTabNavigator();
 function MainTabs() {
   return (
     <Tab.Navigator
-      screenOptions={{
+      screenOptions={({ route }) => ({
         tabBarActiveTintColor: '#007AFF',
         tabBarInactiveTintColor: '#999',
-        headerShown: false,
+        headerTitle: 'Detail Pro',
+        headerTitleAlign: 'center',
         tabBarStyle: {
           borderTopWidth: 1,
           borderTopColor: '#e0e0e0',
         },
-      }}
+        tabBarIcon: ({ color, size }) => {
+          let iconName: keyof typeof Ionicons.glyphMap = 'home-outline';
+
+          if (route.name === 'Home') {
+            iconName = 'car-sport-outline';
+          } else if (route.name === 'Cart') {
+            iconName = 'cart-outline';
+          } else if (route.name === 'Orders') {
+            iconName = 'list-outline';
+          } else if (route.name === 'Profile') {
+            iconName = 'person-circle-outline';
+          }
+
+          return <Ionicons name={iconName} size={size} color={color} />;
+        },
+      })}
     >
       <Tab.Screen
         name="Home"
         component={HomeScreen}
         options={{
           tabBarLabel: 'Услуги',
-          tabBarIcon: () => null,
         }}
       />
       <Tab.Screen
@@ -47,7 +64,6 @@ function MainTabs() {
         component={CartScreen}
         options={{
           tabBarLabel: 'Корзина',
-          tabBarIcon: () => null,
         }}
       />
       <Tab.Screen
@@ -55,7 +71,6 @@ function MainTabs() {
         component={OrdersScreen}
         options={{
           tabBarLabel: 'Заказы',
-          tabBarIcon: () => null,
         }}
       />
       <Tab.Screen
@@ -63,7 +78,6 @@ function MainTabs() {
         component={ProfileScreen}
         options={{
           tabBarLabel: 'Профиль',
-          tabBarIcon: () => null,
         }}
       />
     </Tab.Navigator>
@@ -83,35 +97,24 @@ export function AppNavigator() {
 
   return (
     <NavigationContainer>
-      <Stack.Navigator screenOptions={{ headerShown: false }}>
-        <Stack.Screen name="MainTabs" component={MainTabs} />
+      <Stack.Navigator
+        screenOptions={{
+          headerShown: true,
+          headerTitle: 'Detail Pro',
+          headerTitleAlign: 'center',
+        }}
+      >
+        {/* Для таб-навигатора шапку даёт сам Tab.Navigator */}
+        <Stack.Screen
+          name="MainTabs"
+          component={MainTabs}
+          options={{ headerShown: false }}
+        />
         <Stack.Screen name="Login" component={LoginScreen} />
         <Stack.Screen name="Register" component={RegisterScreen} />
-        <Stack.Screen
-          name="Checkout"
-          component={CheckoutScreen}
-          options={{
-            headerShown: true,
-            title: 'Оформление заказа',
-          }}
-        />
-        <Stack.Screen
-          name="OrderDetails"
-          component={OrderDetailsScreen}
-          options={{
-            headerShown: true,
-            title: 'Детали заказа',
-          }}
-        />
-        <Stack.Screen
-          name="ServiceDetails"
-          component={ServiceDetailsScreen}
-          options={{
-            headerShown: true,
-            title: 'Детали услуги',
-            headerBackTitle: 'Назад',
-          }}
-        />
+        <Stack.Screen name="Checkout" component={CheckoutScreen} />
+        <Stack.Screen name="OrderDetails" component={OrderDetailsScreen} />
+        <Stack.Screen name="ServiceDetails" component={ServiceDetailsScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );

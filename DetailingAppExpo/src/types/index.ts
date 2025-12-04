@@ -1,5 +1,3 @@
-// Types for the application
-
 export interface User {
   id: number;
   email: string;
@@ -34,7 +32,7 @@ export interface Service {
   name: string;
   description: string;
   price: number;
-  duration: number; // в минутах
+  duration: number;
   categoryId: number;
 }
 

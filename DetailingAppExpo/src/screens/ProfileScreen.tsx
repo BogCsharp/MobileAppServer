@@ -35,9 +35,6 @@ export const ProfileScreen: React.FC<ProfileScreenProps> = ({ navigation }) => {
   if (!isAuthenticated) {
     return (
       <View style={styles.container}>
-        <View style={styles.header}>
-          <Text style={styles.headerTitle}>Профиль</Text>
-        </View>
         <View style={styles.content}>
           <View style={styles.emptyContainer}>
             <Text style={styles.emptyText}>Для просмотра профиля необходимо войти в систему</Text>
@@ -61,9 +58,6 @@ export const ProfileScreen: React.FC<ProfileScreenProps> = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
-      <View style={styles.header}>
-        <Text style={styles.headerTitle}>Профиль</Text>
-      </View>
       <View style={styles.content}>
         <View style={styles.profileSection}>
           <View style={styles.avatar}>
@@ -106,17 +100,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#f5f5f5',
-  },
-  header: {
-    backgroundColor: '#fff',
-    padding: 16,
-    borderBottomWidth: 1,
-    borderBottomColor: '#e0e0e0',
-  },
-  headerTitle: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    color: '#333',
   },
   content: {
     flex: 1,

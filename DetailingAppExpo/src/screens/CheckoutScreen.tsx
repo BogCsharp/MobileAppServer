@@ -284,37 +284,45 @@ export const CheckoutScreen: React.FC<CheckoutScreenProps> = ({ navigation }) =>
         <Text style={styles.sectionTitle}>Доступные временные слоты</Text>
         {slotsLoading ? (
           <ActivityIndicator size="small" color="#007AFF" />
-        ) : availableSlots.length === 0 ? (
-          <Text style={styles.emptyText}>
-            Нет доступных слотов на выбранную дату
-          </Text>
         ) : (
-          <View style={styles.slotsContainer}>
-            {availableSlots.map((slot) => {
-              const isSelected =
-                selectedSlot?.startTime === slot.startTime &&
-                selectedSlot?.endTime === slot.endTime;
+          (() => {
+            const freeSlots = availableSlots.filter((s) => s.isAvailable);
+            if (freeSlots.length === 0) {
               return (
-                <TouchableOpacity
-                  key={`${slot.startTime}-${slot.endTime}`}
-                  style={[
-                    styles.slotButton,
-                    isSelected && styles.slotButtonActive,
-                  ]}
-                  onPress={() => setSelectedSlot(slot)}
-                >
-                  <Text
-                    style={[
-                      styles.slotButtonText,
-                      isSelected && styles.slotButtonTextActive,
-                    ]}
-                  >
-                    {getSlotLabel(slot)}
-                  </Text>
-                </TouchableOpacity>
+                <Text style={styles.emptyText}>
+                  Нет доступных слотов на выбранную дату
+                </Text>
               );
-            })}
-          </View>
+            }
+            return (
+              <View style={styles.slotsContainer}>
+                {freeSlots.map((slot) => {
+                  const isSelected =
+                    selectedSlot?.startTime === slot.startTime &&
+                    selectedSlot?.endTime === slot.endTime;
+                  return (
+                    <TouchableOpacity
+                      key={`${slot.startTime}-${slot.endTime}`}
+                      style={[
+                        styles.slotButton,
+                        isSelected && styles.slotButtonActive,
+                      ]}
+                      onPress={() => setSelectedSlot(slot)}
+                    >
+                      <Text
+                        style={[
+                          styles.slotButtonText,
+                          isSelected && styles.slotButtonTextActive,
+                        ]}
+                      >
+                        {getSlotLabel(slot)}
+                      </Text>
+                    </TouchableOpacity>
+                  );
+                })}
+              </View>
+            );
+          })()
         )}
       </View>
 

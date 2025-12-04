@@ -49,7 +49,6 @@ export const RegisterScreen: React.FC<RegisterScreenProps> = ({ navigation }) =>
     try {
       let birthdayDate: Date | undefined = undefined;
       if (birthday) {
-        // Парсим дату в формате ГГГГ-ММ-ДД
         const dateParts = birthday.split('-');
         if (dateParts.length === 3) {
           const year = parseInt(dateParts[0], 10);

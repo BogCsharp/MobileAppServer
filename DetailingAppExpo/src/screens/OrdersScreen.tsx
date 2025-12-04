@@ -126,9 +126,6 @@ export const OrdersScreen: React.FC<OrdersScreenProps> = ({ navigation }) => {
   if (!isAuthenticated) {
     return (
       <View style={styles.container}>
-        <View style={styles.header}>
-          <Text style={styles.headerTitle}>Мои заказы</Text>
-        </View>
         <View style={styles.emptyContainer}>
           <Text style={styles.emptyText}>Для просмотра заказов необходимо войти в систему</Text>
           <TouchableOpacity
@@ -144,9 +141,6 @@ export const OrdersScreen: React.FC<OrdersScreenProps> = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
-      <View style={styles.header}>
-        <Text style={styles.headerTitle}>Мои заказы</Text>
-      </View>
       <FlatList
         data={orders}
         renderItem={renderOrder}
@@ -180,17 +174,6 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-  },
-  header: {
-    backgroundColor: '#fff',
-    padding: 16,
-    borderBottomWidth: 1,
-    borderBottomColor: '#e0e0e0',
-  },
-  headerTitle: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    color: '#333',
   },
   listContent: {
     padding: 16,
