@@ -11,7 +11,7 @@ import {
 } from 'react-native';
 import { useAuth } from '../context/AuthContext';
 import { apiService } from '../services/api';
-import { CartItem, TimeSlot } from '../types';
+import { CartItem, TimeSlot, Car } from '../types';
 
 interface CheckoutScreenProps {
   navigation: any;
@@ -40,6 +40,9 @@ export const CheckoutScreen: React.FC<CheckoutScreenProps> = ({ navigation }) =>
   const { user, isAuthenticated } = useAuth();
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
   const [cartLoading, setCartLoading] = useState(true);
+  const [cars, setCars] = useState<Car[]>([]);
+  const [carsLoading, setCarsLoading] = useState(false);
+  const [selectedCarId, setSelectedCarId] = useState<number | null>(null);
   const [slotsLoading, setSlotsLoading] = useState(false);
   const [availableSlots, setAvailableSlots] = useState<TimeSlot[]>([]);
   const [selectedSlot, setSelectedSlot] = useState<TimeSlot | null>(null);
@@ -84,7 +87,14 @@ export const CheckoutScreen: React.FC<CheckoutScreenProps> = ({ navigation }) =>
   useEffect(() => {
     if (!user) return;
     loadCart();
+    loadCars();
   }, [user]);
+
+  useEffect(() => {
+    if (cars.length > 0 && !selectedCarId) {
+      setSelectedCarId(cars[0].id);
+    }
+  }, [cars]);
 
   useEffect(() => {
     if (cartItems.length === 0 || !selectedDate) return;
@@ -102,6 +112,19 @@ export const CheckoutScreen: React.FC<CheckoutScreenProps> = ({ navigation }) =>
       Alert.alert('Ошибка', 'Не удалось загрузить корзину');
     } finally {
       setCartLoading(false);
+    }
+  };
+
+  const loadCars = async () => {
+    if (!user) return;
+    setCarsLoading(true);
+    try {
+      const userCars = await apiService.getCarsByUser(user.id);
+      setCars(userCars);
+    } catch (error) {
+      console.error('Checkout loadCars error', error);
+    } finally {
+      setCarsLoading(false);
     }
   };
 
@@ -135,6 +158,11 @@ export const CheckoutScreen: React.FC<CheckoutScreenProps> = ({ navigation }) =>
       return;
     }
 
+    if (!selectedCarId) {
+      Alert.alert('Ошибка', 'Выберите машину');
+      return;
+    }
+
     if (!selectedSlot) {
       Alert.alert('Ошибка', 'Выберите временной слот');
       return;
@@ -149,7 +177,7 @@ export const CheckoutScreen: React.FC<CheckoutScreenProps> = ({ navigation }) =>
 
       await apiService.createBooking({
         userId: user.id,
-        carId: 1,
+        carId: selectedCarId,
         bookingDate: selectedDate,
         startTime: selectedSlot.startTime,
         totalDurationMinutes,
@@ -239,6 +267,27 @@ export const CheckoutScreen: React.FC<CheckoutScreenProps> = ({ navigation }) =>
     );
   }
 
+  if (cars.length === 0 && !carsLoading) {
+    return (
+      <View style={styles.centerContainer}>
+        <Text style={styles.emptyText}>
+          У вас нет добавленных машин. Пожалуйста, добавьте машину в профиле.
+        </Text>
+        <TouchableOpacity
+          style={styles.primaryButton}
+          onPress={() =>
+            navigation.reset({
+              index: 0,
+              routes: [{ name: 'MainTabs', params: { screen: 'Profile' } }],
+            })
+          }
+        >
+          <Text style={styles.primaryButtonText}>Перейти в профиль</Text>
+        </TouchableOpacity>
+      </View>
+    );
+  }
+
   return (
     <ScrollView style={styles.container} contentContainerStyle={styles.content}>
       <Text style={styles.headerTitle}>Оформление заказа</Text>
@@ -250,6 +299,46 @@ export const CheckoutScreen: React.FC<CheckoutScreenProps> = ({ navigation }) =>
           <Text style={styles.totalLabel}>Итого</Text>
           <Text style={styles.totalValue}>{totalAmount.toFixed(0)} ₽</Text>
         </View>
+      </View>
+
+      <View style={styles.section}>
+        <Text style={styles.sectionTitle}>Выберите машину</Text>
+        {carsLoading ? (
+          <ActivityIndicator size="small" color="#007AFF" />
+        ) : (
+          <View style={styles.carsContainer}>
+            {cars.map((car) => {
+              const isSelected = selectedCarId === car.id;
+              return (
+                <TouchableOpacity
+                  key={car.id}
+                  style={[
+                    styles.carButton,
+                    isSelected && styles.carButtonActive,
+                  ]}
+                  onPress={() => setSelectedCarId(car.id)}
+                >
+                  <Text
+                    style={[
+                      styles.carButtonText,
+                      isSelected && styles.carButtonTextActive,
+                    ]}
+                  >
+                    {car.brand} {car.model} ({car.year})
+                  </Text>
+                  <Text
+                    style={[
+                      styles.carButtonSubtext,
+                      isSelected && styles.carButtonSubtextActive,
+                    ]}
+                  >
+                    {car.color} • {car.carNumber}
+                  </Text>
+                </TouchableOpacity>
+              );
+            })}
+          </View>
+        )}
       </View>
 
       <View style={styles.section}>
@@ -506,6 +595,36 @@ const styles = StyleSheet.create({
   },
   buttonDisabled: {
     opacity: 0.6,
+  },
+  carsContainer: {
+    gap: 12,
+  },
+  carButton: {
+    padding: 16,
+    borderRadius: 10,
+    borderWidth: 1,
+    borderColor: '#e0e0e0',
+    backgroundColor: '#f9f9f9',
+  },
+  carButtonActive: {
+    backgroundColor: '#007AFF',
+    borderColor: '#007AFF',
+  },
+  carButtonText: {
+    fontSize: 16,
+    fontWeight: '600',
+    color: '#333',
+    marginBottom: 4,
+  },
+  carButtonTextActive: {
+    color: '#fff',
+  },
+  carButtonSubtext: {
+    fontSize: 14,
+    color: '#666',
+  },
+  carButtonSubtextActive: {
+    color: '#fff',
   },
 });
 

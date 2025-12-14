@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import {
   View,
   Text,
@@ -8,6 +8,7 @@ import {
   ActivityIndicator,
   Alert,
 } from 'react-native';
+import { useFocusEffect } from '@react-navigation/native';
 import { useAuth } from '../context/AuthContext';
 import { apiService } from '../services/api';
 import { CartItem } from '../types';
@@ -29,6 +30,14 @@ export const CartScreen: React.FC<CartScreenProps> = ({ navigation }) => {
       setLoading(false);
     }
   }, [user]);
+
+  useFocusEffect(
+    useCallback(() => {
+      if (user && isAuthenticated) {
+        loadCart();
+      }
+    }, [user, isAuthenticated])
+  );
 
   const loadCart = async () => {
     if (!user) return;

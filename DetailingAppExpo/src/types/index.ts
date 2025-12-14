@@ -1,3 +1,5 @@
+// Types for the application
+
 export interface User {
   id: number;
   email: string;
@@ -32,7 +34,7 @@ export interface Service {
   name: string;
   description: string;
   price: number;
-  duration: number;
+  duration: number; // в минутах
   categoryId: number;
 }
 
@@ -109,5 +111,26 @@ export interface CreateBookingDTO {
   totalDurationMinutes: number;
   notes?: string;
   orderId?: number;
+}
+
+export interface Car {
+  id: number;
+  brand: string;
+  model: string;
+  year: string;
+  color: string;
+  carNumber: string;
+  userId: number;
+  createdAt: string;
+  updatedAt?: string;
+}
+
+export interface CreateCarDTO {
+  brand: string;
+  model: string;
+  year: string;
+  color: string;
+  carNumber: string;
+  userId: number;
 }
 

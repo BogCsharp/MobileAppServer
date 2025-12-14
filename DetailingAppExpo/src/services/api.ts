@@ -12,6 +12,8 @@ import {
   Booking,
   TimeSlot,
   CreateBookingDTO,
+  Car,
+  CreateCarDTO,
 } from '../types';
 
 class ApiService {
@@ -25,6 +27,7 @@ class ApiService {
       },
     });
 
+    // Interceptor для добавления токена к запросам
     this.api.interceptors.request.use(
       async (config: any) => {
         const token = await AsyncStorage.getItem('accessToken');
@@ -38,6 +41,7 @@ class ApiService {
       }
     );
 
+    // Interceptor для обработки ошибок и обновления токена
     this.api.interceptors.response.use(
       (response: any) => response,
       async (error: any) => {
@@ -68,6 +72,7 @@ class ApiService {
               return this.api(originalRequest);
             }
           } catch (refreshError: any) {
+            // Если обновление токена не удалось, очищаем хранилище
             await AsyncStorage.multiRemove(['accessToken', 'refreshToken', 'user']);
             return Promise.reject(refreshError);
           }
@@ -78,6 +83,7 @@ class ApiService {
     );
   }
 
+  // Helper для маппинга User с сервера
   private mapUser(serverUser: any): any {
     if (!serverUser) return null;
     // Обрабатываем разные варианты структуры ответа
@@ -103,6 +109,7 @@ class ApiService {
       API_ENDPOINTS.AUTH.LOGIN,
       credentials
     );
+    // Маппинг полей с сервера (PascalCase) в формат клиента (camelCase)
     const serverData = response.data;
     const token =
       serverData.AccessToken ||
@@ -124,6 +131,7 @@ class ApiService {
   }
 
   async register(data: RegisterDTO): Promise<AuthResponse> {
+    // Маппинг данных клиента в формат сервера (PascalCase)
     const serverData = {
       Name: data.firstName || '',
       Surname: data.lastName || '',
@@ -138,6 +146,7 @@ class ApiService {
       API_ENDPOINTS.AUTH.REGISTER,
       serverData
     );
+    // Маппинг полей с сервера (PascalCase) в формат клиента (camelCase)
     const responseData = response.data;
     const token =
       responseData.AccessToken ||
@@ -286,6 +295,36 @@ class ApiService {
       API_ENDPOINTS.BOOKINGS.GET_BY_USER(userId)
     );
     return response.data;
+  }
+
+  // Cars methods
+  async getCarById(id: number): Promise<Car> {
+    const response = await this.api.get<Car>(API_ENDPOINTS.CARS.GET_BY_ID(id));
+    return response.data;
+  }
+
+  async getCarsByUser(userId: number): Promise<Car[]> {
+    const response = await this.api.get<Car[]>(
+      API_ENDPOINTS.CARS.GET_BY_USER(userId)
+    );
+    return response.data;
+  }
+
+  async createCar(data: CreateCarDTO): Promise<Car> {
+    const response = await this.api.post<Car>(API_ENDPOINTS.CARS.CREATE, data);
+    return response.data;
+  }
+
+  async updateCar(id: number, data: CreateCarDTO): Promise<Car> {
+    const response = await this.api.put<Car>(
+      API_ENDPOINTS.CARS.UPDATE(id),
+      data
+    );
+    return response.data;
+  }
+
+  async deleteCar(id: number): Promise<void> {
+    await this.api.delete(API_ENDPOINTS.CARS.DELETE(id));
   }
 }
 

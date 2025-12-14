@@ -57,5 +57,12 @@ export const API_ENDPOINTS = {
     GET_BY_ID: (id: number) => `/api/bookings/${id}`,
     GET_BY_USER: (userId: number) => `/api/bookings/user/${userId}`,
   },
+  CARS: {
+    GET_BY_ID: (id: number) => `/api/cars/${id}`,
+    GET_BY_USER: (userId: number) => `/api/cars/user/${userId}`,
+    CREATE: '/api/cars',
+    UPDATE: (id: number) => `/api/cars/${id}`,
+    DELETE: (id: number) => `/api/cars/${id}`,
+  },
 };
 
