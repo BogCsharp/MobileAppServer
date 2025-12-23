@@ -253,7 +253,10 @@ export const ProfileScreen: React.FC<ProfileScreenProps> = ({ navigation }) => {
             <Text style={styles.menuItemArrow}>›</Text>
           </TouchableOpacity>
 
-          <TouchableOpacity style={styles.menuItem}>
+          <TouchableOpacity 
+            style={styles.menuItem}
+            onPress={() => navigation.navigate('Documentation')}
+          >
             <Text style={styles.menuItemText}>О приложении</Text>
             <Text style={styles.menuItemArrow}>›</Text>
           </TouchableOpacity>

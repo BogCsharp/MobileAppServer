@@ -19,6 +19,7 @@ import { ProfileScreen } from '../screens/ProfileScreen';
 import { ServiceDetailsScreen } from '../screens/ServiceDetailsScreen';
 import { CheckoutScreen } from '../screens/CheckoutScreen';
 import { OrderDetailsScreen } from '../screens/OrderDetailsScreen';
+import { DocumentationScreen } from '../screens/DocumentationScreen';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -115,6 +116,14 @@ export function AppNavigator() {
         <Stack.Screen name="Checkout" component={CheckoutScreen} />
         <Stack.Screen name="OrderDetails" component={OrderDetailsScreen} />
         <Stack.Screen name="ServiceDetails" component={ServiceDetailsScreen} />
+        <Stack.Screen 
+          name="Documentation" 
+          component={DocumentationScreen}
+          options={{ 
+            headerTitle: 'Документация',
+            headerTitleAlign: 'center',
+          }} 
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );

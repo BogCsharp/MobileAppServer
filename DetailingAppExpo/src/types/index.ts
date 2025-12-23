@@ -1,5 +1,3 @@
-// Types for the application
-
 export interface User {
   id: number;
   email: string;

@@ -1,7 +1,3 @@
-// API Configuration
-// Для Android эмулятора используйте 'http://10.0.2.2:5266'
-// Для iOS симулятора используйте 'http://localhost:5266'
-// Для физического устройства используйте IP адрес вашего компьютера, например 'http://192.168.1.100:5266'
 import { Platform } from 'react-native';
 import Constants from 'expo-constants';
 
@@ -11,8 +7,6 @@ const getBaseUrl = () => {
       // Для Android эмулятора
       return 'http://10.0.2.2:5266';
     }
-    // Для Expo Go на физическом устройстве используем локальный IP
-    // hostUri имеет формат: "192.168.1.100:8081"
     if (Constants.expoConfig?.hostUri) {
       const hostUri = Constants.expoConfig.hostUri.split(':')[0];
       return `http://${hostUri}:5266`;
@@ -20,7 +14,7 @@ const getBaseUrl = () => {
     // Для iOS симулятора или веб
     return 'http://localhost:5266';
   }
-  return 'https://your-production-api.com'; // Production
+  return 'http://10.0.2.2:5266';
 };
 
 export const API_BASE_URL = getBaseUrl();

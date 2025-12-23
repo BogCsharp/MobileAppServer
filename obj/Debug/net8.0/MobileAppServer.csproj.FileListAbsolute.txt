@@ -114,3 +114,5 @@ C:\Users\Home_PC\Desktop\MobileAppServer\bin\Debug\net8.0\System.IdentityModel.T
 C:\Users\Home_PC\Desktop\MobileAppServer\bin\Debug\net8.0\DetailingAppExpo\package-lock.json
 C:\Users\Home_PC\Desktop\MobileAppServer\bin\Debug\net8.0\DetailingAppExpo\package.json
 C:\Users\Home_PC\Desktop\MobileAppServer\bin\Debug\net8.0\DetailingAppExpo\tsconfig.json
+C:\Users\Home_PC\Desktop\MobileAppServer\bin\Debug\net8.0\DetailingAppExpo\app.json
+C:\Users\Home_PC\Desktop\MobileAppServer\bin\Debug\net8.0\DetailingAppExpo\eas.json

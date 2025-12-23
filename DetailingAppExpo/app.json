@@ -1,0 +1,34 @@
+{
+  "expo": {
+    "name": "DetailPro",
+    "slug": "DetailingAppExpo",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "image": "./assets/splash-icon.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "bc472c46-2967-411f-905d-516217c0372f"
+      }
+    },
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#ffffff"
+      },
+      "package": "com.detailpro"
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "owner": "qwe228"
+  }
+}

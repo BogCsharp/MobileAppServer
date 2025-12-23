@@ -11,6 +11,11 @@
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
+    "extra": {
+      "eas": {
+        "projectId": "bc472c46-2967-411f-905d-516217c0372f"
+      }
+    },
     "ios": {
       "supportsTablet": true
     },
@@ -23,6 +28,7 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "owner": "qwe228"
   }
 }
