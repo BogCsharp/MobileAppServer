@@ -3,6 +3,7 @@ using MailKit.Security;
 using Microsoft.Extensions.Options;
 using MimeKit;
 using MobileAppServer.Abstracts;
+using MobileAppServer.Entities;
 using MobileAppServer.Models.SMTP;
 
 namespace MobileAppServer.Services
@@ -66,6 +67,29 @@ namespace MobileAppServer.Services
 С уважением,
 Команда поддержки";
 
+            await SendEmailAsync(email, subject, body);
+        }
+
+        public async Task SendBookingConfirmationAsync(string email, string userName, OrderEntity orderEntity, BookingEntity bookingEntity, CarEntity carEntity,EmployeeEntity employeeEntity)
+        {
+            var subject = $"Ваш заказ {orderEntity.OrderNumber} создан";
+            var body = $@"
+Здравствуйте, {userName}!
+
+Ваше бронирование успешно создано.
+
+Детали:
+- Дата: {bookingEntity.BookingDate:dd.MM.yyyy}
+- Время: {bookingEntity.StartTime.ToString():hh\\:mm} - {bookingEntity.EndTime.ToString():hh\\:mm}
+- Длительность: {bookingEntity.TotalDurationMinutes} мин.
+- Сотрудник: {employeeEntity.FirstName}
+- Автомобиль: {carEntity.Brand} {carEntity.Model} (госномер {carEntity.CarNumber})
+
+Номер заказа: {orderEntity.OrderNumber}
+
+С уважением,
+Команда DetailPro
+";
             await SendEmailAsync(email, subject, body);
         }
     }

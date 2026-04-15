@@ -11,13 +11,15 @@ namespace MobileAppServer.Services
     {
 		private readonly AppDbContext _context;
 		private readonly IOrderRepository _orderRepository;
-        //private readonly IBackgroundTaskQueue _taskQueue;
-        //private readonly IEmailRepository _emailRepository;
+		private readonly IBackgroundTaskQueue _taskQueue;
+		private readonly IEmailRepository _emailRepository;
 
-        public BookingRepository(AppDbContext context, IOrderRepository orderRepository)
+		public BookingRepository(AppDbContext context, IOrderRepository orderRepository,IBackgroundTaskQueue backgroundTaskQueue,IEmailRepository emailRepository)
         {
 			_context = context;
 			_orderRepository = orderRepository;
+			_taskQueue = backgroundTaskQueue;
+			_emailRepository=emailRepository;
 		}
 
 		public async Task<List<TimeSlotDTO>> GetAvailableSlotsAsync(AvailableSlotsDTO availableSlotsDTO)
@@ -86,15 +88,6 @@ namespace MobileAppServer.Services
                 if (targetEmployee == null)
                     throw new InvalidOperationException("Нет свободных сотрудников на выбранное время");
             }
-   //         var overlap = await _context.Bookings
-			//	.AsNoTracking()
-			//	.AnyAsync(b => b.BookingDate >= dayStart && b.BookingDate < dayEnd &&
-			//		(startTime < b.EndTime && endTime > b.StartTime));
-			//if (overlap)
-			//{
-			//	throw new InvalidOperationException("Выбранный слот уже занят");
-			//}
-
 			var composedNotes = BuildBookingNote(dayStart, startTime, totalDurationMinutes, notes);
 			var order = await _orderRepository.CreateFromCartAsync(userId, carId, targetEmployee.Id, composedNotes, null);
 
@@ -112,7 +105,19 @@ namespace MobileAppServer.Services
 			};
 			_context.Set<BookingEntity>().Add(booking);
 			await _context.SaveChangesAsync();
-			return booking;
+            var user = await _context.Users.FindAsync(userId);
+            if (user != null && !string.IsNullOrEmpty(user.Email))
+            {
+                var car = await _context.Cars.FindAsync(carId);
+                var employee = await _context.Employee.FindAsync(targetEmployee.Id);
+				var orderNumber = await _context.Orders.FindAsync(booking.OrderId);
+
+                _taskQueue.QueueBackgroundWorkItem(async token =>
+                {
+                    await _emailRepository.SendBookingConfirmationAsync(user.Email, user.Name, orderNumber, booking, car, employee);
+                });
+            }
+            return booking;
 		}
 
 
