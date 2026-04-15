@@ -234,3 +234,8 @@ C:\Users\Home_PC\Desktop\ТРМПКурсач\MobileAppServer\obj\Debug\net8.0\r
 C:\Users\Home_PC\Desktop\ТРМПКурсач\MobileAppServer\obj\Debug\net8.0\MobileAppServer.pdb
 C:\Users\Home_PC\Desktop\ТРМПКурсач\MobileAppServer\obj\Debug\net8.0\MobileAppServer.genruntimeconfig.cache
 C:\Users\Home_PC\Desktop\ТРМПКурсач\MobileAppServer\obj\Debug\net8.0\ref\MobileAppServer.dll
+C:\Users\Home_PC\Desktop\ТРМПКурсач\MobileAppServer\bin\Debug\net8.0\BouncyCastle.Cryptography.dll
+C:\Users\Home_PC\Desktop\ТРМПКурсач\MobileAppServer\bin\Debug\net8.0\MailKit.dll
+C:\Users\Home_PC\Desktop\ТРМПКурсач\MobileAppServer\bin\Debug\net8.0\MimeKit.dll
+C:\Users\Home_PC\Desktop\ТРМПКурсач\MobileAppServer\bin\Debug\net8.0\System.Security.Cryptography.Pkcs.dll
+C:\Users\Home_PC\Desktop\ТРМПКурсач\MobileAppServer\bin\Debug\net8.0\runtimes\win\lib\net8.0\System.Security.Cryptography.Pkcs.dll

@@ -13,3 +13,5 @@
 .externalNativeBuild
 .cxx
 local.properties
+appsettings.json
+appsettings.*.json

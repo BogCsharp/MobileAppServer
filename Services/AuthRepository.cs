@@ -4,7 +4,9 @@ using MobileAppServer.Data;
 using MobileAppServer.Entities;
 using MobileAppServer.Mappers;
 using MobileAppServer.Models.Identity;
+using MobileAppServer.Queue;
 using StackExchange.Redis;
+using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
 namespace MobileAppServer.Services
@@ -16,14 +18,18 @@ namespace MobileAppServer.Services
         private readonly IConnectionMultiplexer _redis;
         private readonly IPasswordRepository _passwordRepository;
         private readonly IDatabase _db;
+        private readonly IBackgroundTaskQueue _backgroundTaskQueue;
+        private readonly IEmailRepository _emailRepository;
 
-        public AuthRepository(AppDbContext context, IJwtRepository jwtService, IPasswordRepository passwordRepository,IConnectionMultiplexer connectionMultiplexer)
+        public AuthRepository(AppDbContext context, IJwtRepository jwtService, IPasswordRepository passwordRepository,IConnectionMultiplexer connectionMultiplexer, IEmailRepository emailRepository,IBackgroundTaskQueue backgroundService )
         {
             _context = context;
-            _redis= connectionMultiplexer;
+            _redis = connectionMultiplexer;
             _jwtService = jwtService;
             _passwordRepository = passwordRepository;
             _db = connectionMultiplexer.GetDatabase();
+            _emailRepository = emailRepository;
+            _backgroundTaskQueue = backgroundService;
         }
 
         public async Task<AuthResponseDTO> LoginAsync(LoginDTO loginDTO)
@@ -108,6 +114,10 @@ namespace MobileAppServer.Services
             var refreshToken=_passwordRepository.GenerateRefreshToken();
             var expiry = TimeSpan.FromHours(1);
             await _jwtService.StoreTokensAsync(user.Id, accessToken, refreshToken, expiry);
+            _backgroundTaskQueue.QueueBackgroundWorkItem(async token =>
+            {
+                await _emailRepository.SendWelcomeEmailAsync(registerDTO.Email, registerDTO.Name);
+            });
             return user.ToAuthResponse(accessToken, refreshToken, expiry, "Регистрация успешна!");
 
         }

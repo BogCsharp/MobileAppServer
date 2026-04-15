@@ -3,6 +3,7 @@ using MobileAppServer.Abstracts;
 using MobileAppServer.Data;
 using MobileAppServer.Entities;
 using MobileAppServer.Models.Booking;
+using MobileAppServer.Queue;
 
 namespace MobileAppServer.Services
 {
@@ -10,8 +11,10 @@ namespace MobileAppServer.Services
     {
 		private readonly AppDbContext _context;
 		private readonly IOrderRepository _orderRepository;
+        //private readonly IBackgroundTaskQueue _taskQueue;
+        //private readonly IEmailRepository _emailRepository;
 
-		public BookingRepository(AppDbContext context, IOrderRepository orderRepository)
+        public BookingRepository(AppDbContext context, IOrderRepository orderRepository)
         {
 			_context = context;
 			_orderRepository = orderRepository;

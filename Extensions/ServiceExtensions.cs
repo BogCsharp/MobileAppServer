@@ -4,6 +4,8 @@ using Microsoft.IdentityModel.Tokens;
 using MobileAppServer.Abstracts;
 using MobileAppServer.Data;
 using MobileAppServer.Models;
+using MobileAppServer.Models.SMTP;
+using MobileAppServer.Queue;
 using MobileAppServer.Services;
 using StackExchange.Redis;
 using System.Text;
@@ -27,6 +29,17 @@ namespace MobileAppServer.Extensions
             builder.Services.AddScoped<IJwtRepository, JwtRepository>();
             builder.Services.AddSingleton<IPasswordRepository, PasswordRepository>();
             builder.Services.AddScoped<IAuthRepository, AuthRepository>();
+            builder.Services.AddScoped<IEmailRepository, EmailRepository>();
+            //Add Queue
+            builder.Services.AddSingleton<IBackgroundTaskQueue, BackgroundTaskQueue>();
+            builder.Services.AddHostedService<QueuedHostedService>();
+            builder.Services.Configure<HostOptions>(options =>
+            {
+                options.BackgroundServiceExceptionBehavior = BackgroundServiceExceptionBehavior.Ignore;
+            });
+
+            //Add SMTP Settings
+            builder.Services.Configure<SmtpSettings>(builder.Configuration.GetSection("SmtpSettings"));
             return builder;
         }
         public static WebApplicationBuilder AddJwtAuthentication(this WebApplicationBuilder builder)
