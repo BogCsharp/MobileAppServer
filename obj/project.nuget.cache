@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "X+nGXTGLtLY=",
+  "dgSpecHash": "JOgD30tM2h8=",
   "success": true,
-  "projectFilePath": "C:\\Users\\Home_PC\\Desktop\\MobileAppServer\\MobileAppServer.csproj",
+  "projectFilePath": "C:\\Users\\Home_PC\\Desktop\\ТРМПКурсач\\MobileAppServer\\MobileAppServer.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Home_PC\\.nuget\\packages\\bcrypt.net-next\\4.0.3\\bcrypt.net-next.4.0.3.nupkg.sha512",
     "C:\\Users\\Home_PC\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",

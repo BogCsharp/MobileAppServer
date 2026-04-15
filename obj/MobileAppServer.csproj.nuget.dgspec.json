@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Home_PC\\Desktop\\MobileAppServer\\MobileAppServer.csproj": {}
+    "C:\\Users\\Home_PC\\Desktop\\ТРМПКурсач\\MobileAppServer\\MobileAppServer.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Home_PC\\Desktop\\MobileAppServer\\MobileAppServer.csproj": {
+    "C:\\Users\\Home_PC\\Desktop\\ТРМПКурсач\\MobileAppServer\\MobileAppServer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Home_PC\\Desktop\\MobileAppServer\\MobileAppServer.csproj",
+        "projectUniqueName": "C:\\Users\\Home_PC\\Desktop\\ТРМПКурсач\\MobileAppServer\\MobileAppServer.csproj",
         "projectName": "MobileAppServer",
-        "projectPath": "C:\\Users\\Home_PC\\Desktop\\MobileAppServer\\MobileAppServer.csproj",
+        "projectPath": "C:\\Users\\Home_PC\\Desktop\\ТРМПКурсач\\MobileAppServer\\MobileAppServer.csproj",
         "packagesPath": "C:\\Users\\Home_PC\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Home_PC\\Desktop\\MobileAppServer\\obj\\",
+        "outputPath": "C:\\Users\\Home_PC\\Desktop\\ТРМПКурсач\\MobileAppServer\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -107,7 +107,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.307/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.313/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

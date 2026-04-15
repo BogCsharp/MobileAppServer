@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "DetailingAppExpo",
+    "name": "DetailPro",
     "slug": "DetailingAppExpo",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -24,7 +24,7 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.detailingappexpo"
+      "package": "com.detailpro"
     },
     "web": {
       "favicon": "./assets/favicon.png"

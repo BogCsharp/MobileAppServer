@@ -7,6 +7,7 @@
         public string Phone { get; set; } = string.Empty;
         public string Email { get; set; } = string.Empty;
         public string Position { get; set; } = string.Empty;
+        public bool isActive { get; set; }
 
         public List<OrderEntity> Orders { get; set; } = new();
 
