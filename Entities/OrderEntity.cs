@@ -1,4 +1,6 @@
-﻿namespace MobileAppServer.Entities
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace MobileAppServer.Entities
 {
     public class OrderEntity:BaseEntity
     {
@@ -24,11 +26,23 @@
     }
     public enum OrderStatus
     {
-        Pending,        
-        Confirmed,      
-        InProgress,     
-        Completed,     
-        Cancelled,     
-        Paid           
+        [Display(Name = "Ожидает подтверждения")]
+        Pending,
+
+        [Display(Name = "Подтверждён")]
+        Confirmed,
+
+        [Display(Name = "В процессе")]
+        InProgress,
+
+        [Display(Name = "Завершён")]
+        Completed,
+
+        [Display(Name = "Отменён")]
+        Cancelled,
+
+        [Display(Name = "Оплачен")]
+        Paid
     }
+
 }

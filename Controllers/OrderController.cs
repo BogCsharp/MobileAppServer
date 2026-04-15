@@ -1,8 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MobileAppServer.Abstracts;
+using MobileAppServer.Data;
 using MobileAppServer.Entities;
+using MobileAppServer.Extensions;
 using MobileAppServer.Mappers;
 using MobileAppServer.Models.Service;
+using MobileAppServer.Queue;
 
 namespace MobileAppServer.Controllers
 {
@@ -11,10 +14,16 @@ namespace MobileAppServer.Controllers
     public class OrderController : ControllerBase
     {
         private readonly IOrderRepository _orderRepo;
+        private readonly IBackgroundTaskQueue _backgroundTaskQueue;
+        private readonly IEmailRepository _emailRepo;
+        private readonly AppDbContext _context;
 
-        public OrderController(IOrderRepository orderRepo)
+        public OrderController(IOrderRepository orderRepo, IEmailRepository emailRepo,IBackgroundTaskQueue backgroundTaskQueue,AppDbContext appDbContext)
         {
+            _backgroundTaskQueue = backgroundTaskQueue;
             _orderRepo = orderRepo;
+            _emailRepo = emailRepo;
+            _context = appDbContext;
         }
 
         [HttpGet("{id:long}")]
@@ -129,6 +138,17 @@ namespace MobileAppServer.Controllers
                 }
 
                 var updated = await _orderRepo.UpdateAsync(order);
+                var user = await _context.Users.FindAsync(order.UserId);
+                if (user != null && !string.IsNullOrEmpty(user.Email))
+                {
+                    _backgroundTaskQueue.QueueBackgroundWorkItem(async token =>
+                    {
+                        await _emailRepo.SendOrderStatusChangedAsync(
+                            user.Email,
+                            order.OrderNumber,
+                            dto.Status.GetDisplayName());
+                    });
+                }
                 return Ok(updated.ToDto());
             }
             catch (KeyNotFoundException ex)

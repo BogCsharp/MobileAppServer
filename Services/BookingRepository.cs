@@ -89,33 +89,44 @@ namespace MobileAppServer.Services
                     throw new InvalidOperationException("Нет свободных сотрудников на выбранное время");
             }
 			var composedNotes = BuildBookingNote(dayStart, startTime, totalDurationMinutes, notes);
-			var order = await _orderRepository.CreateFromCartAsync(userId, carId, targetEmployee.Id, composedNotes, null);
-
-			var booking = new BookingEntity
-			{
-				UserId = userId,
-				CarId = carId,
-				EmployeeId = targetEmployee.Id,
-				BookingDate = dayStart,
-				StartTime = startTime,
-				EndTime = endTime,
-				TotalDurationMinutes = totalDurationMinutes,
-				Notes = notes ?? string.Empty,
-				OrderId = order.Id
-			};
-			_context.Set<BookingEntity>().Add(booking);
-			await _context.SaveChangesAsync();
-            var user = await _context.Users.FindAsync(userId);
-            if (user != null && !string.IsNullOrEmpty(user.Email))
+            BookingEntity booking = null;
+            OrderEntity order = null;
+            using var transaction = await _context.Database.BeginTransactionAsync();
+            try
             {
-                var car = await _context.Cars.FindAsync(carId);
-                var employee = await _context.Employee.FindAsync(targetEmployee.Id);
-				var orderNumber = await _context.Orders.FindAsync(booking.OrderId);
+                order = await _orderRepository.CreateFromCartAsync(userId, carId, targetEmployee.Id, composedNotes, null);
 
-                _taskQueue.QueueBackgroundWorkItem(async token =>
+                booking = new BookingEntity
                 {
-                    await _emailRepository.SendBookingConfirmationAsync(user.Email, user.Name, orderNumber, booking, car, employee);
-                });
+                    UserId = userId,
+                    CarId = carId,
+                    EmployeeId = targetEmployee.Id,
+                    BookingDate = dayStart,
+                    StartTime = startTime,
+                    EndTime = endTime,
+                    TotalDurationMinutes = totalDurationMinutes,
+                    Notes = notes ?? string.Empty,
+                    OrderId = order.Id
+                };
+                _context.Set<BookingEntity>().Add(booking);
+                await _context.SaveChangesAsync();
+                await transaction.CommitAsync();
+                var user = await _context.Users.FindAsync(userId);
+                if (user != null && !string.IsNullOrEmpty(user.Email))
+                {
+                    var car = await _context.Cars.FindAsync(carId);
+                    var employee = await _context.Employee.FindAsync(targetEmployee.Id);
+
+                    _taskQueue.QueueBackgroundWorkItem(async token =>
+                    {
+                        await _emailRepository.SendBookingConfirmationAsync(user.Email, user.Name, order, booking, car, employee);
+                    });
+                }
+            }
+			catch
+			{
+                await transaction.RollbackAsync();
+                throw;
             }
             return booking;
 		}

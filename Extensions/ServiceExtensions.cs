@@ -8,11 +8,19 @@ using MobileAppServer.Models.SMTP;
 using MobileAppServer.Queue;
 using MobileAppServer.Services;
 using StackExchange.Redis;
+using System.ComponentModel.DataAnnotations;
+using System.Reflection;
 using System.Text;
 namespace MobileAppServer.Extensions
 {
     public static class ServiceExtensions
     {
+        public static string GetDisplayName(this Enum enumValue)
+        {
+            var member = enumValue.GetType().GetMember(enumValue.ToString()).FirstOrDefault();
+            var displayAttr = member?.GetCustomAttribute<DisplayAttribute>();
+            return displayAttr?.Name ?? enumValue.ToString();
+        }
         public static WebApplicationBuilder AddData(this WebApplicationBuilder builder)
         {
             builder.Services.AddDbContext<AppDbContext>(options =>
