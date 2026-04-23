@@ -2,6 +2,7 @@
 using MobileAppServer.Abstracts;
 using MobileAppServer.Data;
 using MobileAppServer.Entities;
+using MobileAppServer.Models.Employee;
 using MobileAppServer.Models.Order;
 
 namespace MobileAppServer.Services
@@ -189,5 +190,50 @@ namespace MobileAppServer.Services
                 DailyBreakdown = dailyBreakdown
             };
         }
+
+        public async Task<EmployeeEarningsDTO> GetEmployeeEarningsByIdAsync(long employeeId, DateTime startDate, DateTime endDate)
+        {
+            var fromDate=startDate;
+            var toDate=endDate.AddDays(1).AddTicks(-1);
+            var query=_dbContext.Orders.Where(o => o.Status == OrderStatus.Completed).Where(o => o.CompletedAt >= fromDate && o.CompletedAt <= toDate).Join(_dbContext.Bookings,
+              order => order.Id,
+              booking => booking.OrderId,
+              (order, booking) => new { order, booking })
+        .Where(join => join.booking.EmployeeId == employeeId)
+        .Select(join => new
+        {
+            join.order.TotalAmount,
+            join.booking.EmployeeId,
+            EmployeeName = join.booking.Employee.FirstName
+        }); ;
+            var result = await query
+        .GroupBy(x => new { x.EmployeeId, x.EmployeeName })
+        .Select(g => new EmployeeEarningsDTO
+        {
+            EmployeeId = g.Key.EmployeeId,
+            EmployeeName = g.Key.EmployeeName,
+            CompletedOrdersCount = g.Count(),
+            TotalOrderAmount = g.Sum(x => x.TotalAmount),
+            Earnings = g.Sum(x => x.TotalAmount) * 0.30m
+        })
+        .FirstOrDefaultAsync();
+
+            if (result == null)
+            {
+                // Если нет заказов, возвращаем пустой объект с нулями
+                var employee = await _dbContext.Employee.FindAsync(employeeId);
+                return new EmployeeEarningsDTO
+                {
+                    EmployeeId = employeeId,
+                    EmployeeName = employee?.FirstName ?? "Мастер",
+                    CompletedOrdersCount = 0,
+                    TotalOrderAmount = 0,
+                    Earnings = 0
+                };
+            }
+
+            return result;
+        }
+
     }
 }

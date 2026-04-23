@@ -662,6 +662,58 @@
   },
   {
     "ContainingType": "MobileAppServer.Controllers.OrderController",
+    "Method": "Update",
+    "RelativePath": "api/orders/earnings-by-employee",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "MobileAppServer.Models.Service.OrderDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "MobileAppServer.Models.Service.OrderDTO",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "MobileAppServer.Controllers.OrderController",
+    "Method": "GetEmployeeEarnings",
+    "RelativePath": "api/orders/employee-earn",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "MobileAppServer.Models.Employee.EmployeePeriodRequestDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "MobileAppServer.Models.Employee.EmployeeEarningsDTO",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "MobileAppServer.Controllers.OrderController",
     "Method": "CreateFromCart",
     "RelativePath": "api/orders/from-cart",
     "HttpMethod": "POST",

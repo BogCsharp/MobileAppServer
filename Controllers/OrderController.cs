@@ -1,13 +1,16 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using MobileAppServer.Abstracts;
 using MobileAppServer.Data;
 using MobileAppServer.Entities;
 using MobileAppServer.Extensions;
 using MobileAppServer.Mappers;
+using MobileAppServer.Models.Employee;
 using MobileAppServer.Models.Order;
 using MobileAppServer.Models.Service;
 using MobileAppServer.Queue;
 using MobileAppServer.Services;
+using System.Security.Claims;
 
 namespace MobileAppServer.Controllers
 {
@@ -88,6 +91,25 @@ namespace MobileAppServer.Controllers
             var report = await _orderRepo.GetRevenueReportAsync(request.StartDate, request.EndDate);
             return Ok(report);
         }
+        [HttpPost("employee-earn")]//route для мастеров
+        public async Task<ActionResult<EmployeeEarningsDTO>> GetEmployeeEarnings([FromBody]EmployeePeriodRequestDTO request)
+        {
+            if (request.StartDate > request.EndDate)
+                return BadRequest("StartDate must be less than or equal to EndDate");
+
+            var email = User.FindFirst(ClaimTypes.Email)?.Value;
+            if (string.IsNullOrEmpty(email))
+                return Unauthorized("Email not found in token");
+
+            var employee = await _context.Employee
+                .FirstOrDefaultAsync(e => e.Email == email && e.isActive);
+            if (employee == null)
+                return NotFound("Вы не зарегистрированы как мастер");
+
+            var report = await _orderRepo.GetEmployeeEarningsByIdAsync(employee.Id, request.StartDate, request.EndDate);
+            return Ok(report);
+        }
+        [HttpPost("earnings-by-employee")]//route для админа
 
         [HttpPut("{id:long}")]
         public async Task<ActionResult<OrderDTO>> Update(long id, OrderDTO dto)
