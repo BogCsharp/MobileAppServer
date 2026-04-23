@@ -202,7 +202,7 @@ namespace MobileAppServer.Services
         .Where(join => join.booking.EmployeeId == employeeId)
         .Select(join => new
         {
-            join.order.TotalAmount,
+            join.order.FinalAmount,
             join.booking.EmployeeId,
             EmployeeName = join.booking.Employee.FirstName
         }); ;
@@ -213,8 +213,8 @@ namespace MobileAppServer.Services
             EmployeeId = g.Key.EmployeeId,
             EmployeeName = g.Key.EmployeeName,
             CompletedOrdersCount = g.Count(),
-            TotalOrderAmount = g.Sum(x => x.TotalAmount),
-            Earnings = g.Sum(x => x.TotalAmount) * 0.30m
+            TotalOrderAmount = g.Sum(x => x.FinalAmount),
+            Earnings = g.Sum(x => x.FinalAmount) * 0.30m
         })
         .FirstOrDefaultAsync();
 

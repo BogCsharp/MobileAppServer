@@ -662,21 +662,21 @@
   },
   {
     "ContainingType": "MobileAppServer.Controllers.OrderController",
-    "Method": "Update",
-    "RelativePath": "api/orders/earnings-by-employee",
+    "Method": "GetEmployeeEarnings",
+    "RelativePath": "api/orders/employee-earn",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "dto",
-        "Type": "MobileAppServer.Models.Service.OrderDTO",
+        "Name": "request",
+        "Type": "MobileAppServer.Models.Employee.EmployeePeriodRequestDTO",
         "IsRequired": true
       }
     ],
     "ReturnTypes": [
       {
-        "Type": "MobileAppServer.Models.Service.OrderDTO",
+        "Type": "MobileAppServer.Models.Employee.EmployeeEarningsDTO",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -688,8 +688,8 @@
   },
   {
     "ContainingType": "MobileAppServer.Controllers.OrderController",
-    "Method": "GetEmployeeEarnings",
-    "RelativePath": "api/orders/employee-earn",
+    "Method": "GetEarningsForEmployee",
+    "RelativePath": "api/orders/employee-earn-admin",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
