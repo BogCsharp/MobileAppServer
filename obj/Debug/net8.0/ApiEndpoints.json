@@ -688,6 +688,32 @@
   },
   {
     "ContainingType": "MobileAppServer.Controllers.OrderController",
+    "Method": "GetRevenueReport",
+    "RelativePath": "api/orders/revenue",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "MobileAppServer.Models.Order.PeriodReportRequestDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "MobileAppServer.Models.Order.ResponceReportDTO",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "MobileAppServer.Controllers.OrderController",
     "Method": "GetByUser",
     "RelativePath": "api/orders/user/{userId}",
     "HttpMethod": "GET",

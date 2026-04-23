@@ -2,6 +2,7 @@
 using MobileAppServer.Abstracts;
 using MobileAppServer.Data;
 using MobileAppServer.Entities;
+using MobileAppServer.Models.Order;
 
 namespace MobileAppServer.Services
 {
@@ -163,6 +164,30 @@ namespace MobileAppServer.Services
         private static string GenerateOrderNumber()
         {
             return $"ORD-{DateTime.Now:yyyyMMdd}-{Guid.NewGuid().ToString("N")[..8].ToUpper()}";
+        }
+
+        public async Task<ResponceReportDTO> GetRevenueReportAsync(DateTime startDate, DateTime endDate)
+        {
+            var fromDate = startDate.Date;
+            //до конца дня 
+            var toDate = endDate.Date.AddDays(1).AddTicks(-1);
+            var query=_dbContext.Orders.Where(o=>o.Status==OrderStatus.Completed).Where(o=>o.CompletedAt>=fromDate&&o.CompletedAt<=toDate);
+            var totalRevenue = await query.SumAsync(o => o.FinalAmount);
+            var ordersCount=await query.CountAsync();
+            var dailyBreakdown = await query.GroupBy(o => o.CompletedAt.Value.Date).Select(g => new DailyRevenueDTO
+            {
+                Date = g.Key,
+                Revenue = g.Sum(o => o.FinalAmount),
+                OrdersCount = g.Count()
+            }).OrderBy(d => d.Date).ToListAsync();
+            return new ResponceReportDTO
+            {
+                StartDate = fromDate,
+                EndDate = toDate,
+                TotalRevenue = totalRevenue,
+                OrdersCount = ordersCount,
+                DailyBreakdown = dailyBreakdown
+            };
         }
     }
 }

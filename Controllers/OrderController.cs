@@ -4,8 +4,10 @@ using MobileAppServer.Data;
 using MobileAppServer.Entities;
 using MobileAppServer.Extensions;
 using MobileAppServer.Mappers;
+using MobileAppServer.Models.Order;
 using MobileAppServer.Models.Service;
 using MobileAppServer.Queue;
+using MobileAppServer.Services;
 
 namespace MobileAppServer.Controllers
 {
@@ -76,6 +78,15 @@ namespace MobileAppServer.Controllers
             {
                 return StatusCode(500, $"Internal server error: {ex.Message}");
             }
+        }
+        [HttpPost("revenue")]
+        public async Task<ActionResult<ResponceReportDTO>> GetRevenueReport([FromBody]PeriodReportRequestDTO request)
+        {
+            if (request.StartDate > request.EndDate)
+                return BadRequest("StartDate must be less than or equal to EndDate");
+
+            var report = await _orderRepo.GetRevenueReportAsync(request.StartDate, request.EndDate);
+            return Ok(report);
         }
 
         [HttpPut("{id:long}")]
