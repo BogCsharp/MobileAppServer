@@ -44,6 +44,13 @@ export const API_ENDPOINTS = {
     GET_BY_ID: (id: number) => `/api/orders/${id}`,
     GET_BY_USER: (userId: number) => `/api/orders/user/${userId}`,
     CREATE_FROM_CART: '/api/orders/from-cart',
+    UPDATE_STATUS: (id: number) => `/api/orders/${id}/status`,
+    EMPLOYEE_EARN: '/api/orders/employee-earn',
+  },
+  EMPLOYEE: {
+    ME: '/api/employee/me',
+    UPDATE_ACTIVE: '/api/employee/me/active',
+    MY_ORDERS: '/api/employee/me/orders',
   },
   BOOKINGS: {
     GET_AVAILABLE_SLOTS: '/api/bookings/available-slots',

@@ -14,6 +14,9 @@ import {
   CreateBookingDTO,
   Car,
   CreateCarDTO,
+  EmployeeProfile,
+  EmployeeEarnings,
+  OrderStatus,
 } from '../types';
 
 class ApiService {
@@ -100,6 +103,8 @@ class ApiService {
       email: userEmail,
       firstName: serverUser.Name ?? serverUser.name ?? serverUser.firstName ?? '',
       lastName: serverUser.Surname ?? serverUser.surname ?? serverUser.lastName ?? '',
+      roleId: serverUser.RoleId ?? serverUser.roleId,
+      roleName: serverUser.RoleName ?? serverUser.roleName,
     };
   }
 
@@ -249,6 +254,67 @@ class ApiService {
       data
     );
     return response.data;
+  }
+
+  async updateOrderStatus(id: number, status: OrderStatus): Promise<Order> {
+    const response = await this.api.patch<Order>(
+      API_ENDPOINTS.ORDERS.UPDATE_STATUS(id),
+      { status }
+    );
+    return response.data;
+  }
+
+  async getMyEmployeeProfile(): Promise<EmployeeProfile> {
+    const response = await this.api.get<any>(API_ENDPOINTS.EMPLOYEE.ME);
+    const data = response.data;
+    return {
+      id: data.Id ?? data.id,
+      firstName: data.FirstName ?? data.firstName ?? '',
+      lastName: data.LastName ?? data.lastName ?? '',
+      email: data.Email ?? data.email ?? '',
+      phone: data.Phone ?? data.phone ?? '',
+      position: data.Position ?? data.position ?? '',
+      isActive: data.IsActive ?? data.isActive ?? false,
+      userId: data.UserId ?? data.userId,
+    };
+  }
+
+  async updateMyEmployeeActive(isActive: boolean): Promise<EmployeeProfile> {
+    const response = await this.api.patch<any>(API_ENDPOINTS.EMPLOYEE.UPDATE_ACTIVE, {
+      isActive,
+    });
+    const data = response.data;
+    return {
+      id: data.Id ?? data.id,
+      firstName: data.FirstName ?? data.firstName ?? '',
+      lastName: data.LastName ?? data.lastName ?? '',
+      email: data.Email ?? data.email ?? '',
+      phone: data.Phone ?? data.phone ?? '',
+      position: data.Position ?? data.position ?? '',
+      isActive: data.IsActive ?? data.isActive ?? false,
+      userId: data.UserId ?? data.userId,
+    };
+  }
+
+  async getMyEmployeeOrders(): Promise<Order[]> {
+    const response = await this.api.get<Order[]>(API_ENDPOINTS.EMPLOYEE.MY_ORDERS);
+    return response.data;
+  }
+
+  async getMyEmployeeEarnings(startDate: string, endDate: string): Promise<EmployeeEarnings> {
+    const response = await this.api.post<any>(API_ENDPOINTS.ORDERS.EMPLOYEE_EARN, {
+      startDate,
+      endDate,
+      employeeId: 0,
+    });
+    const data = response.data;
+    return {
+      employeeId: data.EmployeeId ?? data.employeeId,
+      employeeName: data.EmployeeName ?? data.employeeName ?? 'Мастер',
+      completedOrdersCount: data.CompletedOrdersCount ?? data.completedOrdersCount ?? 0,
+      totalOrderAmount: data.TotalOrderAmount ?? data.totalOrderAmount ?? 0,
+      earnings: data.Earnings ?? data.earnings ?? 0,
+    };
   }
 
   // Bookings methods

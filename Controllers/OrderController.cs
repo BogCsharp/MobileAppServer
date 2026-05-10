@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MobileAppServer.Abstracts;
 using MobileAppServer.Data;
@@ -160,11 +161,30 @@ namespace MobileAppServer.Controllers
         }
 
         [HttpPatch("{id:long}/status")]
+        [Authorize]
         public async Task<ActionResult<OrderDTO>> UpdateStatus(long id, [FromBody] UpdateOrderStatusDTO dto)
         {
             try
             {
+                var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+                if (string.IsNullOrEmpty(userIdClaim))
+                {
+                    return Unauthorized("Пользователь не определен");
+                }
+
+                var userId = long.Parse(userIdClaim);
+                var employee = await _context.Employee.FirstOrDefaultAsync(e => e.UserId == userId);
+                if (employee == null)
+                {
+                    return Forbid();
+                }
+
                 var order = await _orderRepo.GetByIdAsync(id);
+                if (order.EmployeeId != employee.Id)
+                {
+                    return Forbid();
+                }
+
                 order.Status = dto.Status;
                 
                 if (dto.Status == OrderStatus.Completed)

@@ -20,6 +20,9 @@ import { ServiceDetailsScreen } from '../screens/ServiceDetailsScreen';
 import { CheckoutScreen } from '../screens/CheckoutScreen';
 import { OrderDetailsScreen } from '../screens/OrderDetailsScreen';
 import { DocumentationScreen } from '../screens/DocumentationScreen';
+import { EmployeeDashboardScreen } from '../screens/EmployeeDashboardScreen';
+import { EmployeeOrdersScreen } from '../screens/EmployeeOrdersScreen';
+import { EmployeeEarningsScreen } from '../screens/EmployeeEarningsScreen';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -85,8 +88,53 @@ function MainTabs() {
   );
 }
 
+function EmployeeTabs() {
+  return (
+    <Tab.Navigator
+      screenOptions={({ route }) => ({
+        tabBarActiveTintColor: '#007AFF',
+        tabBarInactiveTintColor: '#999',
+        headerTitle: 'Кабинет мастера',
+        headerTitleAlign: 'center',
+        tabBarStyle: {
+          borderTopWidth: 1,
+          borderTopColor: '#e0e0e0',
+        },
+        tabBarIcon: ({ color, size }) => {
+          let iconName: keyof typeof Ionicons.glyphMap = 'briefcase-outline';
+          if (route.name === 'EmployeeHome') {
+            iconName = 'briefcase-outline';
+          } else if (route.name === 'EmployeeOrders') {
+            iconName = 'list-outline';
+          } else if (route.name === 'EmployeeEarnings') {
+            iconName = 'wallet-outline';
+          }
+          return <Ionicons name={iconName} size={size} color={color} />;
+        },
+      })}
+    >
+      <Tab.Screen
+        name="EmployeeHome"
+        component={EmployeeDashboardScreen}
+        options={{ tabBarLabel: 'Кабинет' }}
+      />
+      <Tab.Screen
+        name="EmployeeOrders"
+        component={EmployeeOrdersScreen}
+        options={{ tabBarLabel: 'Мои заказы' }}
+      />
+      <Tab.Screen
+        name="EmployeeEarnings"
+        component={EmployeeEarningsScreen}
+        options={{ tabBarLabel: 'Зарплата' }}
+      />
+    </Tab.Navigator>
+  );
+}
+
 export function AppNavigator() {
-  const { isAuthenticated, isLoading } = useAuth();
+  const { user, isLoading } = useAuth();
+  const isEmployee = user?.roleId === 2 || user?.roleName === 'Employee';
 
   if (isLoading) {
     return (
@@ -108,7 +156,7 @@ export function AppNavigator() {
         {/* Для таб-навигатора шапку даёт сам Tab.Navigator */}
         <Stack.Screen
           name="MainTabs"
-          component={MainTabs}
+          component={isEmployee ? EmployeeTabs : MainTabs}
           options={{ headerShown: false }}
         />
         <Stack.Screen name="Login" component={LoginScreen} />

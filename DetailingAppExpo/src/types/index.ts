@@ -3,6 +3,8 @@ export interface User {
   email: string;
   firstName?: string;
   lastName?: string;
+  roleId?: number;
+  roleName?: string;
 }
 
 export interface AuthResponse {
@@ -76,9 +78,30 @@ export interface OrderItem {
 
 export enum OrderStatus {
   Pending = 'Pending',
+  Confirmed = 'Confirmed',
   InProgress = 'InProgress',
   Completed = 'Completed',
   Cancelled = 'Cancelled',
+  Paid = 'Paid',
+}
+
+export interface EmployeeProfile {
+  id: number;
+  firstName: string;
+  lastName: string;
+  email: string;
+  phone: string;
+  position: string;
+  isActive: boolean;
+  userId?: number;
+}
+
+export interface EmployeeEarnings {
+  employeeId?: number;
+  employeeName: string;
+  completedOrdersCount: number;
+  totalOrderAmount: number;
+  earnings: number;
 }
 
 export interface Booking {
