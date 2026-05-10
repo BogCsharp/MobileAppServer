@@ -1,13 +1,26 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import { ActivityIndicator, RefreshControl, ScrollView, StyleSheet, Switch, Text, View } from 'react-native';
+import {
+  ActivityIndicator,
+  Alert,
+  RefreshControl,
+  ScrollView,
+  StyleSheet,
+  Switch,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import { apiService } from '../services/api';
 import { EmployeeProfile } from '../types';
+import { useAuth } from '../context/AuthContext';
 
 export const EmployeeDashboardScreen: React.FC = () => {
+  const { logout } = useAuth();
   const [profile, setProfile] = useState<EmployeeProfile | null>(null);
   const [loading, setLoading] = useState(true);
   const [refreshing, setRefreshing] = useState(false);
   const [toggling, setToggling] = useState(false);
+  const [isLoggingOut, setIsLoggingOut] = useState(false);
 
   const loadProfile = useCallback(async () => {
     try {
@@ -37,6 +50,25 @@ export const EmployeeDashboardScreen: React.FC = () => {
     } finally {
       setToggling(false);
     }
+  };
+
+  const onPressLogout = () => {
+    Alert.alert('Выход', 'Выйти из аккаунта мастера?', [
+      { text: 'Отмена', style: 'cancel' },
+      {
+        text: 'Выйти',
+        style: 'destructive',
+        onPress: async () => {
+          if (isLoggingOut) return;
+          setIsLoggingOut(true);
+          try {
+            await logout();
+          } finally {
+            setIsLoggingOut(false);
+          }
+        },
+      },
+    ]);
   };
 
   if (loading) {
@@ -82,6 +114,16 @@ export const EmployeeDashboardScreen: React.FC = () => {
         <Text style={styles.label}>Телефон: <Text style={styles.valueText}>{profile.phone || '-'}</Text></Text>
         <Text style={styles.label}>Email: <Text style={styles.valueText}>{profile.email || '-'}</Text></Text>
       </View>
+
+      <TouchableOpacity
+        style={[styles.logoutButton, isLoggingOut && styles.logoutButtonDisabled]}
+        onPress={onPressLogout}
+        disabled={isLoggingOut}
+      >
+        <Text style={styles.logoutButtonText}>
+          {isLoggingOut ? 'Выходим...' : 'Выйти из аккаунта'}
+        </Text>
+      </TouchableOpacity>
     </ScrollView>
   );
 };
@@ -136,6 +178,20 @@ const styles = StyleSheet.create({
   },
   errorText: {
     color: '#FF3B30',
+    fontSize: 16,
+  },
+  logoutButton: {
+    backgroundColor: '#FF3B30',
+    borderRadius: 10,
+    paddingVertical: 12,
+    alignItems: 'center',
+  },
+  logoutButtonDisabled: {
+    opacity: 0.7,
+  },
+  logoutButtonText: {
+    color: '#FFF',
+    fontWeight: '700',
     fontSize: 16,
   },
 });

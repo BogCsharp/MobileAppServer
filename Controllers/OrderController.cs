@@ -93,6 +93,7 @@ namespace MobileAppServer.Controllers
             return Ok(report);
         }
         [HttpPost("employee-earn")]//route для мастеров
+        [Authorize]
         public async Task<ActionResult<EmployeeEarningsDTO>> GetEmployeeEarnings([FromBody]EmployeePeriodRequestDTO request)
         {
             if (request.StartDate > request.EndDate)

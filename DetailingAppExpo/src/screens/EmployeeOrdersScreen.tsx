@@ -1,6 +1,7 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import {
   ActivityIndicator,
+  Alert,
   FlatList,
   RefreshControl,
   StyleSheet,
@@ -46,6 +47,12 @@ export const EmployeeOrdersScreen: React.FC = () => {
     try {
       const data = await apiService.getMyEmployeeOrders();
       setOrders(data);
+    } catch (error: any) {
+      const message =
+        error?.response?.data?.message ||
+        error?.response?.data?.Message ||
+        'Не удалось загрузить заказы мастера';
+      Alert.alert('Ошибка', message);
     } finally {
       setLoading(false);
       setRefreshing(false);
@@ -67,6 +74,15 @@ export const EmployeeOrdersScreen: React.FC = () => {
     try {
       const updated = await apiService.updateOrderStatus(orderId, status);
       setOrders((prev) => prev.map((item) => (item.id === orderId ? updated : item)));
+      Alert.alert('Успешно', `Статус изменен: ${statusLabel(status)}`);
+    } catch (error: any) {
+      const message =
+        error?.response?.data?.message ||
+        error?.response?.data?.Message ||
+        (error?.response?.status === 403
+          ? 'Нет доступа к изменению этого заказа'
+          : 'Не удалось изменить статус заказа');
+      Alert.alert('Ошибка', message);
     } finally {
       setUpdatingId(null);
     }

@@ -21,6 +21,14 @@ import {
 
 class ApiService {
   private api: AxiosInstance;
+  private readonly orderStatusToServer: Record<OrderStatus, number> = {
+    [OrderStatus.Pending]: 0,
+    [OrderStatus.Confirmed]: 1,
+    [OrderStatus.InProgress]: 2,
+    [OrderStatus.Completed]: 3,
+    [OrderStatus.Cancelled]: 4,
+    [OrderStatus.Paid]: 5,
+  };
 
   constructor() {
     this.api = axios.create({
@@ -232,14 +240,55 @@ class ApiService {
   }
 
   // Orders methods
+  private normalizeOrderStatus(status: any): OrderStatus {
+    if (typeof status === 'string') {
+      return (OrderStatus as any)[status] ? status as OrderStatus : OrderStatus.Pending;
+    }
+
+    switch (Number(status)) {
+      case 0:
+        return OrderStatus.Pending;
+      case 1:
+        return OrderStatus.Confirmed;
+      case 2:
+        return OrderStatus.InProgress;
+      case 3:
+        return OrderStatus.Completed;
+      case 4:
+        return OrderStatus.Cancelled;
+      case 5:
+        return OrderStatus.Paid;
+      default:
+        return OrderStatus.Pending;
+    }
+  }
+
+  private normalizeOrder(serverOrder: any): Order {
+    return {
+      ...serverOrder,
+      id: serverOrder.Id ?? serverOrder.id,
+      userId: serverOrder.UserId ?? serverOrder.userId,
+      carId: serverOrder.CarId ?? serverOrder.carId,
+      employeeId: serverOrder.EmployeeId ?? serverOrder.employeeId,
+      totalAmount: serverOrder.TotalAmount ?? serverOrder.totalAmount ?? 0,
+      finalAmount: serverOrder.FinalAmount ?? serverOrder.finalAmount ?? 0,
+      discountAmount: serverOrder.DiscountAmount ?? serverOrder.discountAmount ?? 0,
+      createdAt: serverOrder.CreatedAt ?? serverOrder.createdAt,
+      completedAt: serverOrder.CompletedAt ?? serverOrder.completedAt,
+      notes: serverOrder.Notes ?? serverOrder.notes ?? '',
+      status: this.normalizeOrderStatus(serverOrder.Status ?? serverOrder.status),
+      orderItems: serverOrder.OrderItems ?? serverOrder.orderItems ?? [],
+    };
+  }
+
   async getOrderById(id: number): Promise<Order> {
-    const response = await this.api.get<Order>(API_ENDPOINTS.ORDERS.GET_BY_ID(id));
-    return response.data;
+    const response = await this.api.get<any>(API_ENDPOINTS.ORDERS.GET_BY_ID(id));
+    return this.normalizeOrder(response.data);
   }
 
   async getOrdersByUser(userId: number): Promise<Order[]> {
-    const response = await this.api.get<Order[]>(API_ENDPOINTS.ORDERS.GET_BY_USER(userId));
-    return response.data;
+    const response = await this.api.get<any[]>(API_ENDPOINTS.ORDERS.GET_BY_USER(userId));
+    return response.data.map((order) => this.normalizeOrder(order));
   }
 
   async createOrderFromCart(data: {
@@ -249,19 +298,19 @@ class ApiService {
     notes?: string;
     discountAmount?: number;
   }): Promise<Order> {
-    const response = await this.api.post<Order>(
+    const response = await this.api.post<any>(
       API_ENDPOINTS.ORDERS.CREATE_FROM_CART,
       data
     );
-    return response.data;
+    return this.normalizeOrder(response.data);
   }
 
   async updateOrderStatus(id: number, status: OrderStatus): Promise<Order> {
-    const response = await this.api.patch<Order>(
+    const response = await this.api.patch<any>(
       API_ENDPOINTS.ORDERS.UPDATE_STATUS(id),
-      { status }
+      { status: this.orderStatusToServer[status] }
     );
-    return response.data;
+    return this.normalizeOrder(response.data);
   }
 
   async getMyEmployeeProfile(): Promise<EmployeeProfile> {
@@ -297,8 +346,8 @@ class ApiService {
   }
 
   async getMyEmployeeOrders(): Promise<Order[]> {
-    const response = await this.api.get<Order[]>(API_ENDPOINTS.EMPLOYEE.MY_ORDERS);
-    return response.data;
+    const response = await this.api.get<any[]>(API_ENDPOINTS.EMPLOYEE.MY_ORDERS);
+    return response.data.map((order) => this.normalizeOrder(order));
   }
 
   async getMyEmployeeEarnings(startDate: string, endDate: string): Promise<EmployeeEarnings> {

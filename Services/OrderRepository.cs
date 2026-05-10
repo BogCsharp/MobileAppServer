@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Storage;
 using MobileAppServer.Abstracts;
 using MobileAppServer.Data;
 using MobileAppServer.Entities;
@@ -106,7 +107,11 @@ namespace MobileAppServer.Services
 
         public async Task<OrderEntity> CreateFromCartAsync(long userId, long carId, long? employeeId, string notes, decimal? discountAmount)
         {
-            using var transaction = await _dbContext.Database.BeginTransactionAsync();
+            bool needTransaction = _dbContext.Database.CurrentTransaction == null;
+            IDbContextTransaction? transaction = null;
+            if (needTransaction)
+                transaction = await _dbContext.Database.BeginTransactionAsync();
+            
             try
             {
                 var cartTotal = await _cart.GetCartTotalAsync(userId);
@@ -135,7 +140,6 @@ namespace MobileAppServer.Services
 
                 _dbContext.Set<OrderEntity>().Add(order);
                 await _dbContext.SaveChangesAsync();
-
                 // создаём позиции заказа из корзины
                 var orderItems = cart.CartItems.Select(ci => new OrderItemEntity
                 {
@@ -151,13 +155,16 @@ namespace MobileAppServer.Services
                 _dbContext.Set<CartItemEntity>().RemoveRange(cart.CartItems);
 
                 await _dbContext.SaveChangesAsync();
-                await transaction.CommitAsync();
+                if (needTransaction && transaction != null)
+                    await transaction.CommitAsync();
+               
 
                 return order;
             }
             catch
             {
-                await transaction.RollbackAsync();
+                if (needTransaction && transaction != null)
+                    await transaction.RollbackAsync();
                 throw;
             }
         }
