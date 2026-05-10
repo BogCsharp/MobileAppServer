@@ -7,6 +7,7 @@ import {
   TouchableOpacity,
   ActivityIndicator,
   RefreshControl,
+  Alert,
 } from 'react-native';
 import { useAuth } from '../context/AuthContext';
 import { apiService } from '../services/api';
@@ -16,11 +17,14 @@ interface OrdersScreenProps {
   navigation: any;
 }
 
+type OrderFilter = 'All' | 'Active' | 'Completed' | 'Cancelled';
+
 export const OrdersScreen: React.FC<OrdersScreenProps> = ({ navigation }) => {
   const { user, isAuthenticated } = useAuth();
   const [orders, setOrders] = useState<Order[]>([]);
   const [loading, setLoading] = useState(true);
   const [refreshing, setRefreshing] = useState(false);
+  const [selectedFilter, setSelectedFilter] = useState<OrderFilter>('All');
 
   useEffect(() => {
     if (user) {
@@ -65,15 +69,64 @@ export const OrdersScreen: React.FC<OrdersScreenProps> = ({ navigation }) => {
     switch (status) {
       case OrderStatus.Pending:
         return 'Ожидает';
+      case OrderStatus.Confirmed:
+        return 'Подтвержден';
       case OrderStatus.InProgress:
         return 'В работе';
       case OrderStatus.Completed:
         return 'Завершен';
       case OrderStatus.Cancelled:
         return 'Отменен';
+      case OrderStatus.Paid:
+        return 'Оплачен';
       default:
         return status;
     }
+  };
+
+  const canCancelOrder = (status: OrderStatus) =>
+    status !== OrderStatus.Completed &&
+    status !== OrderStatus.Paid &&
+    status !== OrderStatus.Cancelled;
+
+  const filteredOrders = orders.filter((order) => {
+    switch (selectedFilter) {
+      case 'Active':
+        return (
+          order.status === OrderStatus.Pending ||
+          order.status === OrderStatus.Confirmed ||
+          order.status === OrderStatus.InProgress
+        );
+      case 'Completed':
+        return order.status === OrderStatus.Completed || order.status === OrderStatus.Paid;
+      case 'Cancelled':
+        return order.status === OrderStatus.Cancelled;
+      default:
+        return true;
+    }
+  });
+
+  const cancelOrder = (orderId: number) => {
+    Alert.alert('Отмена заказа', 'Вы уверены, что хотите отменить этот заказ?', [
+      { text: 'Нет', style: 'cancel' },
+      {
+        text: 'Отменить',
+        style: 'destructive',
+        onPress: async () => {
+          try {
+            const updated = await apiService.cancelOrderByClient(orderId);
+            setOrders((prev) => prev.map((item) => (item.id === orderId ? updated : item)));
+            Alert.alert('Готово', 'Заказ отменен');
+          } catch (error: any) {
+            const message =
+              error?.response?.data?.message ||
+              error?.response?.data?.Message ||
+              'Не удалось отменить заказ';
+            Alert.alert('Ошибка', message);
+          }
+        },
+      },
+    ]);
   };
 
   const formatDate = (dateString: string) => {
@@ -112,6 +165,14 @@ export const OrdersScreen: React.FC<OrdersScreenProps> = ({ navigation }) => {
           {item.orderItems?.length || 0} {item.orderItems?.length === 1 ? 'услуга' : 'услуг'}
         </Text>
       </View>
+      {canCancelOrder(item.status) && (
+        <TouchableOpacity
+          style={styles.cancelButton}
+          onPress={() => cancelOrder(item.id)}
+        >
+          <Text style={styles.cancelButtonText}>Отменить заказ</Text>
+        </TouchableOpacity>
+      )}
     </TouchableOpacity>
   );
 
@@ -141,8 +202,35 @@ export const OrdersScreen: React.FC<OrdersScreenProps> = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
+      <View style={styles.filtersContainer}>
+        {(['All', 'Active', 'Completed', 'Cancelled'] as OrderFilter[]).map((filter) => (
+          <TouchableOpacity
+            key={filter}
+            style={[
+              styles.filterButton,
+              selectedFilter === filter && styles.filterButtonActive,
+            ]}
+            onPress={() => setSelectedFilter(filter)}
+          >
+            <Text
+              style={[
+                styles.filterButtonText,
+                selectedFilter === filter && styles.filterButtonTextActive,
+              ]}
+            >
+              {filter === 'All'
+                ? 'Все'
+                : filter === 'Active'
+                ? 'Активные'
+                : filter === 'Completed'
+                ? 'Завершенные'
+                : 'Отмененные'}
+            </Text>
+          </TouchableOpacity>
+        ))}
+      </View>
       <FlatList
-        data={orders}
+        data={filteredOrders}
         renderItem={renderOrder}
         keyExtractor={(item) => item.id.toString()}
         contentContainerStyle={styles.listContent}
@@ -151,7 +239,11 @@ export const OrdersScreen: React.FC<OrdersScreenProps> = ({ navigation }) => {
         }
         ListEmptyComponent={
           <View style={styles.emptyContainer}>
-            <Text style={styles.emptyText}>У вас пока нет заказов</Text>
+            <Text style={styles.emptyText}>
+              {selectedFilter === 'All'
+                ? 'У вас пока нет заказов'
+                : 'По выбранному фильтру заказов нет'}
+            </Text>
             <TouchableOpacity
               style={styles.browseButton}
               onPress={() => navigation.navigate('Home')}
@@ -177,6 +269,34 @@ const styles = StyleSheet.create({
   },
   listContent: {
     padding: 16,
+    paddingTop: 8,
+  },
+  filtersContainer: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    gap: 8,
+    paddingHorizontal: 16,
+    paddingTop: 12,
+  },
+  filterButton: {
+    borderWidth: 1,
+    borderColor: '#D1D1D6',
+    borderRadius: 16,
+    paddingHorizontal: 12,
+    paddingVertical: 6,
+    backgroundColor: '#fff',
+  },
+  filterButtonActive: {
+    backgroundColor: '#007AFF',
+    borderColor: '#007AFF',
+  },
+  filterButtonText: {
+    color: '#3A3A3C',
+    fontSize: 13,
+    fontWeight: '600',
+  },
+  filterButtonTextActive: {
+    color: '#fff',
   },
   orderCard: {
     backgroundColor: '#fff',
@@ -247,6 +367,18 @@ const styles = StyleSheet.create({
   browseButtonText: {
     color: '#fff',
     fontSize: 16,
+    fontWeight: '600',
+  },
+  cancelButton: {
+    marginTop: 12,
+    borderWidth: 1,
+    borderColor: '#FF3B30',
+    borderRadius: 8,
+    paddingVertical: 10,
+    alignItems: 'center',
+  },
+  cancelButtonText: {
+    color: '#FF3B30',
     fontWeight: '600',
   },
 });

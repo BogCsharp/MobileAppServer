@@ -45,6 +45,7 @@ export const API_ENDPOINTS = {
     GET_BY_USER: (userId: number) => `/api/orders/user/${userId}`,
     CREATE_FROM_CART: '/api/orders/from-cart',
     UPDATE_STATUS: (id: number) => `/api/orders/${id}/status`,
+    CANCEL_BY_CLIENT: (id: number) => `/api/orders/${id}/cancel`,
     EMPLOYEE_EARN: '/api/orders/employee-earn',
   },
   EMPLOYEE: {

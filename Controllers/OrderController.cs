@@ -186,6 +186,24 @@ namespace MobileAppServer.Controllers
                     return Forbid();
                 }
 
+                var isActiveOrder =
+                    order.Status == OrderStatus.Pending ||
+                    order.Status == OrderStatus.Confirmed ||
+                    order.Status == OrderStatus.InProgress;
+                if (!isActiveOrder)
+                {
+                    return BadRequest("Можно менять статус только у активных заказов");
+                }
+
+                var allowedTargetStatus =
+                    dto.Status == OrderStatus.InProgress ||
+                    dto.Status == OrderStatus.Completed ||
+                    dto.Status == OrderStatus.Cancelled;
+                if (!allowedTargetStatus)
+                {
+                    return BadRequest("Недопустимый статус для мастера");
+                }
+
                 order.Status = dto.Status;
                 
                 if (dto.Status == OrderStatus.Completed)
@@ -205,6 +223,50 @@ namespace MobileAppServer.Controllers
                             dto.Status.GetDisplayName());
                     });
                 }
+                return Ok(updated.ToDto());
+            }
+            catch (KeyNotFoundException ex)
+            {
+                return NotFound(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Internal server error: {ex.Message}");
+            }
+        }
+
+        [HttpPatch("{id:long}/cancel")]
+        [Authorize]
+        public async Task<ActionResult<OrderDTO>> CancelByClient(long id)
+        {
+            try
+            {
+                var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+                if (string.IsNullOrWhiteSpace(userIdClaim))
+                {
+                    return Unauthorized("Пользователь не определен");
+                }
+
+                var userId = long.Parse(userIdClaim);
+                var order = await _orderRepo.GetByIdAsync(id);
+
+                if (order.UserId != userId)
+                {
+                    return Forbid();
+                }
+
+                if (order.Status == OrderStatus.Completed || order.Status == OrderStatus.Paid)
+                {
+                    return BadRequest("Нельзя отменить завершенный или оплаченный заказ");
+                }
+
+                if (order.Status == OrderStatus.Cancelled)
+                {
+                    return Ok(order.ToDto());
+                }
+
+                order.Status = OrderStatus.Cancelled;
+                var updated = await _orderRepo.UpdateAsync(order);
                 return Ok(updated.ToDto());
             }
             catch (KeyNotFoundException ex)

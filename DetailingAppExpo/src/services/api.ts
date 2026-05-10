@@ -313,6 +313,11 @@ class ApiService {
     return this.normalizeOrder(response.data);
   }
 
+  async cancelOrderByClient(id: number): Promise<Order> {
+    const response = await this.api.patch<any>(API_ENDPOINTS.ORDERS.CANCEL_BY_CLIENT(id));
+    return this.normalizeOrder(response.data);
+  }
+
   async getMyEmployeeProfile(): Promise<EmployeeProfile> {
     const response = await this.api.get<any>(API_ENDPOINTS.EMPLOYEE.ME);
     const data = response.data;

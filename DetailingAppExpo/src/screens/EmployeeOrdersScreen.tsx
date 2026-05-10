@@ -12,6 +12,8 @@ import {
 import { apiService } from '../services/api';
 import { Order, OrderStatus } from '../types';
 
+type EmployeeOrderFilter = 'All' | 'Active' | 'Completed' | 'Cancelled';
+
 const STATUS_ACTIONS: OrderStatus[] = [
   OrderStatus.InProgress,
   OrderStatus.Completed,
@@ -42,6 +44,7 @@ export const EmployeeOrdersScreen: React.FC = () => {
   const [loading, setLoading] = useState(true);
   const [refreshing, setRefreshing] = useState(false);
   const [updatingId, setUpdatingId] = useState<number | null>(null);
+  const [selectedFilter, setSelectedFilter] = useState<EmployeeOrderFilter>('All');
 
   const loadOrders = useCallback(async () => {
     try {
@@ -88,6 +91,24 @@ export const EmployeeOrdersScreen: React.FC = () => {
     }
   };
 
+  const isActiveOrder = (status: OrderStatus) =>
+    status === OrderStatus.Pending ||
+    status === OrderStatus.Confirmed ||
+    status === OrderStatus.InProgress;
+
+  const filteredOrders = orders.filter((order) => {
+    switch (selectedFilter) {
+      case 'Active':
+        return isActiveOrder(order.status);
+      case 'Completed':
+        return order.status === OrderStatus.Completed || order.status === OrderStatus.Paid;
+      case 'Cancelled':
+        return order.status === OrderStatus.Cancelled;
+      default:
+        return true;
+    }
+  });
+
   if (loading) {
     return (
       <View style={styles.center}>
@@ -99,38 +120,75 @@ export const EmployeeOrdersScreen: React.FC = () => {
   return (
     <FlatList
       contentContainerStyle={styles.listContent}
-      data={orders}
+      data={filteredOrders}
       keyExtractor={(item) => String(item.id)}
+      ListHeaderComponent={
+        <View style={styles.filtersContainer}>
+          {(['All', 'Active', 'Completed', 'Cancelled'] as EmployeeOrderFilter[]).map((filter) => (
+            <TouchableOpacity
+              key={filter}
+              style={[
+                styles.filterButton,
+                selectedFilter === filter && styles.filterButtonActive,
+              ]}
+              onPress={() => setSelectedFilter(filter)}
+            >
+              <Text
+                style={[
+                  styles.filterButtonText,
+                  selectedFilter === filter && styles.filterButtonTextActive,
+                ]}
+              >
+                {filter === 'All'
+                  ? 'Все'
+                  : filter === 'Active'
+                  ? 'Активные'
+                  : filter === 'Completed'
+                  ? 'Завершенные'
+                  : 'Отмененные'}
+              </Text>
+            </TouchableOpacity>
+          ))}
+        </View>
+      }
       refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}
-      ListEmptyComponent={<Text style={styles.emptyText}>У вас пока нет заказов</Text>}
+      ListEmptyComponent={
+        <Text style={styles.emptyText}>
+          {selectedFilter === 'All' ? 'У вас пока нет заказов' : 'По выбранному фильтру заказов нет'}
+        </Text>
+      }
       renderItem={({ item }) => (
         <View style={styles.card}>
           <Text style={styles.orderNumber}>Заказ #{item.id}</Text>
           <Text style={styles.status}>Статус: {statusLabel(item.status)}</Text>
           <Text style={styles.amount}>Сумма: {item.finalAmount} ₽</Text>
 
-          <View style={styles.actions}>
-            {STATUS_ACTIONS.map((status) => (
-              <TouchableOpacity
-                key={status}
-                style={[
-                  styles.actionButton,
-                  item.status === status && styles.actionButtonActive,
-                ]}
-                disabled={updatingId === item.id}
-                onPress={() => changeStatus(item.id, status)}
-              >
-                <Text
+          {isActiveOrder(item.status) ? (
+            <View style={styles.actions}>
+              {STATUS_ACTIONS.map((status) => (
+                <TouchableOpacity
+                  key={status}
                   style={[
-                    styles.actionText,
-                    item.status === status && styles.actionTextActive,
+                    styles.actionButton,
+                    item.status === status && styles.actionButtonActive,
                   ]}
+                  disabled={updatingId === item.id}
+                  onPress={() => changeStatus(item.id, status)}
                 >
-                  {statusLabel(status)}
-                </Text>
-              </TouchableOpacity>
-            ))}
-          </View>
+                  <Text
+                    style={[
+                      styles.actionText,
+                      item.status === status && styles.actionTextActive,
+                    ]}
+                  >
+                    {statusLabel(status)}
+                  </Text>
+                </TouchableOpacity>
+              ))}
+            </View>
+          ) : (
+            <Text style={styles.readOnlyStatus}>Изменение статуса недоступно</Text>
+          )}
         </View>
       )}
     />
@@ -148,6 +206,32 @@ const styles = StyleSheet.create({
     backgroundColor: '#F2F2F7',
     flexGrow: 1,
     gap: 12,
+  },
+  filtersContainer: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    gap: 8,
+    marginBottom: 8,
+  },
+  filterButton: {
+    borderWidth: 1,
+    borderColor: '#D1D1D6',
+    borderRadius: 16,
+    paddingHorizontal: 12,
+    paddingVertical: 6,
+    backgroundColor: '#fff',
+  },
+  filterButtonActive: {
+    backgroundColor: '#007AFF',
+    borderColor: '#007AFF',
+  },
+  filterButtonText: {
+    color: '#3A3A3C',
+    fontSize: 13,
+    fontWeight: '600',
+  },
+  filterButtonTextActive: {
+    color: '#fff',
   },
   card: {
     backgroundColor: '#FFF',
@@ -196,5 +280,10 @@ const styles = StyleSheet.create({
     marginTop: 30,
     textAlign: 'center',
     color: '#8E8E93',
+  },
+  readOnlyStatus: {
+    color: '#8E8E93',
+    fontSize: 12,
+    fontStyle: 'italic',
   },
 });

@@ -200,46 +200,42 @@ namespace MobileAppServer.Services
 
         public async Task<EmployeeEarningsDTO> GetEmployeeEarningsByIdAsync(long employeeId, DateTime startDate, DateTime endDate)
         {
-            var fromDate=startDate;
-            var toDate=endDate.AddDays(1).AddTicks(-1);
-            var query=_dbContext.Orders.Where(o => o.Status == OrderStatus.Completed).Where(o => o.CompletedAt >= fromDate && o.CompletedAt <= toDate).Join(_dbContext.Bookings,
-              order => order.Id,
-              booking => booking.OrderId,
-              (order, booking) => new { order, booking })
-        .Where(join => join.booking.EmployeeId == employeeId)
-        .Select(join => new
-        {
-            join.order.FinalAmount,
-            join.booking.EmployeeId,
-            EmployeeName = join.booking.Employee.FirstName
-        }); ;
-            var result = await query
-        .GroupBy(x => new { x.EmployeeId, x.EmployeeName })
-        .Select(g => new EmployeeEarningsDTO
-        {
-            EmployeeId = g.Key.EmployeeId,
-            EmployeeName = g.Key.EmployeeName,
-            CompletedOrdersCount = g.Count(),
-            TotalOrderAmount = g.Sum(x => x.FinalAmount),
-            Earnings = g.Sum(x => x.FinalAmount) * 0.30m
-        })
-        .FirstOrDefaultAsync();
+            var fromDate = startDate.Date;
+            var toDate = endDate.Date.AddDays(1).AddTicks(-1);
 
-            if (result == null)
+            var employee = await _dbContext.Employee
+                .AsNoTracking()
+                .FirstOrDefaultAsync(e => e.Id == employeeId);
+
+            if (employee == null)
             {
-                // Если нет заказов, возвращаем пустой объект с нулями
-                var employee = await _dbContext.Employee.FindAsync(employeeId);
                 return new EmployeeEarningsDTO
                 {
                     EmployeeId = employeeId,
-                    EmployeeName = employee?.FirstName ?? "Мастер",
+                    EmployeeName = "Мастер",
                     CompletedOrdersCount = 0,
                     TotalOrderAmount = 0,
                     Earnings = 0
                 };
             }
 
-            return result;
+            var completedOrdersQuery = _dbContext.Orders
+                .AsNoTracking()
+                .Where(o => o.EmployeeId == employeeId)
+                .Where(o => o.Status == OrderStatus.Completed)
+                .Where(o => o.CompletedAt.HasValue && o.CompletedAt.Value >= fromDate && o.CompletedAt.Value <= toDate);
+
+            var completedOrdersCount = await completedOrdersQuery.CountAsync();
+            var totalOrderAmount = await completedOrdersQuery.SumAsync(o => o.FinalAmount);
+
+            return new EmployeeEarningsDTO
+            {
+                EmployeeId = employeeId,
+                EmployeeName = employee.FirstName,
+                CompletedOrdersCount = completedOrdersCount,
+                TotalOrderAmount = totalOrderAmount,
+                Earnings = totalOrderAmount * 0.30m
+            };
         }
 
     }

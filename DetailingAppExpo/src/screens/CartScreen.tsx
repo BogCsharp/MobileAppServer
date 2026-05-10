@@ -128,12 +128,6 @@ export const CartScreen: React.FC<CartScreenProps> = ({ navigation }) => {
             <Text style={styles.quantityButtonText}>-</Text>
           </TouchableOpacity>
           <Text style={styles.quantityText}>{item.quantity}</Text>
-          <TouchableOpacity
-            style={styles.quantityButton}
-            onPress={() => updateQuantity(item, item.quantity + 1)}
-          >
-            <Text style={styles.quantityButtonText}>+</Text>
-          </TouchableOpacity>
         </View>
         <TouchableOpacity
           style={styles.removeButton}
