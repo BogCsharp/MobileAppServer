@@ -88,6 +88,32 @@ namespace MobileAppServer.Controllers
             return Ok(orders.Select(o => o.ToDto()).ToList());
         }
 
+        [HttpGet]
+        public async Task<ActionResult<List<EmployeeMeDTO>>> GetAll()
+        {
+            if (!await IsAdminAsync())
+            {
+                return Forbid();
+            }
+
+            var employees = await _context.Employee
+                .AsNoTracking()
+                .OrderBy(e => e.FirstName)
+                .ToListAsync();
+
+            return Ok(employees.Select(employee => new EmployeeMeDTO
+            {
+                Id = employee.Id,
+                FirstName = employee.FirstName,
+                LastName = employee.LastName,
+                Email = employee.Email,
+                Phone = employee.Phone,
+                Position = employee.Position,
+                IsActive = employee.isActive,
+                UserId = employee.UserId
+            }).ToList());
+        }
+
         private async Task<Entities.EmployeeEntity?> GetCurrentEmployeeAsync()
         {
             var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
@@ -98,6 +124,19 @@ namespace MobileAppServer.Controllers
 
             var userId = long.Parse(userIdClaim);
             return await _context.Employee.FirstOrDefaultAsync(e => e.UserId == userId);
+        }
+
+        private async Task<bool> IsAdminAsync()
+        {
+            var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            if (string.IsNullOrWhiteSpace(userIdClaim))
+            {
+                return false;
+            }
+
+            var userId = long.Parse(userIdClaim);
+            var user = await _context.Users.AsNoTracking().FirstOrDefaultAsync(u => u.Id == userId);
+            return user?.RoleId == (int)Entities.UserRoleType.Admin;
         }
     }
 }

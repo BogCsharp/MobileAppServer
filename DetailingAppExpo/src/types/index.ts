@@ -104,6 +104,17 @@ export interface EmployeeEarnings {
   earnings: number;
 }
 
+export interface EmployeeSummary {
+  id: number;
+  firstName: string;
+  lastName: string;
+  email: string;
+  phone: string;
+  position: string;
+  isActive: boolean;
+  userId?: number;
+}
+
 export interface Booking {
   id: number;
   userId: number;

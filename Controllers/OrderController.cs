@@ -107,8 +107,14 @@ namespace MobileAppServer.Controllers
             return Ok(report);
         }
         [HttpPost("employee-earn-admin")]//route для админа
+        [Authorize]
         public async Task<ActionResult<EmployeeEarningsDTO>> GetEarningsForEmployee([FromBody] EmployeePeriodRequestDTO request)
         {
+            if (!await IsAdminAsync())
+            {
+                return Forbid();
+            }
+
             if (request.StartDate > request.EndDate)
                 return BadRequest("StartDate must be less than or equal to EndDate");
 
@@ -142,6 +148,43 @@ namespace MobileAppServer.Controllers
                 }
 
                 var updated = await _orderRepo.UpdateAsync(existingOrder);
+                return Ok(updated.ToDto());
+            }
+            catch (KeyNotFoundException ex)
+            {
+                return NotFound(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Internal server error: {ex.Message}");
+            }
+        }
+
+        [HttpPatch("{id:long}/admin-status")]
+        [Authorize]
+        public async Task<ActionResult<OrderDTO>> UpdateStatusAsAdmin(long id, [FromBody] UpdateOrderStatusDTO dto)
+        {
+            try
+            {
+                if (!await IsAdminAsync())
+                {
+                    return Forbid();
+                }
+
+                var order = await _orderRepo.GetByIdAsync(id);
+                order.Status = dto.Status;
+
+                if (dto.Status == OrderStatus.Completed && !order.CompletedAt.HasValue)
+                {
+                    order.CompletedAt = DateTime.Now;
+                }
+
+                if (dto.Status != OrderStatus.Completed)
+                {
+                    order.CompletedAt = null;
+                }
+
+                var updated = await _orderRepo.UpdateAsync(order);
                 return Ok(updated.ToDto());
             }
             catch (KeyNotFoundException ex)
@@ -278,10 +321,24 @@ namespace MobileAppServer.Controllers
                 return StatusCode(500, $"Internal server error: {ex.Message}");
             }
         }
+
+        private async Task<bool> IsAdminAsync()
+        {
+            var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            if (string.IsNullOrWhiteSpace(userIdClaim))
+            {
+                return false;
+            }
+
+            var userId = long.Parse(userIdClaim);
+            var user = await _context.Users.AsNoTracking().FirstOrDefaultAsync(u => u.Id == userId);
+            return user?.RoleId == (int)UserRoleType.Admin;
+        }
     }
 
     public class UpdateOrderStatusDTO
     {
         public OrderStatus Status { get; set; }
     }
+
 }

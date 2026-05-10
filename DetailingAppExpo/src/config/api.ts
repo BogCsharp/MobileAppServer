@@ -30,6 +30,9 @@ export const API_ENDPOINTS = {
   SERVICES: {
     GET_ALL: '/api/services',
     GET_BY_ID: (id: number) => `/api/services/${id}`,
+    CREATE: '/api/services',
+    UPDATE: (id: number) => `/api/services/${id}`,
+    DELETE: (id: number) => `/api/services/${id}`,
   },
   CART: {
     GET: (userId: number) => `/api/cart/${userId}`,
@@ -41,14 +44,18 @@ export const API_ENDPOINTS = {
     GET_TOTAL: (userId: number) => `/api/cart/${userId}/total`,
   },
   ORDERS: {
+    GET_ALL: '/api/orders',
     GET_BY_ID: (id: number) => `/api/orders/${id}`,
     GET_BY_USER: (userId: number) => `/api/orders/user/${userId}`,
     CREATE_FROM_CART: '/api/orders/from-cart',
     UPDATE_STATUS: (id: number) => `/api/orders/${id}/status`,
+    UPDATE_STATUS_ADMIN: (id: number) => `/api/orders/${id}/admin-status`,
     CANCEL_BY_CLIENT: (id: number) => `/api/orders/${id}/cancel`,
     EMPLOYEE_EARN: '/api/orders/employee-earn',
+    EMPLOYEE_EARN_ADMIN: '/api/orders/employee-earn-admin',
   },
   EMPLOYEE: {
+    GET_ALL: '/api/employee',
     ME: '/api/employee/me',
     UPDATE_ACTIVE: '/api/employee/me/active',
     MY_ORDERS: '/api/employee/me/orders',

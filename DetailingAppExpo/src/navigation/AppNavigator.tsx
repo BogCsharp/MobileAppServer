@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { useAuth } from '../context/AuthContext';
 import { ActivityIndicator, View, StyleSheet } from 'react-native';
+import { apiService } from '../services/api';
 // @ts-ignore: vector icons are provided by Expo runtime
 import { Ionicons } from '@expo/vector-icons';
 
@@ -23,6 +24,10 @@ import { DocumentationScreen } from '../screens/DocumentationScreen';
 import { EmployeeDashboardScreen } from '../screens/EmployeeDashboardScreen';
 import { EmployeeOrdersScreen } from '../screens/EmployeeOrdersScreen';
 import { EmployeeEarningsScreen } from '../screens/EmployeeEarningsScreen';
+import { AdminClientsScreen } from '../screens/AdminClientsScreen';
+import { AdminServicesScreen } from '../screens/AdminServicesScreen';
+import { AdminOrdersScreen } from '../screens/AdminOrdersScreen';
+import { AdminPayrollScreen } from '../screens/AdminPayrollScreen';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -132,11 +137,96 @@ function EmployeeTabs() {
   );
 }
 
+function AdminTabs() {
+  return (
+    <Tab.Navigator
+      screenOptions={({ route }) => ({
+        tabBarActiveTintColor: '#007AFF',
+        tabBarInactiveTintColor: '#999',
+        headerTitle: 'Панель администратора',
+        headerTitleAlign: 'center',
+        tabBarStyle: {
+          borderTopWidth: 1,
+          borderTopColor: '#e0e0e0',
+        },
+        tabBarIcon: ({ color, size }) => {
+          let iconName: keyof typeof Ionicons.glyphMap = 'shield-checkmark-outline';
+          if (route.name === 'AdminClients') {
+            iconName = 'person-add-outline';
+          } else if (route.name === 'AdminServices') {
+            iconName = 'construct-outline';
+          } else if (route.name === 'AdminOrders') {
+            iconName = 'list-outline';
+          } else if (route.name === 'AdminPayroll') {
+            iconName = 'wallet-outline';
+          }
+          return <Ionicons name={iconName} size={size} color={color} />;
+        },
+      })}
+    >
+      <Tab.Screen name="AdminClients" component={AdminClientsScreen} options={{ tabBarLabel: 'Клиенты' }} />
+      <Tab.Screen name="AdminServices" component={AdminServicesScreen} options={{ tabBarLabel: 'Услуги' }} />
+      <Tab.Screen name="AdminOrders" component={AdminOrdersScreen} options={{ tabBarLabel: 'Заказы' }} />
+      <Tab.Screen name="AdminPayroll" component={AdminPayrollScreen} options={{ tabBarLabel: 'Зарплата' }} />
+    </Tab.Navigator>
+  );
+}
+
 export function AppNavigator() {
   const { user, isLoading } = useAuth();
-  const isEmployee = user?.roleId === 2 || user?.roleName === 'Employee';
+  const [hasAdminAccess, setHasAdminAccess] = useState(false);
+  const [roleCheckLoading, setRoleCheckLoading] = useState(false);
+  const roleId = Number(user?.roleId);
+  const roleName = (user?.roleName || '').toLowerCase();
+  const isEmployee = roleId === 2 || roleName === 'employee';
+  const isAdminByProfile = roleId === 3 || roleName === 'admin';
+  const isAdmin = isAdminByProfile || hasAdminAccess;
+  const roleTabsKey = isAdmin ? 'admin' : isEmployee ? 'employee' : 'client';
 
-  if (isLoading) {
+  useEffect(() => {
+    let cancelled = false;
+
+    const checkAdminAccess = async () => {
+      if (!user) {
+        if (!cancelled) {
+          setHasAdminAccess(false);
+          setRoleCheckLoading(false);
+        }
+        return;
+      }
+
+      if (isAdminByProfile) {
+        if (!cancelled) {
+          setHasAdminAccess(true);
+          setRoleCheckLoading(false);
+        }
+        return;
+      }
+
+      setRoleCheckLoading(true);
+      try {
+        await apiService.getEmployees();
+        if (!cancelled) {
+          setHasAdminAccess(true);
+        }
+      } catch {
+        if (!cancelled) {
+          setHasAdminAccess(false);
+        }
+      } finally {
+        if (!cancelled) {
+          setRoleCheckLoading(false);
+        }
+      }
+    };
+
+    checkAdminAccess();
+    return () => {
+      cancelled = true;
+    };
+  }, [user?.id, isAdminByProfile]);
+
+  if (isLoading || roleCheckLoading) {
     return (
       <View style={styles.loadingContainer}>
         <ActivityIndicator size="large" color="#007AFF" />
@@ -156,7 +246,8 @@ export function AppNavigator() {
         {/* Для таб-навигатора шапку даёт сам Tab.Navigator */}
         <Stack.Screen
           name="MainTabs"
-          component={isEmployee ? EmployeeTabs : MainTabs}
+          key={roleTabsKey}
+          component={isAdmin ? AdminTabs : isEmployee ? EmployeeTabs : MainTabs}
           options={{ headerShown: false }}
         />
         <Stack.Screen name="Login" component={LoginScreen} />

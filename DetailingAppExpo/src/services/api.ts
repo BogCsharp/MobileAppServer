@@ -16,6 +16,7 @@ import {
   CreateCarDTO,
   EmployeeProfile,
   EmployeeEarnings,
+  EmployeeSummary,
   OrderStatus,
 } from '../types';
 
@@ -203,6 +204,20 @@ class ApiService {
     return response.data;
   }
 
+  async createService(data: Omit<Service, 'id'>): Promise<Service> {
+    const response = await this.api.post<Service>(API_ENDPOINTS.SERVICES.CREATE, data);
+    return response.data;
+  }
+
+  async updateService(id: number, data: Omit<Service, 'id'>): Promise<Service> {
+    const response = await this.api.put<Service>(API_ENDPOINTS.SERVICES.UPDATE(id), data);
+    return response.data;
+  }
+
+  async deleteService(id: number): Promise<void> {
+    await this.api.delete(API_ENDPOINTS.SERVICES.DELETE(id));
+  }
+
   // Cart methods
   async getCart(userId: number): Promise<Cart> {
     const response = await this.api.get<Cart>(API_ENDPOINTS.CART.GET(userId));
@@ -291,6 +306,11 @@ class ApiService {
     return response.data.map((order) => this.normalizeOrder(order));
   }
 
+  async getAllOrders(): Promise<Order[]> {
+    const response = await this.api.get<any[]>(API_ENDPOINTS.ORDERS.GET_ALL);
+    return response.data.map((order) => this.normalizeOrder(order));
+  }
+
   async createOrderFromCart(data: {
     userId: number;
     carId: number;
@@ -308,6 +328,14 @@ class ApiService {
   async updateOrderStatus(id: number, status: OrderStatus): Promise<Order> {
     const response = await this.api.patch<any>(
       API_ENDPOINTS.ORDERS.UPDATE_STATUS(id),
+      { status: this.orderStatusToServer[status] }
+    );
+    return this.normalizeOrder(response.data);
+  }
+
+  async updateOrderStatusAsAdmin(id: number, status: OrderStatus): Promise<Order> {
+    const response = await this.api.patch<any>(
+      API_ENDPOINTS.ORDERS.UPDATE_STATUS_ADMIN(id),
       { status: this.orderStatusToServer[status] }
     );
     return this.normalizeOrder(response.data);
@@ -361,6 +389,41 @@ class ApiService {
       endDate,
       employeeId: 0,
     });
+    const data = response.data;
+    return {
+      employeeId: data.EmployeeId ?? data.employeeId,
+      employeeName: data.EmployeeName ?? data.employeeName ?? 'Мастер',
+      completedOrdersCount: data.CompletedOrdersCount ?? data.completedOrdersCount ?? 0,
+      totalOrderAmount: data.TotalOrderAmount ?? data.totalOrderAmount ?? 0,
+      earnings: data.Earnings ?? data.earnings ?? 0,
+    };
+  }
+
+  async getEmployees(): Promise<EmployeeSummary[]> {
+    const response = await this.api.get<any[]>(API_ENDPOINTS.EMPLOYEE.GET_ALL);
+    return response.data.map((data) => ({
+      id: data.Id ?? data.id,
+      firstName: data.FirstName ?? data.firstName ?? '',
+      lastName: data.LastName ?? data.lastName ?? '',
+      email: data.Email ?? data.email ?? '',
+      phone: data.Phone ?? data.phone ?? '',
+      position: data.Position ?? data.position ?? '',
+      isActive: data.IsActive ?? data.isActive ?? false,
+      userId: data.UserId ?? data.userId,
+    }));
+  }
+
+  async getEmployeeEarningsForAdmin(
+    employeeId: number,
+    startDate: string,
+    endDate: string
+  ): Promise<EmployeeEarnings> {
+    const response = await this.api.post<any>(API_ENDPOINTS.ORDERS.EMPLOYEE_EARN_ADMIN, {
+      employeeId,
+      startDate,
+      endDate,
+    });
+
     const data = response.data;
     return {
       employeeId: data.EmployeeId ?? data.employeeId,
