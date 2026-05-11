@@ -5,6 +5,7 @@ export interface User {
   lastName?: string;
   roleId?: number;
   roleName?: string;
+  phone?: string;
 }
 
 export interface AuthResponse {
@@ -27,6 +28,7 @@ export interface RegisterDTO {
   lastName?: string;
   phone?: string;
   birthday?: Date;
+  roleId?: number;
 }
 
 export interface Service {

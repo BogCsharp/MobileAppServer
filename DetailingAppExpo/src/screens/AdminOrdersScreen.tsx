@@ -12,10 +12,28 @@ const STATUSES: OrderStatus[] = [
   OrderStatus.Paid,
 ];
 
-const statusText = (status: OrderStatus) => status;
+const statusText = (status: OrderStatus) => {
+  switch (status) {
+    case OrderStatus.Pending:
+      return 'Ожидает';
+    case OrderStatus.Confirmed:
+      return 'Подтвержден';
+    case OrderStatus.InProgress:
+      return 'В работе';
+    case OrderStatus.Completed:
+      return 'Завершен';
+    case OrderStatus.Cancelled:
+      return 'Отменен';
+    case OrderStatus.Paid:
+      return 'Оплачен';
+    default:
+      return status;
+  }
+};
 
 export const AdminOrdersScreen: React.FC = () => {
   const [orders, setOrders] = useState<Order[]>([]);
+  const [statusFilter, setStatusFilter] = useState<'All' | OrderStatus>('All');
 
   const load = async () => {
     try {
@@ -43,12 +61,38 @@ export const AdminOrdersScreen: React.FC = () => {
     }
   };
 
+  const filteredOrders =
+    statusFilter === 'All'
+      ? orders
+      : orders.filter((order) => order.status === statusFilter);
+
   return (
     <FlatList
       style={styles.container}
       contentContainerStyle={styles.content}
-      data={orders}
+      data={filteredOrders}
       keyExtractor={(item) => String(item.id)}
+      ListHeaderComponent={
+        <View style={styles.filterRow}>
+          <TouchableOpacity
+            style={[styles.filterChip, statusFilter === 'All' && styles.filterChipActive]}
+            onPress={() => setStatusFilter('All')}
+          >
+            <Text style={[styles.filterChipText, statusFilter === 'All' && styles.filterChipTextActive]}>Все</Text>
+          </TouchableOpacity>
+          {STATUSES.map((status) => (
+            <TouchableOpacity
+              key={`filter-${status}`}
+              style={[styles.filterChip, statusFilter === status && styles.filterChipActive]}
+              onPress={() => setStatusFilter(status)}
+            >
+              <Text style={[styles.filterChipText, statusFilter === status && styles.filterChipTextActive]}>
+                {statusText(status)}
+              </Text>
+            </TouchableOpacity>
+          ))}
+        </View>
+      }
       renderItem={({ item }) => (
         <View style={styles.card}>
           <Text style={styles.title}>Заказ #{item.id}</Text>
@@ -62,7 +106,7 @@ export const AdminOrdersScreen: React.FC = () => {
                 onPress={() => updateStatus(item.id, status)}
               >
                 <Text style={[styles.statusText, item.status === status && styles.statusTextActive]}>
-                  {status}
+                  {statusText(status)}
                 </Text>
               </TouchableOpacity>
             ))}
@@ -79,6 +123,11 @@ const styles = StyleSheet.create({
   card: { backgroundColor: '#FFF', borderRadius: 10, padding: 12 },
   title: { fontSize: 16, fontWeight: '700', marginBottom: 6 },
   row: { flexDirection: 'row', flexWrap: 'wrap', gap: 6, marginTop: 10 },
+  filterRow: { flexDirection: 'row', flexWrap: 'wrap', gap: 6, marginBottom: 8 },
+  filterChip: { borderWidth: 1, borderColor: '#D1D1D6', borderRadius: 14, paddingHorizontal: 10, paddingVertical: 6, backgroundColor: '#FFF' },
+  filterChipActive: { borderColor: '#007AFF', backgroundColor: '#007AFF' },
+  filterChipText: { fontSize: 12, fontWeight: '600', color: '#1C1C1E' },
+  filterChipTextActive: { color: '#FFF' },
   statusButton: { borderWidth: 1, borderColor: '#D1D1D6', borderRadius: 8, paddingHorizontal: 8, paddingVertical: 5 },
   statusButtonActive: { backgroundColor: '#007AFF', borderColor: '#007AFF' },
   statusText: { fontSize: 11, fontWeight: '600', color: '#1C1C1E' },

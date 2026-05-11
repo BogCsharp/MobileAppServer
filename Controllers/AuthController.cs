@@ -2,8 +2,11 @@
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using MobileAppServer.Abstracts;
+using MobileAppServer.Data;
+using MobileAppServer.Entities;
 using MobileAppServer.Models.Identity;
 using MobileAppServer.Services;
+using System.Security.Claims;
 
 namespace MobileAppServer.Controllers
 {
@@ -12,9 +15,11 @@ namespace MobileAppServer.Controllers
     public class AuthController : ControllerBase
     {
         private readonly IAuthRepository _authRepository;
-        public AuthController(IAuthRepository authRepository)
+        private readonly AppDbContext _context;
+        public AuthController(IAuthRepository authRepository, AppDbContext context)
         {
             _authRepository = authRepository;
+            _context = context;
         }
         [HttpPost("register")]
         [AllowAnonymous]
@@ -24,6 +29,22 @@ namespace MobileAppServer.Controllers
             if (result.Message.Contains("Пользователь с таким Email уже есть") || result.Message.Contains("Пароли не совпадают"))
             {
                 return BadRequest(result); 
+            }
+            return Ok(result);
+        }
+        [HttpPost("register-by-admin")]
+        [Authorize]
+        public async Task<IActionResult> RegisterByAdmin([FromBody] RegisterDTO registerDTO)
+        {
+            if (!await IsAdminAsync())
+            {
+                return Forbid();
+            }
+
+            var result = await _authRepository.RegisterByAdminAsync(registerDTO);
+            if (result.Message.Contains("Пользователь с таким Email уже есть") || result.Message.Contains("Пароли не совпадают"))
+            {
+                return BadRequest(result);
             }
             return Ok(result);
         }
@@ -104,6 +125,19 @@ namespace MobileAppServer.Controllers
             {
                 return StatusCode(500, new { Message = $"Сессия не валидна {ex.Message}" });
             }
+        }
+
+        private async Task<bool> IsAdminAsync()
+        {
+            var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            if (string.IsNullOrWhiteSpace(userIdClaim))
+            {
+                return false;
+            }
+
+            var userId = long.Parse(userIdClaim);
+            var user = await _context.Users.FindAsync(userId);
+            return user?.RoleId == (int)UserRoleType.Admin;
         }
     }
 }

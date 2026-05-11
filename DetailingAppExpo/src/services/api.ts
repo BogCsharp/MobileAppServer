@@ -114,6 +114,7 @@ class ApiService {
       lastName: serverUser.Surname ?? serverUser.surname ?? serverUser.lastName ?? '',
       roleId: serverUser.RoleId ?? serverUser.roleId,
       roleName: serverUser.RoleName ?? serverUser.roleName,
+      phone: serverUser.Phone ?? serverUser.phone,
     };
   }
 
@@ -154,6 +155,7 @@ class ApiService {
       ConfirmPassword: data.confirmPassword,
       Phone: data.phone || '',
       Birthday: data.birthday ? new Date(data.birthday).toISOString() : new Date().toISOString(),
+      Role: data.roleId ?? 1,
     };
     
     const response = await this.api.post<any>(
@@ -161,6 +163,39 @@ class ApiService {
       serverData
     );
     // Маппинг полей с сервера (PascalCase) в формат клиента (camelCase)
+    const responseData = response.data;
+    const token =
+      responseData.AccessToken ||
+      responseData.accessToken ||
+      responseData.Token ||
+      responseData.token;
+    const refreshToken =
+      responseData.RefreshToken ||
+      responseData.refreshToken ||
+      responseData.Refresh ||
+      responseData.refresh;
+
+    return {
+      message: responseData.Message || responseData.message || 'Регистрация успешна',
+      token,
+      refreshToken,
+      user: this.mapUser(responseData.User || responseData.user),
+    };
+  }
+
+  async registerByAdmin(data: RegisterDTO): Promise<AuthResponse> {
+    const serverData = {
+      Name: data.firstName || '',
+      Surname: data.lastName || '',
+      Email: data.email,
+      Password: data.password,
+      ConfirmPassword: data.confirmPassword,
+      Phone: data.phone || '',
+      Birthday: data.birthday ? new Date(data.birthday).toISOString() : new Date().toISOString(),
+      Role: data.roleId ?? 1,
+    };
+
+    const response = await this.api.post<any>(API_ENDPOINTS.AUTH.REGISTER_BY_ADMIN, serverData);
     const responseData = response.data;
     const token =
       responseData.AccessToken ||
@@ -432,6 +467,20 @@ class ApiService {
       totalOrderAmount: data.TotalOrderAmount ?? data.totalOrderAmount ?? 0,
       earnings: data.Earnings ?? data.earnings ?? 0,
     };
+  }
+
+  async searchClientsByEmail(email: string): Promise<Array<{ id: number; email: string; firstName?: string; lastName?: string; phone?: string }>> {
+    const response = await this.api.get<any[]>(API_ENDPOINTS.USERS.SEARCH, {
+      params: { email },
+    });
+
+    return response.data.map((item) => ({
+      id: item.Id ?? item.id,
+      email: item.Email ?? item.email,
+      firstName: item.Name ?? item.name ?? '',
+      lastName: item.Surname ?? item.surname ?? '',
+      phone: item.Phone ?? item.phone ?? '',
+    }));
   }
 
   // Bookings methods

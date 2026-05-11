@@ -88,6 +88,16 @@ namespace MobileAppServer.Services
 
         public async Task<AuthResponseDTO> RegisterAsync(RegisterDTO registerDTO)
         {
+            return await RegisterInternalAsync(registerDTO, allowCustomRole: false);
+        }
+
+        public async Task<AuthResponseDTO> RegisterByAdminAsync(RegisterDTO registerDTO)
+        {
+            return await RegisterInternalAsync(registerDTO, allowCustomRole: true);
+        }
+
+        private async Task<AuthResponseDTO> RegisterInternalAsync(RegisterDTO registerDTO, bool allowCustomRole)
+        {
             if (await _context.Users.AnyAsync(c => c.Email == registerDTO.Email))
             {
                 return new AuthResponseDTO { Message = "Пользователь с таким Email уже есть!" };
@@ -96,6 +106,16 @@ namespace MobileAppServer.Services
             {
                 return new AuthResponseDTO { Message = "Пароли не совпадают!" };
             }
+
+            var roleId = allowCustomRole
+                ? (int)registerDTO.Role
+                : (int)UserRoleType.Client;
+
+            if (roleId < (int)UserRoleType.Client || roleId > (int)UserRoleType.Admin)
+            {
+                roleId = (int)UserRoleType.Client;
+            }
+
             var user = new UserEntity
             {
                 Phone = registerDTO.Phone,
@@ -104,12 +124,27 @@ namespace MobileAppServer.Services
                 Surname = registerDTO.Surname,
                 Password = _passwordRepository.CreatePasswordHash(registerDTO.Password),
                 Birthday = registerDTO.Birthday,
-                //Роль User
-                RoleId =1,
+                RoleId = roleId,
                 CreatedAt = DateTime.UtcNow
             };
             _context.Users.Add(user);
             await _context.SaveChangesAsync();
+
+            if (roleId == (int)UserRoleType.Employee)
+            {
+                _context.Employee.Add(new EmployeeEntity
+                {
+                    FirstName = registerDTO.Name,
+                    LastName = registerDTO.Surname,
+                    Email = registerDTO.Email,
+                    Phone = registerDTO.Phone,
+                    Position = "Мастер",
+                    isActive = false,
+                    UserId = user.Id
+                });
+                await _context.SaveChangesAsync();
+            }
+
             var accessToken = _jwtService.GenerateToken(user);
             var refreshToken=_passwordRepository.GenerateRefreshToken();
             var expiry = TimeSpan.FromHours(1);

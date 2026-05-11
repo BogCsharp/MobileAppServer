@@ -43,12 +43,16 @@ export const OrderDetailsScreen: React.FC<OrderDetailsScreenProps> = ({ route })
     switch (status) {
       case OrderStatus.Pending:
         return 'Ожидает';
+      case OrderStatus.Confirmed:
+        return 'Подтвержден';
       case OrderStatus.InProgress:
         return 'В работе';
       case OrderStatus.Completed:
         return 'Завершен';
       case OrderStatus.Cancelled:
         return 'Отменен';
+      case OrderStatus.Paid:
+        return 'Оплачен';
       default:
         return status;
     }

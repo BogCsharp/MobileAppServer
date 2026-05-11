@@ -23,6 +23,7 @@ export const API_ENDPOINTS = {
   AUTH: {
     LOGIN: '/api/auth/login',
     REGISTER: '/api/auth/register',
+    REGISTER_BY_ADMIN: '/api/auth/register-by-admin',
     LOGOUT: '/api/auth/logout',
     REFRESH: '/api/auth/refresh',
     SESSION: '/api/auth/session',
@@ -59,6 +60,9 @@ export const API_ENDPOINTS = {
     ME: '/api/employee/me',
     UPDATE_ACTIVE: '/api/employee/me/active',
     MY_ORDERS: '/api/employee/me/orders',
+  },
+  USERS: {
+    SEARCH: '/api/users/search',
   },
   BOOKINGS: {
     GET_AVAILABLE_SLOTS: '/api/bookings/available-slots',
