@@ -34,6 +34,7 @@ const statusText = (status: OrderStatus) => {
 export const AdminOrdersScreen: React.FC = () => {
   const [orders, setOrders] = useState<Order[]>([]);
   const [statusFilter, setStatusFilter] = useState<'All' | OrderStatus>('All');
+  const [updatingId, setUpdatingId] = useState<number | null>(null);
 
   const load = async () => {
     try {
@@ -49,16 +50,23 @@ export const AdminOrdersScreen: React.FC = () => {
   }, []);
 
   const updateStatus = async (orderId: number, status: OrderStatus) => {
+      if (updatingId) return;
+        setUpdatingId(orderId);
     try {
       const updated = await apiService.updateOrderStatusAsAdmin(orderId, status);
       setOrders((prev) => prev.map((o) => (o.id === orderId ? updated : o)));
-    } catch (error: any) {
-      const message =
-        error?.response?.data?.message ||
-        error?.response?.data?.Message ||
-        'Не удалось изменить статус';
-      Alert.alert('Ошибка', message);
-    }
+      Alert.alert('Успешно', `Статус изменен: ${statusText(status)}`);
+      } catch (error: any) {
+        const message =
+          error?.response?.data?.message ||
+          error?.response?.data?.Message ||
+          (error?.response?.status === 403
+            ? 'Нет доступа к изменению этого заказа'
+            : 'Не удалось изменить статус');
+        Alert.alert('Ошибка', message);
+      } finally {
+        setUpdatingId(null);
+      }
   };
 
   const filteredOrders =
